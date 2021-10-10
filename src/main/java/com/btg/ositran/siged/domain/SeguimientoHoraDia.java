@@ -1,0 +1,29 @@
+package com.btg.ositran.siged.domain;
+
+import java.io.Serializable;
+import java.sql.Timestamp;
+import java.util.List;
+
+public class SeguimientoHoraDia implements Serializable{
+
+	private static final long serialVersionUID=1L;
+	private Timestamp hora;
+	// private List<Documento> documentos;
+	private List<Trazabilidaddocumento> trazabilidadDocumentos;
+
+	public List<Trazabilidaddocumento> getTrazabilidadDocumentos(){
+		return trazabilidadDocumentos;
+	}
+
+	public void setTrazabilidadDocumentos(List<Trazabilidaddocumento> trazabilidadDocumentos){
+		this.trazabilidadDocumentos=trazabilidadDocumentos;
+	}
+
+	public Timestamp getHora(){
+		return hora;
+	}
+
+	public void setHora(Timestamp hora){
+		this.hora=hora;
+	}
+}

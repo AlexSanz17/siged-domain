@@ -1,0 +1,215 @@
+package com.btg.ositran.siged.domain;
+
+import java.io.Serializable;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="gridcolumna")
+@NamedQueries({@NamedQuery(name="GridColumna.findAll",query="SELECT g FROM GridColumna g ORDER BY g.field"),@NamedQuery(name="GridColumna.findByIdgridcolumna",query="SELECT g FROM GridColumna g WHERE g.idgridcolumna = :idgridcolumna"),@NamedQuery(name="GridColumna.findByField",query="SELECT g FROM GridColumna g WHERE g.field = :field"),@NamedQuery(name="GridColumna.findByName",query="SELECT g FROM GridColumna g WHERE g.name = :name"),@NamedQuery(name="GridColumna.findByNoresize",query="SELECT g FROM GridColumna g WHERE g.noresize = :noresize"),@NamedQuery(name="GridColumna.findByWidth",query="SELECT g FROM GridColumna g WHERE g.width = :width"),@NamedQuery(name="GridColumna.findByHidden",query="SELECT g FROM GridColumna g WHERE g.hidden = :hidden"),@NamedQuery(name="GridColumna.findByPosition",query="SELECT g FROM GridColumna g WHERE g.position = :position")})
+public class GridColumna implements Serializable{
+
+	private static final long serialVersionUID=1L;
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="GRIDCOLUMNA_SEQ")
+	@SequenceGenerator(name="GRIDCOLUMNA_SEQ",sequenceName="GRIDCOLUMNA_SEQ",initialValue=1,allocationSize=1)
+	// @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Basic(optional=false)
+	@Column(name="idgridcolumna")
+	private Integer idgridcolumna;
+	@Basic(optional=false)
+	@Column(name="field")
+	private String field;
+	@Basic(optional=false)
+	@Column(name="name")
+	private String name;
+	@Basic(optional=false)
+	@Column(name="noresize")
+	private int noresize;
+	@Basic(optional=false)
+	@Column(name="width")
+	private String width;
+	@Basic(optional=false)
+	@Column(name="hidden")
+	private int hidden;
+	@Column(name="formater")
+	private String formater;
+	@Basic(optional=false)
+	@Column(name="position")
+	private int position;
+
+	/*
+	 * @ManyToMany(mappedBy = "gridcolumnaList") private List<Perfil>
+	 * perfilList;
+	 */
+	/*
+	 * @OneToMany(cascade = CascadeType.ALL, mappedBy = "gridcolumna") private
+	 * List<Gridcolumnaxusuario> gridcolumnaxusuarioList;
+	 */
+	/*
+	 * @ManyToMany(mappedBy = "gridcolumnaCollection") private List<Grid>
+	 * gridList;
+	 */
+
+	/*
+	 * Constructors
+	 */
+	public GridColumna(){
+	}
+
+	public GridColumna(Integer idgridcolumna){
+		this.idgridcolumna=idgridcolumna;
+	}
+
+	public GridColumna(Integer idgridcolumna,String field,String name,int noresize,String width,int hidden,int position){
+		this.idgridcolumna=idgridcolumna;
+		this.field=field;
+		this.name=name;
+		this.noresize=noresize;
+		this.width=width;
+		this.hidden=hidden;
+		this.position=position;
+	}
+
+	/*
+	 * Getters & Setters
+	 */
+	public Integer getIdgridcolumna(){
+		return idgridcolumna;
+	}
+
+	public void setIdgridcolumna(Integer idgridcolumna){
+		this.idgridcolumna=idgridcolumna;
+	}
+
+	public String getField(){
+		return field;
+	}
+
+	public void setField(String field){
+		this.field=field;
+	}
+
+	public String getName(){
+		return name;
+	}
+
+	public void setName(String name){
+		this.name=name;
+	}
+
+	public int getNoresize(){
+		return noresize;
+	}
+
+	public void setNoresize(int noresize){
+		this.noresize=noresize;
+	}
+
+	public void setNoresize(Integer noresize){
+		if(noresize != null){
+			this.noresize=noresize;
+		}
+	}
+
+	public String getWidth(){
+		return width;
+	}
+
+	public void setWidth(String width){
+		this.width=width;
+	}
+
+	public int getHidden(){
+		return hidden;
+	}
+
+	public void setHidden(int hidden){
+		this.hidden=hidden;
+	}
+
+	public void setHidden(Integer hidden){
+		if(hidden != null){
+			this.hidden=hidden;
+		}
+	}
+
+	public String getFormater(){
+		return formater;
+	}
+
+	public void setFormater(String formater){
+		this.formater=formater;
+	}
+
+	public int getPosition(){
+		return position;
+	}
+
+	public void setPosition(int position){
+		this.position=position;
+	}
+
+	public void setPosition(Integer position){
+		if(position != null){
+			this.position=position;
+		}
+	}
+
+	/*
+	 * public List<Perfil> getPerfilList() { return perfilList; }
+	 * 
+	 * public void setPerfilList(List<Perfil> perfilList) { this.perfilList =
+	 * perfilList; }
+	 */
+	/*
+	 * public List<Gridcolumnaxusuario> getGridcolumnaxusuarioList() { return
+	 * gridcolumnaxusuarioList; }
+	 * 
+	 * public void setGridcolumnaxusuarioList(List<Gridcolumnaxusuario>
+	 * gridcolumnaxusuarioList) { this.gridcolumnaxusuarioList =
+	 * gridcolumnaxusuarioList; }
+	 */
+	/*
+	 * public List<Grid> getGridList() { return gridList; }
+	 * 
+	 * public void setGridList(List<Grid> gridList) { this.gridList = gridList;
+	 * }
+	 */
+	@Override
+	public int hashCode(){
+		int hash=0;
+		hash+=(idgridcolumna != null ? idgridcolumna.hashCode() : 0);
+		return hash;
+	}
+
+	@Override
+	public boolean equals(Object object){
+		// TODO: Warning - this method won't work in the case the id fields are
+		// not set
+		if(!(object instanceof GridColumna)){
+			return false;
+		}
+
+		GridColumna other=(GridColumna) object;
+
+		if((this.idgridcolumna == null && other.idgridcolumna != null) || (this.idgridcolumna != null && !this.idgridcolumna.equals(other.idgridcolumna))){
+			return false;
+		}
+
+		return true;
+	}
+
+	@Override
+	public String toString(){
+		return "org.ositran.pojos.Gridcolumna[idgridcolumna=" + idgridcolumna + "]";
+	}
+}

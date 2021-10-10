@@ -1,0 +1,313 @@
+package com.btg.ositran.siged.domain;
+
+import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
+import javax.persistence.Column;
+import javax.persistence.Id;
+
+@Entity
+@Table(name="pendientesayq")
+public class ExpedientesPendientesAYQ implements Serializable{
+	private static final long serialVersionUID=1L;
+	@Id
+	@Column(name="NROEXPEDIENTE")
+	private String expediente;
+	@Column(name="FECHAULTIMOMOVIMIENTO")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date fechaultimo;
+	@Column(name="FECHACREACION")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date fechacreacion;
+	@Column(name="ETAPA")
+	private String etapa;
+	@Column(name="CLIENTE")
+	private String cliente;
+	@Column(name="NOMBREP")
+	private String nombrep;
+	@Column(name="NOMBREM")
+	private String nombrem;
+	@Column(name="NOMBREN")
+	private String nombren;
+	@Column(name="CONCESIONARIO")
+	private String concesionario;
+	@Column(name="SALA")
+	private String sala;
+	@Column(name="PROPIETARIO")
+	private String propietario;
+	@Column(name="ANALISTA")
+	private String analista;
+	@Column(name="TIPODOCUMENTO")
+	private String tipodocumento;
+	@Column(name="FECHADOCUMENTO")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date fechadocumento;
+	@Column(name="FECHAVENCIMIENTO")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date fechavencimiento;
+	@Column(name="IDDOCUMENTO")
+	private Integer idDocumento;
+	@Transient
+	private String suministros;
+	@Transient
+	private long diasTranscurridos;
+
+	public String getExpediente(){
+		if(expediente == null){
+			return "";
+		}
+		return expediente;
+	}
+
+	public void setExpediente(String expediente){
+		this.expediente=expediente;
+	}
+
+	public String getFechaultimo(){
+		if(fechaultimo == null){
+			return "";
+		}
+		SimpleDateFormat fechita=new SimpleDateFormat("dd-MM-yyyy");
+		return fechita.format(fechaultimo);
+	}
+
+	public void setFechaultimo(Date fechaultimo){
+		this.fechaultimo=fechaultimo;
+	}
+
+	public String getFechacreacion(){
+		if(fechacreacion == null){
+			return "";
+		}
+		SimpleDateFormat fechita=new SimpleDateFormat("dd-MM-yyyy");
+		return fechita.format(fechacreacion);
+	}
+
+	public Date getFechaCreacionDate(){
+		return this.fechacreacion;
+	}
+
+	public void setFechacreacion(Date fechacreacion){
+		this.fechacreacion=fechacreacion;
+	}
+
+	public String getEtapa(){
+		if(etapa == null){
+			return "NO ETAPA";
+		}
+		return etapa;
+	}
+
+	public void setEtapa(String etapa){
+		this.etapa=etapa;
+	}
+
+	public String getCliente(){
+		if(cliente == null){
+			if(nombrep == null){
+				return "";
+			}
+			return nombrep + " " + nombrem + ", " + nombren;
+		}
+		return cliente;
+	}
+
+	public void setCliente(String cliente){
+		this.cliente=cliente;
+	}
+
+	public void setNombrep(String nombrep){
+		this.nombrep=nombrep;
+	}
+
+	public void setNombrem(String nombrem){
+		this.nombrem=nombrem;
+	}
+
+	public void setNombren(String nombren){
+		this.nombren=nombren;
+	}
+
+	public String getConcesionario(){
+		if(concesionario == null){
+			return "SIN CONCESIONARIO";
+		}
+		return concesionario;
+	}
+
+	public void setConcesionario(String concesionario){
+		this.concesionario=concesionario;
+	}
+
+	public String getSala(){
+		if(sala == null){
+			return "SIN SALA ASIGNADA";
+		}
+		return sala;
+	}
+
+	public void setSala(String sala){
+		this.sala=sala;
+	}
+
+	public String getPropietario(){
+		if(propietario == null){
+			return "SIN PROPIETARIO?";
+		}
+		return propietario;
+	}
+
+	public void setPropietario(String propietario){
+		this.propietario=propietario;
+	}
+
+	public String getAnalista(){
+		if(analista == null){
+			return "SIN ANALISTA ASIGNADO";
+		}
+		return analista;
+	}
+
+	public void setAnalista(String analista){
+		this.analista=analista;
+	}
+
+	public String getTipodocumento(){
+		if(tipodocumento == null){
+			return "TIPO NO ESPECIFICADO";
+		}
+		return tipodocumento;
+	}
+
+	public void setTipodocumento(String tipodocumento){
+		this.tipodocumento=tipodocumento;
+	}
+
+	public String getFechadocumento(){
+		if(fechadocumento == null){
+			return "";
+		}
+		SimpleDateFormat fechita=new SimpleDateFormat("dd-MM-yyyy");
+		return fechita.format(fechadocumento);
+	}
+
+	public void setFechadocumento(Date fechadocumento){
+		this.fechadocumento=fechadocumento;
+	}
+
+	public String getFechavencimiento(){
+		if(fechavencimiento == null){
+			return "";
+		}
+		SimpleDateFormat fechita=new SimpleDateFormat("dd-MM-yyyy");
+		return fechita.format(fechavencimiento);
+	}
+
+	public void setFechavencimiento(Date fechavencimiento){
+		this.fechavencimiento=fechavencimiento;
+	}
+
+	/***
+	 * ARREGAR LO DE SUMINISTROS, ENCONTRAR UNA FORMA DE LISTAR TODOS LOS
+	 * SUMINSITROS
+	 ***/
+	/*
+	 * public String getSuministros() { if (idDocumento == null) { return ""; }
+	 * SuministroDAO dao = new SuministroDAOImpl(); try{ List<Suministro> listaS
+	 * = dao.findByIdDocumento(idDocumento); if (listaS == null ||
+	 * listaS.isEmpty() || listaS.size() == 0) { return ""; } String suministros
+	 * = ""; for (int i = 0; i < listaS.size(); i++) { if (i == listaS.size() -
+	 * 1) { suministros += listaS.get(i).getNrosuministro(); } else {
+	 * suministros += listaS.get(i).getNrosuministro() + ", "; } } return
+	 * suministros; }catch(NullPointerException e){ return "npe"; } }
+	 */
+
+	/*
+	 * public String getDias(){ if(fechaultimo==null){ return "0"; } long
+	 * diasTrans; diasTrans = (System.currentTimeMillis() -
+	 * fechacreacion.getTime())/86400000l; return
+	 * Long.valueOf(diasTrans).toString(); }
+	 */
+
+	public Integer getIdDocumento(){
+		return idDocumento;
+	}
+
+	public void setIdDocumento(Integer idDocumento){
+		this.idDocumento=idDocumento;
+	}
+
+	public String getSuministros(){
+		if(suministros == null){
+			return "-";
+		}
+		return suministros;
+	}
+
+	public void addSuministros(String suministros){
+		if(this.suministros == null || this.suministros.equals("")){
+			this.suministros=suministros;
+		}
+		else{
+			this.suministros+=" - " + suministros;
+		}
+	}
+
+	public String getDias(){
+		return diasTranscurridos(diasTranscurridos);
+	}
+
+	public void setDiasTranscurridos(long diasTranscurridos){
+		this.diasTranscurridos=diasTranscurridos;
+	}
+
+	private String diasTranscurridos(long milisegundos){
+		if(milisegundos < 0){
+			return "TBA";
+		}
+		int d,h;
+		h=(int) (milisegundos / 3600000);
+		if(h > 24){
+			d=h / 24;
+			return Integer.toString(d);
+		}
+		return aString(milisegundos);
+	}
+
+	private String aString(long milisegundos){
+		if(milisegundos < 0){
+			return "TBA";
+		}
+		String tmp="";
+		int d,h,m;
+		h=(int) (milisegundos / 3600000);
+		m=(int) ((milisegundos % 3600000) / 60000);
+		if(h > 24){
+			d=h / 24;
+			h=h % 24;
+			tmp=Integer.toString(d) + "d ";
+		}
+		tmp+=Integer.toString(h) + ":";
+		if(m == 0){
+			tmp+="00";
+		}
+		else{
+			if(m < 10){
+				tmp+="0" + Integer.toString(m);
+			}
+			else{
+				tmp+=Integer.toString(m);
+			}
+		}
+		if(tmp.equals("0:00")){
+			tmp=Long.toString((milisegundos % 60000) / 1000) + "s";
+		}
+		return tmp;
+	}
+}

@@ -1,0 +1,84 @@
+package com.btg.osinergmin.siged.domain;
+
+import java.io.Serializable;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
+@Embeddable
+public class UsuarioxdocumentoPK implements Serializable{
+	private static final long serialVersionUID=1L;
+	@Basic(optional=false)
+	@Column(name="idusuario")
+	private int idusuario;
+	@Basic(optional=false)
+	@Column(name="iddocumento")
+	private int iddocumento;
+
+	public UsuarioxdocumentoPK(){
+	}
+
+	public UsuarioxdocumentoPK(int idusuario,int iddocumento){
+		this.idusuario=idusuario;
+		this.iddocumento=iddocumento;
+	}
+
+	public int getIdusuario(){
+		return idusuario;
+	}
+
+	public void setIdusuario(int idusuario){
+		this.idusuario=idusuario;
+	}
+
+	public void setIdusuario(Integer idusuario){
+		if(idusuario != null){
+			this.idusuario=idusuario;
+		}
+	}
+
+	public int getIddocumento(){
+		return iddocumento;
+	}
+
+	public void setIddocumento(int iddocumento){
+		this.iddocumento=iddocumento;
+	}
+
+	public void setIddocumento(Integer iddocumento){
+		if(iddocumento != null){
+			this.iddocumento=iddocumento;
+		}
+	}
+
+	@Override
+	public boolean equals(Object obj){
+		if(obj == null){
+			return false;
+		}
+		if(getClass() != obj.getClass()){
+			return false;
+		}
+		final UsuarioxdocumentoPK other=(UsuarioxdocumentoPK) obj;
+		if(this.idusuario != other.idusuario){
+			return false;
+		}
+		if(this.iddocumento != other.iddocumento){
+			return false;
+		}
+		return true;
+	}
+
+	@Override
+	public int hashCode(){
+		int hash=7;
+		hash=37 * hash + this.idusuario;
+		hash=37 * hash + this.iddocumento;
+		return hash;
+	}
+
+	@Override
+	public String toString(){
+		return "org.osinerg.pojos.UsuarioxdocumentoPK[idusuario=" + idusuario + ", iddocumento=" + iddocumento + "]";
+	}
+}

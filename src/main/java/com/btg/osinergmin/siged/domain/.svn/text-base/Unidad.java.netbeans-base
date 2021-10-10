@@ -1,0 +1,216 @@
+package com.btg.osinergmin.siged.domain;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.Basic;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedNativeQuery;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="unidad")
+@NamedQueries({@NamedQuery(name="Unidad.findAll",query="SELECT u FROM Unidad u order by nombre"),
+	@NamedQuery(name="Unidad.findDependenciaByIdunidad",query="SELECT NEW Unidad (u.dependencia, u.idunidad, u.nombre) FROM Unidad u WHERE u.idunidad = :idunidad"),
+	@NamedQuery(name="Unidad.findByIdunidad",query="SELECT u FROM Unidad u WHERE u.idunidad = :idunidad"),
+	@NamedQuery(name="Unidad.findByNombre",query="SELECT u FROM Unidad u WHERE u.nombre = :nombre"),
+	@NamedQuery(name="Unidad.findByDescripcion",query="SELECT u FROM Unidad u WHERE u.descripcion = :descripcion")})
+@NamedNativeQuery(name="Unidad.findAllUnidadSAS",query="SELECT * FROM UnidadSAS u",resultClass=Unidad.class)
+public class Unidad implements Serializable,Auditable{
+
+	private static final long serialVersionUID=1L;
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="UNIDAD_SEQ")
+	@SequenceGenerator(name="UNIDAD_SEQ",sequenceName="UNIDAD_SEQ",initialValue=1,allocationSize=1)
+	// @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Basic(optional=false)
+	@Column(name="idunidad")
+	private Integer idunidad;
+	@Basic(optional=false)
+	@Column(name="nombre")
+	private String nombre;
+	@Column(name="descripcion")
+	private String descripcion;
+	@Column(name="finenvio")
+	private String finEnvio;
+	@Column(name="inicioenvio")
+	private String inicioEnvio;
+	@ManyToMany(mappedBy="unidadList",fetch=FetchType.LAZY)
+	private List<Procedimiento> procedimientoList;
+	@JoinColumn(name="sede",referencedColumnName="idsede")
+	@ManyToOne(optional=false,fetch=FetchType.LAZY)
+	private Sede sede;
+	/*
+	 * @OneToMany(cascade=CascadeType.ALL,mappedBy="idunidad") private List<Rol>
+	 * rolList;
+	 */
+	@OneToMany(cascade=CascadeType.ALL,mappedBy="unidad",fetch=FetchType.LAZY)
+	private List<Usuario> usuarios;
+	@OneToMany(cascade=CascadeType.ALL,mappedBy="idunidad",fetch=FetchType.LAZY)
+	private List<Expedientesas> expedientesasList;
+	@JoinColumn(name="dependencia",referencedColumnName="idunidad")
+	@ManyToOne(fetch=FetchType.LAZY)
+	private Unidad dependencia;
+
+	/*
+	 * Constructors
+	 */
+	public Unidad(){
+	}
+
+	public Unidad(Integer idunidad){
+		this.idunidad=idunidad;
+	}
+
+	public Unidad(Integer idunidad,String nombre){
+		this.idunidad=idunidad;
+		this.nombre=nombre;
+	}
+
+	public Unidad(Unidad dependencia,Integer idunidad,String nombre){
+		super();
+		this.dependencia=dependencia;
+		this.idunidad=idunidad;
+		this.nombre=nombre;
+	}
+
+	/*
+	 * Getters & Setters
+	 */
+	public Integer getIdunidad(){
+		return idunidad;
+	}
+
+	public void setIdunidad(Integer idunidad){
+		this.idunidad=idunidad;
+	}
+
+	public String getNombre(){
+		return nombre;
+	}
+
+	public void setNombre(String nombre){
+		this.nombre=nombre;
+	}
+
+	public String getDescripcion(){
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion){
+		this.descripcion=descripcion;
+	}
+
+	public List<Procedimiento> getProcedimientoList(){
+		return procedimientoList;
+	}
+
+	public void setProcedimientoList(List<Procedimiento> procedimientoList){
+		this.procedimientoList=procedimientoList;
+	}
+
+	public Sede getSede(){
+		return sede;
+	}
+
+	public void setSede(Sede sede){
+		this.sede=sede;
+	}
+
+	/*
+	 * public List<Rol> getRolList(){ return rolList; }
+	 * 
+	 * public void setRolList(List<Rol> rolList){ this.rolList=rolList; }
+	 */
+	public List<Usuario> getUsuarios(){
+		return usuarios;
+	}
+
+	public void setUsuarios(List<Usuario> usuarios){
+		this.usuarios=usuarios;
+	}
+
+	public List<Expedientesas> getExpedientesasList(){
+		return expedientesasList;
+	}
+
+	public void setExpedientesasList(List<Expedientesas> expedientesasList){
+		this.expedientesasList=expedientesasList;
+	}
+
+	public Unidad getDependencia(){
+		return dependencia;
+	}
+
+	public void setDependencia(Unidad dependencia){
+		this.dependencia=dependencia;
+	}
+
+	@Override
+	public int hashCode(){
+		int hash=0;
+		hash+=(idunidad != null ? idunidad.hashCode() : 0);
+		return hash;
+	}
+
+	@Override
+	public boolean equals(Object object){
+		if(!(object instanceof Unidad)){
+			return false;
+		}
+		Unidad other=(Unidad) object;
+		if((this.idunidad == null && other.idunidad != null) || (this.idunidad != null && !this.idunidad.equals(other.idunidad))){
+			return false;
+		}
+		return true;
+	}
+
+	@Override
+	public String toString(){
+		return "[" + this.nombre + "]";
+	}
+
+	/*
+	 * Auditoria
+	 */
+	public List<AuditableCampo> getCamposAuditables(){
+		List<AuditableCampo> lstCamposAuditables=new ArrayList<AuditableCampo>();
+
+		lstCamposAuditables.add(new AuditableCampo("nombre","Nombre"));
+		lstCamposAuditables.add(new AuditableCampo("descripcion","Descripcion"));
+		lstCamposAuditables.add(new AuditableCampo("sede","Sede"));
+		lstCamposAuditables.add(new AuditableCampo("dependencia","Dependencia"));
+
+		return lstCamposAuditables;
+	}
+
+	public String getFinEnvio() {
+		return finEnvio;
+	}
+
+	public void setFinEnvio(String finEnvio) {
+		this.finEnvio = finEnvio;
+	}
+
+	public String getInicioEnvio() {
+		return inicioEnvio;
+	}
+
+	public void setInicioEnvio(String inicioEnvio) {
+		this.inicioEnvio = inicioEnvio;
+	}	
+	
+}

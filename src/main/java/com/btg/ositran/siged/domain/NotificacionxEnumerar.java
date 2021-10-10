@@ -1,0 +1,104 @@
+/**
+ * 
+ */
+package com.btg.ositran.siged.domain;
+
+import java.io.Serializable;
+
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+
+//import org.ositran.daos.ing;
+
+/**
+ * @author Danna
+ * 
+ */
+@Entity
+@Table(name="notificacionxenumerar")
+@NamedQueries({@NamedQuery(name="NotificacionxEnumerar.findByIddocumento",query="SELECT n FROM NotificacionxEnumerar n WHERE n.notificacionxenumerarPK.iddocumento = :iddocumento "),@NamedQuery(name="NotificacionxEnumerar.findByIdusuario",query="SELECT n FROM NotificacionxEnumerar n WHERE n.notificacionxenumerarPK.idusuario = :idusuario"),@NamedQuery(name="NotificacionxEnumerar.findByTipoNotificacion",query="SELECT n FROM NotificacionxEnumerar n WHERE n.tiponotificacion = :tiponotificacion"),@NamedQuery(name="NotificacionxEnumerar.findByAll",query="SELECT n FROM NotificacionxEnumerar n WHERE  n.notificacionxenumerarPK.iddocumento = :iddocumento  AND n.tiponotificacion = :tiponotificacion")})
+public class NotificacionxEnumerar implements Serializable{
+
+	private static final long serialVersionUID=1L;
+	@EmbeddedId
+	protected NotificacionxEnumerarPK notificacionxenumerarPK;
+	@JoinColumn(name="IDDOCUMENTO",referencedColumnName="IDDOCUMENTO",insertable=false,updatable=false)
+	@ManyToOne(optional=false)
+	private Documento documento;
+	@JoinColumn(name="IDUSUARIO",referencedColumnName="IDUSUARIO",insertable=false,updatable=false)
+	@ManyToOne(optional=false)
+	private Usuario usuario;
+	@Basic(optional=true)
+	@Column(name="TIPONOTIFICACION")
+	private Integer tiponotificacion;
+	// Danna
+	private transient String nombreUsuario;
+
+	public NotificacionxEnumerar(){
+
+	}
+
+	public NotificacionxEnumerar(NotificacionxEnumerarPK notificacionxenumerarPK){
+		super();
+		this.notificacionxenumerarPK=notificacionxenumerarPK;
+	}
+
+	public NotificacionxEnumerar(int iddocumento,int idusuario,int tiponotificacion){
+		this.notificacionxenumerarPK=new NotificacionxEnumerarPK(iddocumento,idusuario);
+		this.tiponotificacion=tiponotificacion;
+
+	}
+
+	public NotificacionxEnumerarPK getNotificacionxenumerarPK(){
+		return notificacionxenumerarPK;
+	}
+
+	public void setNotificacionxenumerarPK(NotificacionxEnumerarPK notificacionxenumerarPK){
+		this.notificacionxenumerarPK=notificacionxenumerarPK;
+	}
+
+	public Documento getDocumento(){
+		return documento;
+	}
+
+	public void setDocumento(Documento documento){
+		this.documento=documento;
+	}
+
+	public Usuario getUsuario(){
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario){
+		this.usuario=usuario;
+	}
+
+	public Integer getTiponotificacion(){
+		return tiponotificacion;
+	}
+
+	public void setTiponotificacion(Integer tiponotificacion){
+		this.tiponotificacion=tiponotificacion;
+	}
+
+	public NotificacionxEnumerar(Integer tiponotificacion,String usuario){
+		this.tiponotificacion=tiponotificacion;
+		this.nombreUsuario=usuario;
+	}
+
+	public String getNombreUsuario(){
+		return nombreUsuario;
+	}
+
+	public void setNombreUsuario(String nombreUsuario){
+		this.nombreUsuario=nombreUsuario;
+	}
+
+}

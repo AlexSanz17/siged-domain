@@ -1,0 +1,98 @@
+package com.btg.osinergmin.siged.domain;
+
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="usuarioxdocumento")
+@NamedQueries({@NamedQuery(name="Usuarioxdocumento.findAll",query="SELECT u FROM Usuarioxdocumento u"),@NamedQuery(name="Usuarioxdocumento.findByIdusuario",query="SELECT u FROM Usuarioxdocumento u WHERE u.usuarioxdocumentoPK.idusuario = :idusuario"),@NamedQuery(name="Usuarioxdocumento.findByIddocumento",query="SELECT u FROM Usuarioxdocumento u WHERE u.usuarioxdocumentoPK.iddocumento = :iddocumento"),@NamedQuery(name="Usuarioxdocumento.findBySololectura",query="SELECT u FROM Usuarioxdocumento u WHERE u.sololectura = :sololectura")})
+public class Usuarioxdocumento implements Serializable{
+
+	private static final long serialVersionUID=1L;
+	@EmbeddedId
+	protected UsuarioxdocumentoPK usuarioxdocumentoPK;
+	@Column(name="sololectura")
+	private Character sololectura;
+	@JoinColumn(name="iddocumento",referencedColumnName="iddocumento",insertable=false,updatable=false)
+	@ManyToOne(optional=false)
+	private Documento documento;
+	@JoinColumn(name="idusuario",referencedColumnName="idusuario",insertable=false,updatable=false)
+	@ManyToOne(optional=false)
+	private Usuario usuario;
+
+	public Usuarioxdocumento(){
+	}
+
+	public Usuarioxdocumento(UsuarioxdocumentoPK usuarioxdocumentoPK){
+		this.usuarioxdocumentoPK=usuarioxdocumentoPK;
+	}
+
+	public Usuarioxdocumento(int idusuario,int iddocumento){
+		this.usuarioxdocumentoPK=new UsuarioxdocumentoPK(idusuario,iddocumento);
+	}
+
+	public UsuarioxdocumentoPK getUsuarioxdocumentoPK(){
+		return usuarioxdocumentoPK;
+	}
+
+	public void setUsuarioxdocumentoPK(UsuarioxdocumentoPK usuarioxdocumentoPK){
+		this.usuarioxdocumentoPK=usuarioxdocumentoPK;
+	}
+
+	public Character getSololectura(){
+		return sololectura;
+	}
+
+	public void setSololectura(Character sololectura){
+		this.sololectura=sololectura;
+	}
+
+	public Documento getDocumento(){
+		return documento;
+	}
+
+	public void setDocumento(Documento documento){
+		this.documento=documento;
+	}
+
+	public Usuario getUsuario(){
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario){
+		this.usuario=usuario;
+	}
+
+	@Override
+	public int hashCode(){
+		int hash=0;
+		hash+=(usuarioxdocumentoPK != null ? usuarioxdocumentoPK.hashCode() : 0);
+		return hash;
+	}
+
+	@Override
+	public boolean equals(Object object){
+		// TODO: Warning - this method won't work in the case the id fields are
+		// not set
+		if(!(object instanceof Usuarioxdocumento)){
+			return false;
+		}
+		Usuarioxdocumento other=(Usuarioxdocumento) object;
+		if((this.usuarioxdocumentoPK == null && other.usuarioxdocumentoPK != null) || (this.usuarioxdocumentoPK != null && !this.usuarioxdocumentoPK.equals(other.usuarioxdocumentoPK))){
+			return false;
+		}
+		return true;
+	}
+
+	@Override
+	public String toString(){
+		return "org.osinerg.pojos.Usuarioxdocumento[usuarioxdocumentoPK=" + usuarioxdocumentoPK + "]";
+	}
+}

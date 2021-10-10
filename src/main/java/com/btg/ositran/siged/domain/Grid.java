@@ -1,0 +1,100 @@
+package com.btg.ositran.siged.domain;
+
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="grid")
+@NamedQueries({@NamedQuery(name="Grid.findAll",query="SELECT g FROM Grid g"),@NamedQuery(name="Grid.findByIdgrid",query="SELECT g FROM Grid g WHERE g.idGrid = :idgrid"),@NamedQuery(name="Grid.findByNombre",query="SELECT g FROM Grid g WHERE g.nombre = :nombre"),@NamedQuery(name="Grid.findByCodigo",query="SELECT g FROM Grid g WHERE g.codigo = :codigo"),@NamedQuery(name="Grid.findByCodigo2",query="SELECT g.idGrid FROM Grid g WHERE g.codigo = :codigo"),@NamedQuery(name="Grid.findByRol",query="SELECT g FROM Grid g WHERE g.rol.idrol = :idRol"),@NamedQuery(name="Grid.findByDescripcion",query="SELECT g FROM Grid g WHERE g.descripcion = :descripcion")})
+public class Grid implements Serializable{
+
+	private static final long serialVersionUID=-547092610359166254L;
+	@Id
+	private int idGrid;
+	private String nombre;
+	private String descripcion;
+	private String codigo;
+	/*
+	 * @JoinTable(name = "gridxgridcolumna", joinColumns = {
+	 * 
+	 * @JoinColumn(name = "idgrid", referencedColumnName = "idgrid")},
+	 * inverseJoinColumns = {
+	 * 
+	 * @JoinColumn(name = "idgridcolumna", referencedColumnName =
+	 * "idgridcolumna")})
+	 * 
+	 * @ManyToMany(fetch = FetchType.LAZY) private List<GridColumna>
+	 * gridcolumnaList;
+	 */
+	@JoinColumn(name="rol",referencedColumnName="idrol")
+	@ManyToOne(fetch=FetchType.LAZY)
+	private Rol rol;
+
+	/*
+	 * @OneToMany(cascade = CascadeType.ALL, mappedBy = "idgrid") private
+	 * List<ColumnasPorGrid> columnasxgridList;
+	 */
+
+	/*
+	 * Getters & Setters
+	 */
+	public int getIdGrid(){
+		return idGrid;
+	}
+
+	public void setIdGrid(int idGrid){
+		this.idGrid=idGrid;
+	}
+
+	public String getNombre(){
+		return nombre;
+	}
+
+	public void setNombre(String nombre){
+		this.nombre=nombre;
+	}
+
+	public String getDescripcion(){
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion){
+		this.descripcion=descripcion;
+	}
+
+	public String getCodigo(){
+		return codigo;
+	}
+
+	public void setCodigo(String codigo){
+		this.codigo=codigo;
+	}
+
+	/*
+	 * public List<GridColumna> getGridcolumnaList() { return gridcolumnaList; }
+	 * 
+	 * public void setGridcolumnaList(List<GridColumna> gridcolumnaList) {
+	 * this.gridcolumnaList = gridcolumnaList; }
+	 */
+	public Rol getRol(){
+		return rol;
+	}
+
+	public void setRol(Rol rol){
+		this.rol=rol;
+	}
+	/*
+	 * public List<ColumnasPorGrid> getColumnasxgridList() { return
+	 * columnasxgridList; }
+	 * 
+	 * public void setColumnasxgridList(List<ColumnasPorGrid> columnasxgridList)
+	 * { this.columnasxgridList = columnasxgridList; }
+	 */
+}

@@ -1,0 +1,169 @@
+package com.btg.ositran.siged.domain;
+
+import java.io.Serializable;
+import javax.persistence.Basic;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="estado")
+@NamedQueries({@NamedQuery(name="Estado.findAll",query="SELECT e FROM Estado e"),
+	@NamedQuery(name="Estado.findByIdestado",query="SELECT e FROM Estado e WHERE e.idestado = :idestado"),
+	@NamedQuery(name="Estado.findByDescripcion",query="SELECT e FROM Estado e WHERE e.descripcion = :descripcion"),
+	@NamedQuery(name="Estado.findByCodigo",query="SELECT e FROM Estado e WHERE e.codigo = :codigo AND rownum <= 1"),
+	@NamedQuery(name="Estado.findByTipo",query="SELECT e FROM Estado e WHERE e.tipo = :tipo"),
+	@NamedQuery(name="Estado.findByEstado",query="SELECT e FROM Estado e WHERE e.estado = :estado")})
+public class Estado implements Serializable{
+
+	private static final long serialVersionUID=1L;
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="ESTADO_SEQ")
+	@SequenceGenerator(name="ESTADO_SEQ",sequenceName="ESTADO_SEQ",initialValue=1,allocationSize=1)
+	// @GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer idestado;
+
+	@Column(name="descripcion")
+	private String descripcion;
+
+	@Column(name="codigo")
+	private String codigo;
+
+	@Column(name="tipo")
+	private String tipo;
+
+	@Basic(optional=false)
+	@Column(name="estado")
+	private char estado;
+
+        
+	@JoinColumn(name="idproceso",referencedColumnName="idproceso")
+	@ManyToOne(cascade=CascadeType.REFRESH,optional=true,fetch=FetchType.LAZY)
+	private Proceso idproceso;
+        
+	/*
+	 * @OneToMany(cascade = CascadeType.ALL, mappedBy = "idestadosiged") private
+	 * List<ExpedienteStor> expedientestorList;
+	 * 
+	 * @OneToMany(cascade = CascadeType.ALL, mappedBy = "estado") private
+	 * List<ExpedienteStor> expedientestorList1;
+	 */
+
+	public Estado(){
+	}
+
+	public Estado(Integer idestado){
+		this.idestado=idestado;
+	}
+
+	public Estado(Integer idestado,char estado){
+		this.idestado=idestado;
+		this.estado=estado;
+	}
+
+	public Integer getIdestado(){
+		return idestado;
+	}
+
+	public void setIdestado(Integer idestado){
+		this.idestado=idestado;
+	}
+
+	public String getDescripcion(){
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion){
+		this.descripcion=descripcion;
+	}
+
+	public String getCodigo(){
+		return codigo;
+	}
+
+	public void setCodigo(String codigo){
+		this.codigo=codigo;
+	}
+
+	public String getTipo(){
+		return tipo;
+	}
+
+	public void setTipo(String tipo){
+		this.tipo=tipo;
+	}
+
+	public char getEstado(){
+		return estado;
+	}
+
+	public void setEstado(char estado){
+		this.estado=estado;
+	}
+
+	public void setEstado(Character estado){
+		if(estado != null){
+			this.estado=estado;
+		}
+	}
+
+	/*
+	 * public List<ExpedienteStor> getExpedientestorList() { return
+	 * expedientestorList; }
+	 * 
+	 * public void setExpedientestorList(List<ExpedienteStor>
+	 * expedientestorList) { this.expedientestorList = expedientestorList; }
+	 * 
+	 * public List<ExpedienteStor> getExpedientestorList1() { return
+	 * expedientestorList1; }
+	 * 
+	 * public void setExpedientestorList1(List<ExpedienteStor>
+	 * expedientestorList1) { this.expedientestorList1 = expedientestorList1; }
+	 */
+
+	@Override
+	public int hashCode(){
+		int hash=0;
+		hash+=(idestado != null ? idestado.hashCode() : 0);
+		return hash;
+	}
+
+        
+	public Proceso getIdproceso(){
+		return idproceso;
+	}
+
+	public void setIdproceso(Proceso idproceso){
+		this.idproceso=idproceso;
+	}
+
+	@Override
+	public boolean equals(Object object){
+		// TODO: Warning - this method won't work in the case the id fields are
+		// not set
+		if(!(object instanceof Estado)){
+			return false;
+		}
+		Estado other=(Estado) object;
+		if((this.idestado == null && other.idestado != null) || (this.idestado != null && !this.idestado.equals(other.idestado))){
+			return false;
+		}
+		return true;
+	}
+
+	@Override
+	public String toString(){
+		return "org.ositran.pojos.Estado[estado=" + this.descripcion + "]";
+	}
+}

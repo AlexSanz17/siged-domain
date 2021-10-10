@@ -1,0 +1,291 @@
+package com.btg.ositran.siged.domain;
+
+import java.io.Serializable;
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+@Entity
+@Table(name="VISTAGRIDUSUARIOFINAL")
+public class VistaGridUF implements Serializable{
+	private static final long serialVersionUID=1L;
+	@Id
+	@Column(name="iddocumento")
+	private Integer iddocumento;
+	@Column(name="cliente")
+	private String cliente;
+	@Column(name="concesionario")
+	private String concesionario;
+	@Column(name="documento")
+	private String documento;
+	@Column(name="estadodocumento")
+	private Character estadodocumen;
+	@Column(name="estadoexpediente")
+	private Character estadoexpediente;
+	@Column(name="etapa")
+	private String etapa;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="fechaaccion")
+	private Date fechaaccion;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="fechacreacion")
+	private Date fechacreacion;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="fechalimiteatencion")
+	private Date fechalimiteatencion;
+	@Column(name="historico")
+	private Character historico;
+	@Column(name="idaccion")
+	private Integer idaccion;
+	@Column(name="idproceso")
+	private Integer idproceso;
+	@Column(name="idpropietario")
+	private Integer idpropietario;
+	@Column(name="leido")
+	private Character leido;
+	@Column(name="nombreproceso")
+	private String nombreproceso;
+	@Column(name="nroexpediente")
+	private String nroexpediente;
+	@Column(name="nromesapartes")
+	private String nromesapartes;
+	@Column(name="porcentajealerta1")
+	private String porcentajealerta1;
+	@Column(name="porcentajealerta2")
+	private String porcentajealerta2;
+	@Column(name="principal")
+	private Character principal;
+	@Column(name="razonsocialcliente")
+	private String razonsocialcliente;
+	@Column(name="remitente")
+	private String remitente;
+	@Column(name="sede")
+	private Integer sede;
+	@Column(name="tipoidentificacion")
+	private String tipoidentificacion;
+	@Column(name="ultimoasunto")
+	private String ultimoasunto;
+	@Column(name="actividad")
+	private String actividad;
+
+	public Integer getIddocumento(){
+		return iddocumento;
+	}
+
+	public void setIddocumento(Integer iddocumento){
+		this.iddocumento=iddocumento;
+	}
+
+	public String getCliente(){
+		return cliente;
+	}
+
+	public void setCliente(String cliente){
+		this.cliente=cliente;
+	}
+
+	public String getConcesionario(){
+		return concesionario;
+	}
+
+	public void setConcesionario(String concesionario){
+		this.concesionario=concesionario;
+	}
+
+	public String getDocumento(){
+		return documento;
+	}
+
+	public void setDocumento(String documento){
+		this.documento=documento;
+	}
+
+	public Character getEstadodocumen(){
+		return estadodocumen;
+	}
+
+	public void setEstadodocumen(Character estadodocumen){
+		this.estadodocumen=estadodocumen;
+	}
+
+	public Character getEstadoexpediente(){
+		return estadoexpediente;
+	}
+
+	public void setEstadoexpediente(Character estadoexpediente){
+		this.estadoexpediente=estadoexpediente;
+	}
+
+	public String getEtapa(){
+		return etapa;
+	}
+
+	public void setEtapa(String etapa){
+		this.etapa=etapa;
+	}
+
+	public Date getFechaaccion(){
+		return fechaaccion;
+	}
+
+	public void setFechaaccion(Date fechaaccion){
+		this.fechaaccion=fechaaccion;
+	}
+
+	public Date getFechacreacion(){
+		return fechacreacion;
+	}
+
+	public void setFechacreacion(Date fechacreacion){
+		this.fechacreacion=fechacreacion;
+	}
+
+	public Date getFechalimiteatencion(){
+		return fechalimiteatencion;
+	}
+
+	public void setFechalimiteatencion(Date fechalimiteatencion){
+		this.fechalimiteatencion=fechalimiteatencion;
+	}
+
+	public Character getHistorico(){
+		return historico;
+	}
+
+	public void setHistorico(Character historico){
+		this.historico=historico;
+	}
+
+	public Integer getIdaccion(){
+		return idaccion;
+	}
+
+	public void setIdaccion(Integer idaccion){
+		this.idaccion=idaccion;
+	}
+
+	public Integer getIdproceso(){
+		return idproceso;
+	}
+
+	public void setIdproceso(Integer idproceso){
+		this.idproceso=idproceso;
+	}
+
+	public Integer getIdpropietario(){
+		return idpropietario;
+	}
+
+	public void setIdpropietario(Integer idpropietario){
+		this.idpropietario=idpropietario;
+	}
+
+	public Character getLeido(){
+		return leido;
+	}
+
+	public void setLeido(Character leido){
+		this.leido=leido;
+	}
+
+	public String getNombreproceso(){
+		return nombreproceso;
+	}
+
+	public void setNombreproceso(String nombreproceso){
+		this.nombreproceso=nombreproceso;
+	}
+
+	public String getNroexpediente(){
+		return nroexpediente;
+	}
+
+	public void setNroexpediente(String nroexpediente){
+		this.nroexpediente=nroexpediente;
+	}
+
+	public String getNromesapartes(){
+		return nromesapartes;
+	}
+
+	public void setNromesapartes(String nromesapartes){
+		this.nromesapartes=nromesapartes;
+	}
+
+	public String getPorcentajealerta1(){
+		return porcentajealerta1;
+	}
+
+	public void setPorcentajealerta1(String porcentajealerta1){
+		this.porcentajealerta1=porcentajealerta1;
+	}
+
+	public String getPorcentajealerta2(){
+		return porcentajealerta2;
+	}
+
+	public void setPorcentajealerta2(String porcentajealerta2){
+		this.porcentajealerta2=porcentajealerta2;
+	}
+
+	public Character getPrincipal(){
+		return principal;
+	}
+
+	public void setPrincipal(Character principal){
+		this.principal=principal;
+	}
+
+	public String getRazonsocialcliente(){
+		return razonsocialcliente;
+	}
+
+	public void setRazonsocialcliente(String razonsocialcliente){
+		this.razonsocialcliente=razonsocialcliente;
+	}
+
+	public String getRemitente(){
+		return remitente;
+	}
+
+	public void setRemitente(String remitente){
+		this.remitente=remitente;
+	}
+
+	public Integer getSede(){
+		return sede;
+	}
+
+	public void setSede(Integer sede){
+		this.sede=sede;
+	}
+
+	public String getTipoidentificacion(){
+		return tipoidentificacion;
+	}
+
+	public void setTipoidentificacion(String tipoidentificacion){
+		this.tipoidentificacion=tipoidentificacion;
+	}
+
+	public String getUltimoasunto(){
+		return ultimoasunto;
+	}
+
+	public void setUltimoasunto(String ultimoasunto){
+		this.ultimoasunto=ultimoasunto;
+	}
+
+	public String getActividad(){
+		return actividad;
+	}
+
+	public void setActividad(String actividad){
+		this.actividad=actividad;
+	}
+}

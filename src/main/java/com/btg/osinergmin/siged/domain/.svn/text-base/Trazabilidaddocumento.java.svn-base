@@ -1,0 +1,391 @@
+package com.btg.osinergmin.siged.domain;
+
+import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
+
+@Entity
+@Table(name="trazabilidaddocumento")
+@NamedQueries({@NamedQuery(name="Trazabilidaddocumento.findAll",query="SELECT t FROM Trazabilidaddocumento t ORDER by t.fechacreacion"),@NamedQuery(name="Trazabilidaddocumento.findByIdtrazabilidaddocumento",query="SELECT t FROM Trazabilidaddocumento t WHERE t.idtrazabilidaddocumento = :idtrazabilidaddocumento ORDER by t.fechacreacion"),@NamedQuery(name="Trazabilidaddocumento.findByNroregistro",query="SELECT t FROM Trazabilidaddocumento t WHERE t.nroregistro = :nroregistro ORDER by t.fechacreacion"),@NamedQuery(name="Trazabilidaddocumento.findByAsunto",query="SELECT t FROM Trazabilidaddocumento t WHERE t.asunto = :asunto ORDER by t.fechacreacion"),@NamedQuery(name="Trazabilidaddocumento.findByFechacreacion",query="SELECT t FROM Trazabilidaddocumento t WHERE t.fechacreacion = :fechacreacion ORDER by t.fechacreacion"),
+		@NamedQuery(name="Trazabilidaddocumento.findByMaxNroRegistro",query="SELECT t FROM Trazabilidaddocumento t WHERE t.documento.idDocumento = :iddoc AND t.nroregistro = (SELECT MAX(tt.nroregistro) FROM Trazabilidaddocumento tt WHERE tt.documento.idDocumento = :iddoc) ORDER by t.fechacreacion"),
+		@NamedQuery(name="Trazabilidaddocumento.findByIddocumento",query="SELECT t FROM Trazabilidaddocumento t WHERE t.documento.idDocumento = :iddocumento ORDER by t.fechacreacion"),@NamedQuery(name="Trazabilidaddocumento.findByMaxtrazabyIddocumento",query="SELECT t FROM Trazabilidaddocumento t WHERE t.documento.idDocumento = :iddocumento ORDER by t.idtrazabilidaddocumento DESC"),@NamedQuery(name="Trazabilidaddocumento.findByIddocumentoIddestinatario",query="SELECT t FROM Trazabilidaddocumento t WHERE t.documento.idDocumento = :iddocumento AND t.destinatario.idusuario = :iddestinatario ORDER by t.fechacreacion"),
+		@NamedQuery(name="Trazabilidaddocumento.findListByIdDocumento",query=" SELECT t FROM Trazabilidaddocumento t " + " WHERE " + " t.documento.expediente.id = :idexp " + " AND t.verSeguimiento = :verSeguimiento " + " AND t.accion.idAccion in ( :accionId ) " + " ORDER by t.fechacreacion ")})
+/*
+ * " t.documento.iddocumento = ( SELECT tt.documento.iddocumento" +
+ * "                                    FROM  Trazabilidaddocumento tt " +
+ * "                                    WHERE tt.idtrazabilidaddocumento = " +
+ * "                                          ( select min(tti.idtrazabilidaddocumento) from  Trazabilidaddocumento tti "
+ * +
+ * "                                            where  tti.documento.expediente.idexpediente = :idexp ) "
+ * + "                                   )" + " AND " +/*
+ */
+public class Trazabilidaddocumento implements Serializable{
+
+	private static final long serialVersionUID=1L;
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="TRAZABILIDADDOCUMENTO_SEQ")
+	@SequenceGenerator(name="TRAZABILIDADDOCUMENTO_SEQ",sequenceName="TRAZABILIDADDOCUMENTO_SEQ",initialValue=1,allocationSize=1)
+	// @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Basic(optional=false)
+	@Column(name="idtrazabilidaddocumento")
+	private Integer idtrazabilidaddocumento;
+
+	// @Basic(optional = false)
+	@Column(name="nroregistro")
+	private int nroregistro;
+
+	@Column(name="asunto")
+	private String asunto;
+
+	@Lob
+	@Column(name="contenido")
+	private String contenido;
+
+	@Lob
+	@Column(name="observacion")
+	private String observacion;
+
+	@Basic(optional=false)
+	@Column(name="fechacreacion")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date fechacreacion;
+
+	@Column(name="fechacreacionmonth")
+	private Integer fechacreacionmonth;
+
+	@Column(name="fechacreacionyear")
+	private Integer fechacreacionyear;
+
+	@Column(name="plazo")
+	private Integer plazo;
+
+	@Column(name="fechalimiteatencion")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date fechalimiteatencion;
+
+	@JoinColumn(name="destinatario",referencedColumnName="idusuario")
+	@ManyToOne(optional=false)
+	private Usuario destinatario;
+
+	@JoinColumn(name="idproceso",referencedColumnName="idproceso")
+	@ManyToOne(optional=true)
+	private Proceso idproceso;
+
+	@JoinColumn(name="accion",referencedColumnName="idaccion")
+	@ManyToOne(optional=false)
+	private Accion accion;
+
+	@JoinColumn(name="documento",referencedColumnName="iddocumento")
+	@ManyToOne(optional=false)
+	private Documento documento;
+
+	@JoinColumn(name="remitente",referencedColumnName="idusuario")
+	@ManyToOne(optional=false)
+	private Usuario remitente;
+
+	@Basic(optional=true)
+	@Column(name="verseguimiento")
+	private Character verSeguimiento;
+
+	@JoinColumn(name="idetapa",referencedColumnName="idetapa")
+	@ManyToOne(optional=true)
+	private Etapa idetapa;
+
+	@Column(name="idactividad")
+	private Integer idActividad;
+
+	@Column(name="actividad")
+	private String actividad;
+
+	@Column(name="nombrepc")
+	private String nombrePC;
+	
+	@JoinColumn(name="compartido",referencedColumnName="idusuario")
+	@ManyToOne
+	private Usuario compartido;
+
+	@ManyToMany
+	@JoinTable(name="trazabilidadxproveido",joinColumns={@JoinColumn(name="idtrazabilidad",referencedColumnName="idtrazabilidaddocumento")},inverseJoinColumns={@JoinColumn(name="idproveido",referencedColumnName="idproveido")})
+	private List<Proveido> proveidos;
+	
+	@Transient
+	private boolean conCopias;
+
+	@Transient
+	private boolean conApoyo;
+	
+	@Transient
+	private String estado;
+	
+	public Trazabilidaddocumento(){
+	}
+
+	public Trazabilidaddocumento(Integer idtrazabilidaddocumento){
+		this.idtrazabilidaddocumento=idtrazabilidaddocumento;
+	}
+
+	public Trazabilidaddocumento(Integer idtrazabilidaddocumento,int nroregistro,Date fechacreacion){
+		this.idtrazabilidaddocumento=idtrazabilidaddocumento;
+		this.nroregistro=nroregistro;
+		this.fechacreacion=fechacreacion;
+	}
+
+	public Trazabilidaddocumento(Accion accion,Integer idtrazabilidaddocumento,Usuario remitente){
+		this.accion=accion;
+		this.idtrazabilidaddocumento=idtrazabilidaddocumento;
+		this.remitente=remitente;
+	}
+
+	public Integer getIdtrazabilidaddocumento(){
+		return idtrazabilidaddocumento;
+	}
+
+	public void setIdtrazabilidaddocumento(Integer idtrazabilidaddocumento){
+		this.idtrazabilidaddocumento=idtrazabilidaddocumento;
+	}
+
+	public int getNroregistro(){
+		return nroregistro;
+	}
+
+	public void setNroregistro(int nroregistro){
+		this.nroregistro=nroregistro;
+	}
+
+	public void setNroregistro(Integer nroregistro){
+		if(nroregistro != null){
+			this.nroregistro=nroregistro;
+		}
+	}
+
+	public String getAsunto(){
+		return asunto;
+	}
+
+	public void setAsunto(String asunto){
+		this.asunto=asunto;
+	}
+
+	public String getContenido(){
+		return contenido;
+	}
+
+	public void setContenido(String contenido){
+		this.contenido=contenido;
+	}
+
+	public String getObservacion(){
+		return observacion;
+	}
+
+	public void setObservacion(String observacion){
+		this.observacion=observacion;
+	}
+
+	public Date getFechacreacion(){
+		return fechacreacion;
+	}
+
+	public void setFechacreacion(Date fechacreacion){
+		this.fechacreacion=fechacreacion;
+	}
+
+	public Integer getFechacreacionmonth(){
+		return fechacreacionmonth;
+	}
+
+	public void setFechacreacionmonth(Integer fechacreacionmonth){
+		this.fechacreacionmonth=fechacreacionmonth;
+	}
+
+	public Integer getFechacreacionyear(){
+		return fechacreacionyear;
+	}
+
+	public void setFechacreacionyear(Integer fechacreacionyear){
+		this.fechacreacionyear=fechacreacionyear;
+	}
+
+	public Integer getPlazo(){
+		return plazo;
+	}
+
+	public void setPlazo(Integer plazo){
+		this.plazo=plazo;
+	}
+
+	public Date getFechalimiteatencion(){
+		return fechalimiteatencion;
+	}
+
+	public void setFechalimiteatencion(Date fechalimiteatencion){
+		this.fechalimiteatencion=fechalimiteatencion;
+	}
+
+	public Usuario getDestinatario(){
+		return destinatario;
+	}
+
+	public void setDestinatario(Usuario destinatario){
+		this.destinatario=destinatario;
+	}
+
+	public Proceso getIdproceso(){
+		return idproceso;
+	}
+
+	public void setIdproceso(Proceso idproceso){
+		this.idproceso=idproceso;
+	}
+
+	public Accion getAccion(){
+		return accion;
+	}
+
+	public void setAccion(Accion accion){
+		this.accion=accion;
+	}
+
+	public Documento getDocumento(){
+		return documento;
+	}
+
+	public void setDocumento(Documento documento){
+		this.documento=documento;
+	}
+
+	public Usuario getRemitente(){
+		return remitente;
+	}
+
+	public void setRemitente(Usuario remitente){
+		this.remitente=remitente;
+	}
+
+	@Override
+	public int hashCode(){
+		int hash=0;
+		hash+=(idtrazabilidaddocumento != null ? idtrazabilidaddocumento.hashCode() : 0);
+		return hash;
+	}
+
+	public Character getVerSeguimiento(){
+		return verSeguimiento;
+	}
+
+	public void setVerSeguimiento(Character verSeguimiento){
+		this.verSeguimiento=verSeguimiento;
+	}
+
+	public Etapa getIdetapa(){
+		return idetapa;
+	}
+
+	public void setIdetapa(Etapa idetapa){
+		this.idetapa=idetapa;
+	}
+
+	public Integer getIdActividad(){
+		return idActividad;
+	}
+
+	public void setIdActividad(Integer idActividad){
+		this.idActividad=idActividad;
+	}
+
+	@Override
+	public boolean equals(Object object){
+		// TODO: Warning - this method won't work in the case the id fields are
+		// not set
+		if(!(object instanceof Trazabilidaddocumento)){
+			return false;
+		}
+		Trazabilidaddocumento other=(Trazabilidaddocumento) object;
+		if((this.idtrazabilidaddocumento == null && other.idtrazabilidaddocumento != null) || (this.idtrazabilidaddocumento != null && !this.idtrazabilidaddocumento.equals(other.idtrazabilidaddocumento))){
+			return false;
+		}
+		return true;
+	}
+
+	@Override
+	public String toString(){
+		return "org.osinerg.pojos.Trazabilidaddocumento[idtrazabilidaddocumento=" + idtrazabilidaddocumento + "]";
+	}
+
+	public boolean isConCopias(){
+		return conCopias;
+	}
+
+	public void setConCopias(boolean conCopias){
+		this.conCopias=conCopias;
+	}
+
+	public String getActividad(){
+		return actividad;
+	}
+
+	public void setActividad(String actividad){
+		this.actividad=actividad;
+	}
+
+	public Usuario getCompartido(){
+		return compartido;
+	}
+
+	public void setCompartido(Usuario compartido){
+		this.compartido=compartido;
+	}
+
+	public boolean isConApoyo() {
+		return conApoyo;
+	}
+
+	public void setConApoyo(boolean conApoyo) {
+		this.conApoyo = conApoyo;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+	public List<Proveido> getProveidos() {
+		return proveidos;
+	}
+
+	public void setProveidos(List<Proveido> proveidos) {
+		this.proveidos = proveidos;
+	}
+
+	public String getNombrePC() {
+		return nombrePC;
+	}
+
+	public void setNombrePC(String nombrePC) {
+		this.nombrePC = nombrePC;
+	}
+
+}

@@ -1,0 +1,153 @@
+package com.btg.ositran.siged.domain;
+
+import java.io.Serializable;
+import javax.persistence.Basic;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="gridcolumnaxusuario")
+@NamedQueries({@NamedQuery(name="Gridcolumnaxusuario.find",query="SELECT g FROM Gridcolumnaxusuario g WHERE g.gridcolumnaxusuarioPK.idusuario = :idUsuario AND g.gridcolumnaxusuarioPK.idgridcolumna = :idGridColumna"),@NamedQuery(name="Gridcolumnaxusuario.findByIdusuario",query="SELECT g FROM Gridcolumnaxusuario g WHERE g.gridcolumnaxusuarioPK.idusuario = :idusuario")})
+public class Gridcolumnaxusuario implements Serializable{
+
+	private static final long serialVersionUID=1L;
+	@EmbeddedId
+	protected GridcolumnaxusuarioPK gridcolumnaxusuarioPK;
+	@Basic(optional=false)
+	private String width;
+	@Basic(optional=false)
+	private int hidden;
+	@Basic(optional=false)
+	private int position;
+	@Basic(optional=false)
+	private char ordenado;
+	@JoinColumn(name="idgridcolumna",referencedColumnName="id",insertable=false,updatable=false)
+	@ManyToOne(optional=false,fetch=FetchType.LAZY)
+	private GridXGridColumna columna;
+	@JoinColumn(name="idusuario",referencedColumnName="idusuario",insertable=false,updatable=false)
+	@ManyToOne(optional=false,fetch=FetchType.LAZY)
+	private Usuario usuario;
+
+	/*
+	 * Constructors
+	 */
+	public Gridcolumnaxusuario(){
+		super();
+	}
+
+	public Gridcolumnaxusuario(GridcolumnaxusuarioPK gridcolumnaxusuarioPK){
+		this.gridcolumnaxusuarioPK=gridcolumnaxusuarioPK;
+	}
+
+	public Gridcolumnaxusuario(GridcolumnaxusuarioPK gridcolumnaxusuarioPK,String width,int hidden,int position){
+		this.gridcolumnaxusuarioPK=gridcolumnaxusuarioPK;
+		this.width=width;
+		this.hidden=hidden;
+		this.position=position;
+	}
+
+	public Gridcolumnaxusuario(int idusuario,int idgridcolumna){
+		this.gridcolumnaxusuarioPK=new GridcolumnaxusuarioPK(idusuario,idgridcolumna);
+	}
+
+	/*
+	 * Getters & Setters
+	 */
+	public GridcolumnaxusuarioPK getGridcolumnaxusuarioPK(){
+		return gridcolumnaxusuarioPK;
+	}
+
+	public void setGridcolumnaxusuarioPK(GridcolumnaxusuarioPK gridcolumnaxusuarioPK){
+		this.gridcolumnaxusuarioPK=gridcolumnaxusuarioPK;
+	}
+
+	public String getWidth(){
+		return width;
+	}
+
+	public void setWidth(String width){
+		this.width=width;
+	}
+
+	public int getHidden(){
+		return hidden;
+	}
+
+	public void setHidden(int hidden){
+		this.hidden=hidden;
+	}
+
+	public void setHidden(Integer hidden){
+		if(hidden != null){
+			this.hidden=hidden;
+		}
+	}
+
+	public int getPosition(){
+		return position;
+	}
+
+	public void setPosition(int position){
+		this.position=position;
+	}
+
+	public void setPosition(Integer position){
+		if(position != null){
+			this.position=position;
+		}
+	}
+
+	public char getOrdenado(){
+		return ordenado;
+	}
+
+	public void setOrdenado(char ordenado){
+		this.ordenado=ordenado;
+	}
+
+	public GridXGridColumna getColumna(){
+		return columna;
+	}
+
+	public void setColumna(GridXGridColumna columna){
+		this.columna=columna;
+	}
+
+	public Usuario getUsuario(){
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario){
+		this.usuario=usuario;
+	}
+
+	@Override
+	public int hashCode(){
+		int hash=0;
+		hash+=(gridcolumnaxusuarioPK != null ? gridcolumnaxusuarioPK.hashCode() : 0);
+		return hash;
+	}
+
+	@Override
+	public boolean equals(Object object){
+		if(!(object instanceof Gridcolumnaxusuario)){
+			return false;
+		}
+		Gridcolumnaxusuario other=(Gridcolumnaxusuario) object;
+		if((this.gridcolumnaxusuarioPK == null && other.gridcolumnaxusuarioPK != null) || (this.gridcolumnaxusuarioPK != null && !this.gridcolumnaxusuarioPK.equals(other.gridcolumnaxusuarioPK))){
+			return false;
+		}
+		return true;
+	}
+
+	@Override
+	public String toString(){
+		return "org.ositran.pojos.Gridcolumnaxusuario[gridcolumnaxusuarioPK=" + gridcolumnaxusuarioPK + "]";
+	}
+}

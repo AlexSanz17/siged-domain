@@ -1,0 +1,54 @@
+package com.btg.osinergmin.siged.domain;
+
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="seguimientoxusuario")
+public class SeguimientoXUsuario {
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="SEGUIMIENTOXUSUARIO_SEQ")
+	@SequenceGenerator(name="SEGUIMIENTOXUSUARIO_SEQ",sequenceName="SEGUIMIENTOXUSUARIO_SEQ",initialValue=1,allocationSize=1)
+	@Column(name = "idseguimientousuario")
+	private Integer idSeguimientoUsuario;
+	
+	@Column(name="iddocumento")
+	@Basic(optional=false)
+	private Integer idDocumento;
+	
+	@Column(name="idusuario")
+	@Basic(optional=false)
+	private Integer idUsuario;
+
+	public Integer getIdSeguimientoUsuario() {
+		return idSeguimientoUsuario;
+	}
+
+	public void setIdSeguimientoUsuario(Integer idSeguimientoUsuario) {
+		this.idSeguimientoUsuario = idSeguimientoUsuario;
+	}
+
+	public Integer getIdDocumento() {
+		return idDocumento;
+	}
+
+	public void setIdDocumento(Integer idDocumento) {
+		this.idDocumento = idDocumento;
+	}
+
+	public Integer getIdUsuario() {
+		return idUsuario;
+	}
+
+	public void setIdUsuario(Integer idUsuario) {
+		this.idUsuario = idUsuario;
+	}
+	
+	
+}

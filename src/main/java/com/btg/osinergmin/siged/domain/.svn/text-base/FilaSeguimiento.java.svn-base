@@ -1,0 +1,73 @@
+package com.btg.osinergmin.siged.domain;
+
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+@Entity
+@Table(name = "seguimiento")
+public class FilaSeguimiento {
+	@Id
+	private Integer iddocumento;
+
+	@JoinColumn(name="iddocumento",referencedColumnName="idDocumento",insertable=false,updatable=false)
+	@ManyToOne
+	private Documento documento;
+	
+	@Column(name="fechalimite")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date fechaLimite;
+		
+	private Integer remitente;
+	
+	private Integer destinatario;
+	
+	public Integer getIddocumento() {
+		return iddocumento;
+	}
+
+	public void setIddocumento(Integer iddocumento) {
+		this.iddocumento = iddocumento;
+	}
+
+	public Documento getDocumento() {
+		return documento;
+	}
+
+	public void setDocumento(Documento documento) {
+		this.documento = documento;
+	}
+
+	public Date getFechaLimite() {
+		return fechaLimite;
+	}
+
+	public void setFechaLimite(Date fechaLimite) {
+		this.fechaLimite = fechaLimite;
+	}
+
+	public Integer getRemitente() {
+		return remitente;
+	}
+
+	public void setRemitente(Integer remitente) {
+		this.remitente = remitente;
+	}
+
+	public Integer getDestinatario() {
+		return destinatario;
+	}
+
+	public void setDestinatario(Integer destinatario) {
+		this.destinatario = destinatario;
+	}
+	
+	
+}

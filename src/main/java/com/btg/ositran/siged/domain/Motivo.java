@@ -1,0 +1,120 @@
+package com.btg.ositran.siged.domain;
+
+import java.io.Serializable;
+import java.util.List;
+import javax.persistence.Basic;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="motivo")
+@NamedQueries({@NamedQuery(name="Motivo.findAll",query="SELECT m FROM Motivo m"),@NamedQuery(name="Motivo.findByIdmotivo",query="SELECT m FROM Motivo m WHERE m.idmotivo = :idmotivo"),@NamedQuery(name="Motivo.findByDescripcion",query="SELECT m FROM Motivo m WHERE m.descripcion = :descripcion"),@NamedQuery(name="Motivo.findByEstado",query="SELECT m FROM Motivo m WHERE m.estado = :estado"),@NamedQuery(name="Motivo.encontrarPorProceso",query="SELECT m FROM Motivo m WHERE m.proceso.idproceso = :proceso")})
+public class Motivo implements Serializable{
+
+	private static final long serialVersionUID=1L;
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="MOTIVO_SEQ")
+	@SequenceGenerator(name="MOTIVO_SEQ",sequenceName="MOTIVO_SEQ",initialValue=1,allocationSize=1)
+	// @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Basic(optional=false)
+	@Column(name="idmotivo")
+	private Integer idmotivo;
+
+	@Column(name="descripcion")
+	private String descripcion;
+
+	@Column(name="estado")
+	private String estado;
+
+	@OneToMany(cascade=CascadeType.ALL,mappedBy="motivo")
+	private List<Submotivo> submotivoList;
+
+        
+	@ManyToOne(cascade=CascadeType.REFRESH,optional=false)
+	@JoinColumn(name="proceso",referencedColumnName="idproceso")
+	private Proceso proceso;
+
+	public Motivo(){
+	}
+
+	public Motivo(Integer idmotivo){
+		this.idmotivo=idmotivo;
+	}
+
+	public Integer getIdmotivo(){
+		return idmotivo;
+	}
+
+	public void setIdmotivo(Integer idmotivo){
+		this.idmotivo=idmotivo;
+	}
+
+	public String getDescripcion(){
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion){
+		this.descripcion=descripcion;
+	}
+
+	public String getEstado(){
+		return estado;
+	}
+
+	public void setEstado(String estado){
+		this.estado=estado;
+	}
+
+	public List<Submotivo> getSubmotivoList(){
+		return submotivoList;
+	}
+
+	public void setSubmotivoList(List<Submotivo> submotivoList){
+		this.submotivoList=submotivoList;
+	}
+
+        
+	public Proceso getProceso(){
+		return proceso;
+	}
+
+	public void setProceso(Proceso proceso){
+		this.proceso=proceso;
+	}
+
+	@Override
+	public int hashCode(){
+		int hash=0;
+		hash+=(idmotivo != null ? idmotivo.hashCode() : 0);
+		return hash;
+	}
+
+	@Override
+	public boolean equals(Object object){
+		if(!(object instanceof Motivo)){
+			return false;
+		}
+		Motivo other=(Motivo) object;
+		if((this.idmotivo == null && other.idmotivo != null) || (this.idmotivo != null && !this.idmotivo.equals(other.idmotivo))){
+			return false;
+		}
+		return true;
+	}
+
+	@Override
+	public String toString(){
+		return "[" + this.descripcion + "]";
+	}
+}

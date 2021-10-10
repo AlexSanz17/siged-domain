@@ -1,0 +1,140 @@
+package com.btg.ositran.siged.domain;
+
+import java.io.Serializable;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="distrito")
+@NamedQueries({@NamedQuery(name="Distrito.findAll",query="SELECT d FROM Distrito d"),@NamedQuery(name="Distrito.findByIddistrito",query="SELECT d FROM Distrito d WHERE d.iddistrito = :iddistrito"),@NamedQuery(name="Distrito.findByNombre",query="SELECT d FROM Distrito d WHERE d.nombre = :nombre")})
+public class Distrito implements Serializable{
+
+	private static final long serialVersionUID=1L;
+	@Id
+	/*
+	 * @GeneratedValue(strategy = GenerationType.SEQUENCE, generator =
+	 * "DISTRITO_SEQ")
+	 * 
+	 * @SequenceGenerator(name = "DISTRITO_SEQ", sequenceName = "DISTRITO_SEQ",
+	 * initialValue = 1,allocationSize=1)
+	 */
+	// @GeneratedValue(strategy = GenerationType.IDENTITY)
+        
+        
+        
+	@Basic(optional=false)
+	@Column(name="iddistrito")
+	private Integer iddistrito;
+	@Basic(optional=false)
+	@Column(name="nombre")
+	private String nombre;
+	@JoinColumn(name="provincia",referencedColumnName="idprovincia")
+	@ManyToOne(fetch=FetchType.EAGER)
+	private Provincia provincia;
+
+	/*
+	 * @OneToMany(mappedBy = "ubigeoAlternativo") private List<Cliente>
+	 * clienteList;
+	 * 
+	 * @OneToMany(cascade = CascadeType.ALL, mappedBy = "ubigeoPrincipal")
+	 * private List<Cliente> clienteList1;
+	 */
+	/*
+	 * @OneToMany(cascade = CascadeType.ALL, mappedBy = "ubigeo") private
+	 * List<Sede> sedeList;
+	 */
+
+	/*
+	 * Constructors
+	 */
+	public Distrito(){
+	}
+
+	public Distrito(Integer iddistrito){
+		this.iddistrito=iddistrito;
+	}
+
+	public Distrito(Integer iIdDistrito,String sNombre){
+		this.iddistrito=iIdDistrito;
+		this.nombre=sNombre;
+	}
+
+	/*
+	 * Getters & Setters
+	 */
+	public Integer getIddistrito(){
+		return iddistrito;
+	}
+
+	public void setIddistrito(Integer iddistrito){
+		this.iddistrito=iddistrito;
+	}
+
+	public String getNombre(){
+		return nombre;
+	}
+
+	public void setNombre(String nombre){
+		this.nombre=nombre;
+	}
+
+	public Provincia getProvincia(){
+		return provincia;
+	}
+
+	public void setProvincia(Provincia provincia){
+		this.provincia=provincia;
+	}
+
+	/*
+	 * public List<Cliente> getClienteList() { return clienteList; }
+	 * 
+	 * public void setClienteList(List<Cliente> clienteList) { this.clienteList
+	 * = clienteList; }
+	 * 
+	 * public List<Cliente> getClienteList1() { return clienteList1; }
+	 * 
+	 * public void setClienteList1(List<Cliente> clienteList1) {
+	 * this.clienteList1 = clienteList1; }
+	 */
+
+	/*
+	 * public List<Sede> getSedeList() { return sedeList; }
+	 * 
+	 * public void setSedeList(List<Sede> sedeList) { this.sedeList = sedeList;
+	 * }
+	 */
+	@Override
+	public int hashCode(){
+		int hash=0;
+		hash+=(iddistrito != null ? iddistrito.hashCode() : 0);
+		return hash;
+	}
+
+	@Override
+	public boolean equals(Object object){
+		// TODO: Warning - this method won't work in the case the id fields are
+		// not set
+		if(!(object instanceof Distrito)){
+			return false;
+		}
+		Distrito other=(Distrito) object;
+		if((this.iddistrito == null && other.iddistrito != null) || (this.iddistrito != null && !this.iddistrito.equals(other.iddistrito))){
+			return false;
+		}
+		return true;
+	}
+
+	@Override
+	public String toString(){
+		return "[" + this.nombre + "]";
+	}
+}

@@ -1,0 +1,61 @@
+package com.btg.osinergmin.siged.domain;
+
+import java.io.Serializable;
+
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
+@SuppressWarnings("serial")
+@Embeddable
+public class SubmotivoXExpedienteStorPK implements Serializable{
+	@Basic(optional=false)
+	@Column(name="idsubmotivo")
+	private Integer idsubmotivo;
+
+	@Basic(optional=false)
+	@Column(name="idexpediente")
+	private Integer idexpediente;
+
+	public Integer getIdsubmotivo(){
+		return idsubmotivo;
+	}
+
+	public void setIdsubmotivo(Integer idsubmotivo){
+		this.idsubmotivo=idsubmotivo;
+	}
+
+	public Integer getIdexpediente(){
+		return idexpediente;
+	}
+
+	public void setIdexpediente(Integer idexpediente){
+		this.idexpediente=idexpediente;
+	}
+
+	@Override
+	public boolean equals(Object obj){
+		if(obj == null){
+			return false;
+		}
+		if(getClass() != obj.getClass()){
+			return false;
+		}
+		final SubmotivoXExpedienteStorPK other=(SubmotivoXExpedienteStorPK) obj;
+		if(this.idsubmotivo != other.idsubmotivo && (this.idsubmotivo == null || !this.idsubmotivo.equals(other.idsubmotivo))){
+			return false;
+		}
+		if(this.idexpediente != other.idexpediente && (this.idexpediente == null || !this.idexpediente.equals(other.idexpediente))){
+			return false;
+		}
+		return true;
+	}
+
+	@Override
+	public int hashCode(){
+		int hash=3;
+		hash=97 * hash + (this.idsubmotivo != null ? this.idsubmotivo.hashCode() : 0);
+		hash=97 * hash + (this.idexpediente != null ? this.idexpediente.hashCode() : 0);
+		return hash;
+	}
+}

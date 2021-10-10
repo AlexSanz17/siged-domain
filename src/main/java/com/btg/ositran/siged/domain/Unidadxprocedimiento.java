@@ -1,0 +1,60 @@
+package com.btg.ositran.siged.domain;
+
+import java.io.Serializable;
+
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+/**
+ * 
+ * @author Jesse James
+ */
+
+@Entity
+@Table(name="unidadxprocedimiento")
+public class Unidadxprocedimiento implements Serializable{
+
+	private static final long serialVersionUID=1L;
+
+	@EmbeddedId
+	private UnidadxprocedimientoPK unidadxprocedimientoPK;
+
+	@JoinColumn(name="idunidad",referencedColumnName="idunidad",insertable=false,updatable=false)
+	@ManyToOne(optional=false)
+	private Unidad unidad;
+
+	@JoinColumn(name="idprocedimiento",referencedColumnName="idprocedimiento",insertable=false,updatable=false)
+	@ManyToOne(optional=false)
+	private Procedimiento procedimiento;
+
+	public Unidadxprocedimiento(){
+
+	}
+
+	public UnidadxprocedimientoPK getUnidadxprocedimientoPK(){
+		return unidadxprocedimientoPK;
+	}
+
+	public void setUnidadxprocedimientoPK(UnidadxprocedimientoPK unidadxprocedimientoPK){
+		this.unidadxprocedimientoPK=unidadxprocedimientoPK;
+	}
+
+	public Unidad getUnidad(){
+		return unidad;
+	}
+
+	public void setUnidad(Unidad unidad){
+		this.unidad=unidad;
+	}
+
+	public Procedimiento getProcedimiento(){
+		return procedimiento;
+	}
+
+	public void setProcedimiento(Procedimiento procedimiento){
+		this.procedimiento=procedimiento;
+	}
+}
