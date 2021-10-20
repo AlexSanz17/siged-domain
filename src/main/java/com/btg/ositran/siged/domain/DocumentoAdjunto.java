@@ -30,11 +30,12 @@ import javax.persistence.TemporalType;
 @Table(name="documentoadjunto")
 @NamedQueries({@NamedQuery(name="DocumentoAdjunto.findByListDocumentoAdjunto",query="SELECT d FROM DocumentoAdjunto d where d.idDocumento = :idDocumento  and d.estado = 'A'")})
 public class DocumentoAdjunto  implements Serializable{
-        @Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="DOCUMENTOADJUNTO_SEQ")
-	@SequenceGenerator(name="DOCUMENTOADJUNTO_SEQ",sequenceName="DOCUMENTOADJUNTO_SEQ",initialValue=1,allocationSize=1)
-        @Basic(optional=false)
-        @Column(name="idDocumentoAdjunto")
+    @Id
+	//@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="DOCUMENTOADJUNTO_SEQ")
+	//@SequenceGenerator(name="DOCUMENTOADJUNTO_SEQ",sequenceName="DOCUMENTOADJUNTO_SEQ",initialValue=1,allocationSize=1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional=false)
+    @Column(name="idDocumentoAdjunto")
 	private Integer idDocumentoAdjunto;
         
         @Column(name="estado")

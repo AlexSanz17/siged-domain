@@ -27,9 +27,9 @@ import javax.persistence.TemporalType;
 public class FirmaArchivo  implements Serializable{
 
     @Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="FIRMAARCHIVO_SEQ")
-	@SequenceGenerator(name="FIRMAARCHIVO_SEQ",sequenceName="FIRMAARCHIVO_SEQ",initialValue=1,allocationSize=1)
-	// @GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="FIRMAARCHIVO_SEQ")
+	//@SequenceGenerator(name="FIRMAARCHIVO_SEQ",sequenceName="FIRMAARCHIVO_SEQ",initialValue=1,allocationSize=1)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional=false)
 	@Column(name="idFirmaArchivo",nullable=false)
 	private Integer idFirmaArchivo;

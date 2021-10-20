@@ -53,9 +53,9 @@ public class IotdtmDocExterno implements Serializable {
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE,generator="NU_INT_DOC_EXT")
-    @SequenceGenerator(name="NU_INT_DOC_EXT",sequenceName="NU_INT_DOC_EXT",initialValue=1,allocationSize=1)
-        
+    //@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="NU_INT_DOC_EXT")
+    //@SequenceGenerator(name="NU_INT_DOC_EXT",sequenceName="NU_INT_DOC_EXT",initialValue=1,allocationSize=1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)    
     @Basic(optional = false)
     @Column(name = "SIDDOCEXT")
     private Integer siddocext;

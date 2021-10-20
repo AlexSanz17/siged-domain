@@ -24,8 +24,9 @@ public class Grupoproceso implements Serializable{
 
 	private static final long serialVersionUID=1L;
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="GRUPOPROCESO_SEQ")
-	@SequenceGenerator(name="GRUPOPROCESO_SEQ",sequenceName="GRUPOPROCESO_SEQ",initialValue=1,allocationSize=1)
+	//@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="GRUPOPROCESO_SEQ")
+	//@SequenceGenerator(name="GRUPOPROCESO_SEQ",sequenceName="GRUPOPROCESO_SEQ",initialValue=1,allocationSize=1)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional=false)
 	@Column(name="IDGRUPOPROCESO")
 	private Integer idgrupoproceso;

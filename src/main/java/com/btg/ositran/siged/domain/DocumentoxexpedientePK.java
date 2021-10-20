@@ -9,9 +9,11 @@ import javax.persistence.Embeddable;
 public class DocumentoxexpedientePK implements Serializable{
 
 	private static final long serialVersionUID=1L;
+	
 	@Basic(optional=false)
 	@Column(name="iddocumento")
 	private int iddocumento;
+	
 	@Basic(optional=false)
 	@Column(name="idexpediente")
 	private int idexpediente;

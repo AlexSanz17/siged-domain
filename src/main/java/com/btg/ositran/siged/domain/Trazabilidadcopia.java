@@ -26,8 +26,9 @@ import javax.persistence.Transient;
 public class Trazabilidadcopia implements Serializable{
 	private static final long serialVersionUID=1L;
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="TRAZABILIDADCOPIA_SEQ")
-	@SequenceGenerator(name="TRAZABILIDADCOPIA_SEQ",sequenceName="TRAZABILIDADCOPIA_SEQ",initialValue=1,allocationSize=1)
+	//@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="TRAZABILIDADCOPIA_SEQ")
+	//@SequenceGenerator(name="TRAZABILIDADCOPIA_SEQ",sequenceName="TRAZABILIDADCOPIA_SEQ",initialValue=1,allocationSize=1)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional=false)
 	@Column(name="idtrazabilidadcopia")
 	private Integer idtrazabilidadcopia;

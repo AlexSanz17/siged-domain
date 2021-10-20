@@ -38,9 +38,9 @@ import javax.persistence.TemporalType;
 public class DetalleCliente implements Serializable {
     private static final long serialVersionUID=1L;
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="DETALLECLIENTE_SEQ")
-	@SequenceGenerator(name="DETALLECLIENTE_SEQ",sequenceName="DETALLECLIENTE_SEQ",initialValue=1,allocationSize=1)
-	
+	//@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="DETALLECLIENTE_SEQ")
+	//@SequenceGenerator(name="DETALLECLIENTE_SEQ",sequenceName="DETALLECLIENTE_SEQ",initialValue=1,allocationSize=1)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional=false)
         @Column(name="idDetalleCliente")
 	private Integer idDetalleCliente;

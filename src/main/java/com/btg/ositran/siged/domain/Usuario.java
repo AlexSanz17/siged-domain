@@ -38,14 +38,14 @@ public class Usuario implements Serializable,Auditable{
 
 	private static final long serialVersionUID=4300445690240196344L;
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="USUARIO_SEQ")
-	@SequenceGenerator(name="USUARIO_SEQ",sequenceName="USUARIO_SEQ",initialValue=1,allocationSize=1)
-	// @GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="USUARIO_SEQ")
+	//@SequenceGenerator(name="USUARIO_SEQ",sequenceName="USUARIO_SEQ",initialValue=1,allocationSize=1)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional=false)
 	@Column(name="idusuario")
 	private Integer idusuario;
         
-        @Basic(optional=false)
+    @Basic(optional=false)
 	@Column(name="idfuncion")
 	private Integer idfuncion;
     
@@ -57,23 +57,23 @@ public class Usuario implements Serializable,Auditable{
 	@Column(name="flagviewtrazabilidad")
 	private String flagviewtrazabilidad;
         
-        @Column(name="tipoDocumento")
-        private String tipoDocumento;
-        
-        @Column(name="nroDocumento")
-        private String nroDocumento;
+    @Column(name="tipoDocumento")
+    private String tipoDocumento;
+    
+    @Column(name="nroDocumento")
+    private String nroDocumento;
 
 	private transient String flagUsuarioTramite;
         
-        private transient Integer idFuncionPerfil;
-        
-        private transient Integer idUsuarioPerfil;
-        
-        private transient Integer idUnidadPerfil;
+    private transient Integer idFuncionPerfil;
+    
+    private transient Integer idUsuarioPerfil;
+    
+    private transient Integer idUnidadPerfil;
 
-        private transient Integer idRolPerfil;
-        
-        private transient char permisoCargo;
+    private transient Integer idRolPerfil;
+    
+    private transient char permisoCargo;
 
         
 	@Basic(optional=false)

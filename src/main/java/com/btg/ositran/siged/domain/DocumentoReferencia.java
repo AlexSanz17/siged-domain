@@ -21,8 +21,9 @@ import javax.persistence.TemporalType;
 public class DocumentoReferencia implements java.io.Serializable{
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="DOCUMENTOREF_SEQ")
-	@SequenceGenerator(name="DOCUMENTOREF_SEQ",sequenceName="DOCUMENTOREF_SEQ",initialValue=1,allocationSize=1)
+	//@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="DOCUMENTOREF_SEQ")
+	//@SequenceGenerator(name="DOCUMENTOREF_SEQ",sequenceName="DOCUMENTOREF_SEQ",initialValue=1,allocationSize=1)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional=false)
 	@Column(name="idref")
 	private Integer idRef;

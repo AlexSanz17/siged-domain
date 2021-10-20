@@ -28,9 +28,9 @@ public class Actividad implements Serializable{
 	private static final long serialVersionUID=1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="ACTIVIDAD_SEQ")
-	@SequenceGenerator(name="ACTIVIDAD_SEQ",sequenceName="ACTIVIDAD_SEQ",initialValue=1,allocationSize=1)
-	// @GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="ACTIVIDAD_SEQ")
+	//@SequenceGenerator(name="ACTIVIDAD_SEQ",sequenceName="ACTIVIDAD_SEQ",initialValue=1,allocationSize=1)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional=false)
 	@Column(name="idactividad")
 	private Integer idActividad;

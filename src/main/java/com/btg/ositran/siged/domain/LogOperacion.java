@@ -26,9 +26,10 @@ public class LogOperacion implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	 @GeneratedValue(strategy=GenerationType.SEQUENCE,generator="LOG_OPERACION_SEQ")
-	 @SequenceGenerator(name="LOG_OPERACION_SEQ",sequenceName="LOG_OPERACION_SEQ",initialValue=1,allocationSize=1)
+	 @Id
+	 //@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="LOG_OPERACION_SEQ")
+	 //@SequenceGenerator(name="LOG_OPERACION_SEQ",sequenceName="LOG_OPERACION_SEQ",initialValue=1,allocationSize=1)
+	 @GeneratedValue(strategy = GenerationType.IDENTITY)
 	 @Basic(optional=false)
 	 @Column(name="idlogoperacion")
 	 private Integer idlogoperacion;

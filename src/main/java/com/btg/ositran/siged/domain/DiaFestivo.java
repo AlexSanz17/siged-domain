@@ -28,9 +28,9 @@ public class DiaFestivo implements Serializable,Auditable{
 
 	private static final long serialVersionUID=1L;
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="DIAFESTIVO_SEQ")
-	@SequenceGenerator(name="DIAFESTIVO_SEQ",sequenceName="DIAFESTIVO_SEQ",initialValue=1,allocationSize=1)
-	// @GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="DIAFESTIVO_SEQ")
+	//@SequenceGenerator(name="DIAFESTIVO_SEQ",sequenceName="DIAFESTIVO_SEQ",initialValue=1,allocationSize=1)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional=false)
 	@Column(name="iddiafestivo")
 	private Integer iddiafestivo;

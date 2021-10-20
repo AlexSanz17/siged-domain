@@ -27,9 +27,9 @@ import javax.persistence.TemporalType;
 
 public class DocumentoAtendido implements Serializable{
     @Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="DOCUMENTOATENDIDO_SEQ")
-	@SequenceGenerator(name="DOCUMENTOATENDIDO_SEQ",sequenceName="DOCUMENTOATENDIDO_SEQ",initialValue=1,allocationSize=1)
-	// @GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="DOCUMENTOATENDIDO_SEQ")
+	//@SequenceGenerator(name="DOCUMENTOATENDIDO_SEQ",sequenceName="DOCUMENTOATENDIDO_SEQ",initialValue=1,allocationSize=1)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional=false)
 	@Column(name="iddocumentoatendido",nullable=false)
 	private Integer iddocumentoatendido;

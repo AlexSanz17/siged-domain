@@ -18,11 +18,12 @@ public class FilaBandejaUF {
 
 	@Id
 	private Integer id;
-        @Column(name = "nroTramite")
-        private Integer nroTramite;
+    
+	@Column(name = "nroTramite")
+    private Integer nroTramite;
 
-        @Column(name = "origen")
-        private Integer origen;
+    @Column(name = "origen")
+    private Integer origen;
     
 	private String tipoalerta;
 
@@ -30,12 +31,12 @@ public class FilaBandejaUF {
 
 	private Character chrestado;
         
-        private String firmado;
-        
-        private String virtual;
-        
-        @Column(name = "llave")
-        private String llave;
+    private String firmado;
+    
+    private String virtual;
+    
+    @Column(name = "llave")
+    private String llave;
 
 	@Column(name = "asuntoexpediente")
 	private String asuntoExpediente;

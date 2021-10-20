@@ -28,8 +28,9 @@ import javax.persistence.TemporalType;
 public class Trazabilidadapoyo {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="TRAZABILIDADAPOYO_SEQ")
-	@SequenceGenerator(name="TRAZABILIDADAPOYO_SEQ",sequenceName="TRAZABILIDADAPOYO_SEQ",initialValue=1,allocationSize=1)
+	//@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="TRAZABILIDADAPOYO_SEQ")
+	//@SequenceGenerator(name="TRAZABILIDADAPOYO_SEQ",sequenceName="TRAZABILIDADAPOYO_SEQ",initialValue=1,allocationSize=1)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional=false)
 	@Column(name="idtrazabilidadapoyo")
 	private Integer idtrazabilidadapoyo;

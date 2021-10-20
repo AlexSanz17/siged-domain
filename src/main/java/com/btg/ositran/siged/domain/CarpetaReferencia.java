@@ -28,10 +28,11 @@ import javax.persistence.TemporalType;
  * @author jbengoa
  */
 public class CarpetaReferencia implements java.io.Serializable{
-        @Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="CARPETAREFERENCIA_SEQ")
-	@SequenceGenerator(name="CARPETAREFERENCIA_SEQ",sequenceName="CARPETAREFERENCIA_SEQ",initialValue=1,allocationSize=1)
-	@Basic(optional=false)
+    @Id
+	//@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="CARPETAREFERENCIA_SEQ")
+	//@SequenceGenerator(name="CARPETAREFERENCIA_SEQ",sequenceName="CARPETAREFERENCIA_SEQ",initialValue=1,allocationSize=1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional=false)
 	@Column(name="idCarpRef")
 	private Integer idCarpRef;
 

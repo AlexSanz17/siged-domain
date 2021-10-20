@@ -27,8 +27,9 @@ import javax.persistence.TemporalType;
 @Table(name="documentoreunion")
 public class DocumentoReunion implements Serializable{
    @Id 
-   @GeneratedValue(strategy=GenerationType.SEQUENCE,generator="DOCUMENTOREUNION_SEQ")
-   @SequenceGenerator(name="DOCUMENTOREUNION_SEQ",sequenceName="DOCUMENTOREUNION_SEQ",initialValue=1,allocationSize=1)
+   //@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="DOCUMENTOREUNION_SEQ")
+   //@SequenceGenerator(name="DOCUMENTOREUNION_SEQ",sequenceName="DOCUMENTOREUNION_SEQ",initialValue=1,allocationSize=1)
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
    @Basic(optional=false)
    @Column(name="idDocumentoReunion")
    private Integer idDocumentoReunion;

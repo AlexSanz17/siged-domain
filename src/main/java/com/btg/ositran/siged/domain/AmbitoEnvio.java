@@ -20,9 +20,9 @@ public class AmbitoEnvio implements Serializable{
 	private static final long serialVersionUID=1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="AMBITOENVIO_SEQ")
-	@SequenceGenerator(name="AMBITOENVIO_SEQ",sequenceName="AMBITOENVIO_SEQ",initialValue=1,allocationSize=1)
-	// @GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="AMBITOENVIO_SEQ")
+	//@SequenceGenerator(name="AMBITOENVIO_SEQ",sequenceName="AMBITOENVIO_SEQ",initialValue=1,allocationSize=1)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional=true)
 	@Column(name="idambitoenvio")
 	private Integer idambitoenvio;

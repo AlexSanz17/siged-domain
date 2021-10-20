@@ -30,9 +30,9 @@ public class ArchivoPendiente implements Serializable{
 	private static final long serialVersionUID=1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="ARCHIVOPENDIENTE_SEQ")
-	@SequenceGenerator(name="ARCHIVOPENDIENTE_SEQ",sequenceName="ARCHIVOPENDIENTE_SEQ",initialValue=1,allocationSize=1)
-	// @GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="ARCHIVOPENDIENTE_SEQ")
+	//@SequenceGenerator(name="ARCHIVOPENDIENTE_SEQ",sequenceName="ARCHIVOPENDIENTE_SEQ",initialValue=1,allocationSize=1)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional=false)
 	@Column(name="idarchivopendiente")
 	private Integer idArchivoPendiente;

@@ -23,9 +23,9 @@ public class Procedimiento implements Serializable{
 
 	private static final long serialVersionUID=1L;
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="PROCEDIMIENTO_SEQ")
-	@SequenceGenerator(name="PROCEDIMIENTO_SEQ",sequenceName="PROCEDIMIENTO_SEQ",initialValue=1,allocationSize=1)
-	// @GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="PROCEDIMIENTO_SEQ")
+	//@SequenceGenerator(name="PROCEDIMIENTO_SEQ",sequenceName="PROCEDIMIENTO_SEQ",initialValue=1,allocationSize=1)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional=false)
 	@Column(name="idprocedimiento")
 	private Integer idprocedimiento;

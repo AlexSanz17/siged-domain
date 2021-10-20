@@ -46,18 +46,18 @@ import javax.persistence.ManyToOne;
 		@NamedQuery(name="Documento.getDocumentoMasReciente",query="SELECT d FROM Documento d WHERE d.estado='A' AND d.expediente.id = :idExpediente AND d.idDocumento <> :idDocumento AND d.fechaCreacion >= (SELECT MAX(d1.fechaCreacion) FROM Documento d1 WHERE d1.estado='A' AND d1.expediente.id = :idExpediente AND d1.idDocumento <> :idDocumento)")})
 
 public class Documento implements Serializable{
-        @Id //JC82
+    @Id //JC82
 	//@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="DOCUMENTO_SEQ")
 	//@SequenceGenerator(name="DOCUMENTO_SEQ",sequenceName="DOCUMENTO_SEQ",initialValue=1,allocationSize=1)
 	@Basic(optional=false)
 	@Column(name="iddocumento")
 	private Integer idDocumento;
         
-        @Basic(optional=false)
+    @Basic(optional=false)
 	private char principal;
         
-        @Basic(optional=false)
-        @Column(name="unidadpropietario")
+    @Basic(optional=false)
+    @Column(name="unidadpropietario")
 	private Integer unidadpropietario;
         
         

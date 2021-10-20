@@ -18,13 +18,13 @@ public class FilaBandejaEnviados {
 	@Id
 	private Integer id;
         
-        @Column(name = "nroTramite")
-        private Integer nroTramite;
+    @Column(name = "nroTramite")
+    private Integer nroTramite;
 
 	@Column(name = "idpropietario")
 	private Integer idPropietario;
 
-        @Column(name = "estado")
+    @Column(name = "estado")
 	private String estado;
 
 	@Column(name = "iddestinatario")

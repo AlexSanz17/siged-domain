@@ -26,9 +26,9 @@ public class Sede implements Serializable,Auditable{
 
 	private static final long serialVersionUID=1L;
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="SEDE_SEQ")
-	@SequenceGenerator(name="SEDE_SEQ",sequenceName="SEDE_SEQ",initialValue=1,allocationSize=1)
-	// @GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="SEDE_SEQ")
+	//@SequenceGenerator(name="SEDE_SEQ",sequenceName="SEDE_SEQ",initialValue=1,allocationSize=1)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional=false)
 	@Column(name="idsede")
 	private Integer idsede;

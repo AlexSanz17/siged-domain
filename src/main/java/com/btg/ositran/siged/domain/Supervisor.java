@@ -24,9 +24,9 @@ public class Supervisor implements Serializable{
 
 	private static final long serialVersionUID=1L;
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="SUPERVISOR_SEQ")
-	@SequenceGenerator(name="SUPERVISOR_SEQ",sequenceName="SUPERVISOR_SEQ",initialValue=1,allocationSize=1)
-	// @GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="SUPERVISOR_SEQ")
+	//@SequenceGenerator(name="SUPERVISOR_SEQ",sequenceName="SUPERVISOR_SEQ",initialValue=1,allocationSize=1)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional=false)
 	@Column(name="idsupervisor")
 	private Integer idsupervisor;

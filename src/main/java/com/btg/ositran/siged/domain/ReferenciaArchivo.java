@@ -28,9 +28,11 @@ import javax.persistence.TemporalType;
  * @author jbengoa
  */
 public class ReferenciaArchivo implements java.io.Serializable{
-        @Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="REFERENCIAARCHIVO_SEQ")
-	@SequenceGenerator(name="REFERENCIAARCHIVO_SEQ",sequenceName="REFERENCIAARCHIVO_SEQ",initialValue=1,allocationSize=1)
+    
+	@Id
+	//@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="REFERENCIAARCHIVO_SEQ")
+	//@SequenceGenerator(name="REFERENCIAARCHIVO_SEQ",sequenceName="REFERENCIAARCHIVO_SEQ",initialValue=1,allocationSize=1)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional=false)
 	@Column(name="idRefArc")
 	private Integer idRefArc;

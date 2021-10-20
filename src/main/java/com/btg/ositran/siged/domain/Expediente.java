@@ -54,9 +54,9 @@ public class Expediente implements Entidad,Auditable,Serializable{
 	private static final long serialVersionUID=1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="EXPEDIENTE_SEQ")
-	@SequenceGenerator(name="EXPEDIENTE_SEQ",sequenceName="EXPEDIENTE_SEQ",initialValue=1,allocationSize=1)
-	// @GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="EXPEDIENTE_SEQ")
+	//@SequenceGenerator(name="EXPEDIENTE_SEQ",sequenceName="EXPEDIENTE_SEQ",initialValue=1,allocationSize=1)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional=false)
 	@Column(name="idexpediente")
 	private Integer id;

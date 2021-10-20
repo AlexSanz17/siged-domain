@@ -16,14 +16,18 @@ import javax.persistence.Table;
 @NamedQueries({@NamedQuery(name="Documentoxexpediente.findAll",query="SELECT d FROM Documentoxexpediente d"),@NamedQuery(name="Documentoxexpediente.findByIddocumento",query="SELECT d FROM Documentoxexpediente d WHERE d.documentoxexpedientePK.iddocumento = :iddocumento"),@NamedQuery(name="Documentoxexpediente.findByIdexpediente",query="SELECT d FROM Documentoxexpediente d WHERE d.documentoxexpedientePK.idexpediente = :idexpediente"),@NamedQuery(name="Documentoxexpediente.findByEstado",query="SELECT d FROM Documentoxexpediente d WHERE d.estado = :estado")})
 public class Documentoxexpediente implements Serializable{
 	private static final long serialVersionUID=1L;
+	
 	@EmbeddedId
 	protected DocumentoxexpedientePK documentoxexpedientePK;
+	
 	@Basic(optional=false)
 	@Column(name="estado")
 	private char estado;
+	
 	@JoinColumn(name="iddocumento",referencedColumnName="iddocumento",insertable=false,updatable=false)
 	@ManyToOne(optional=false)
 	private Documento documento;
+	
 	@JoinColumn(name="idexpediente",referencedColumnName="idexpediente",insertable=false,updatable=false)
 	@ManyToOne(optional=false)
 	private Expediente expediente;

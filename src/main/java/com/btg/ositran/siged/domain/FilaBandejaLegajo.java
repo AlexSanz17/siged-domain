@@ -22,74 +22,74 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name="vistabandejalegajos")
 public class FilaBandejaLegajo implements Serializable{
-        @Id
+    @Id
 	private Integer id;
     
-        @Column(name="idTipo")
+    @Column(name="idTipo")
 	private Integer idTipo;
         
-        @Column(name="desTipo")
+    @Column(name="desTipo")
 	private String desTipo;
 
-        @Column(name="idUnidad")
+    @Column(name="idUnidad")
 	private Integer idUnidad;
         
-        @Column(name="desUnidad")
+    @Column(name="desUnidad")
 	private String desUnidad;
 
-        @Column(name="nroLegajo")
-        private String nroLegajo;
-        
-        @Column(name="asunto")
-        private String asunto;
-        
-        @Column(name="estado")
-        private String estado;
-        
-        @Column(name="idProcedimiento")
-        private String idProcedimiento;
-        
-        @Column(name="idMetodo")
-        private String idMetodo;
+    @Column(name="nroLegajo")
+    private String nroLegajo;
+    
+    @Column(name="asunto")
+    private String asunto;
+    
+    @Column(name="estado")
+    private String estado;
+    
+    @Column(name="idProcedimiento")
+    private String idProcedimiento;
+    
+    @Column(name="idMetodo")
+    private String idMetodo;
 
-        public String getIdProcedimiento() {
-            return idProcedimiento;
-        }
+    public String getIdProcedimiento() {
+        return idProcedimiento;
+    }
 
-        public void setIdProcedimiento(String idProcedimiento) {
-            this.idProcedimiento = idProcedimiento;
-        }
+    public void setIdProcedimiento(String idProcedimiento) {
+        this.idProcedimiento = idProcedimiento;
+    }
 
-        public String getIdMetodo() {
-            return idMetodo;
-        }
+    public String getIdMetodo() {
+        return idMetodo;
+    }
 
-        public void setIdMetodo(String idMetodo) {
-            this.idMetodo = idMetodo;
-        }
-        
-        @Column(name="fechaCreacion")
-        @Temporal(TemporalType.TIMESTAMP)
+    public void setIdMetodo(String idMetodo) {
+        this.idMetodo = idMetodo;
+    }
+    
+    @Column(name="fechaCreacion")
+    @Temporal(TemporalType.TIMESTAMP)
 	private Date fechaCreacion;
         
-        @Column(name="usuarioCreacion")
+    @Column(name="usuarioCreacion")
 	private Integer usuarioCreacion;
         
-         public Integer getIdUnidad() {
-            return idUnidad;
-        }
+     public Integer getIdUnidad() {
+        return idUnidad;
+    }
 
-        public void setIdUnidad(Integer idUnidad) {
-            this.idUnidad = idUnidad;
-        }
+    public void setIdUnidad(Integer idUnidad) {
+        this.idUnidad = idUnidad;
+    }
 
-        public String getDesUnidad() {
-            return desUnidad;
-        }
+    public String getDesUnidad() {
+        return desUnidad;
+    }
 
-        public void setDesUnidad(String desUnidad) {
-            this.desUnidad = desUnidad;
-        }
+    public void setDesUnidad(String desUnidad) {
+        this.desUnidad = desUnidad;
+    }
        
         public Integer getUsuarioCreacion() {
             return usuarioCreacion;

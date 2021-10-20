@@ -29,52 +29,53 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name="legajo")
 public class Legajo implements Serializable{
-        @Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="LEGAJO_SEQ")
-	@SequenceGenerator(name="LEGAJO_SEQ",sequenceName="LEGAJO_SEQ",initialValue=1,allocationSize=1)
-        @Basic(optional=false)
-        @Column(name="idLegajo")
+    @Id
+	//@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="LEGAJO_SEQ")
+	//@SequenceGenerator(name="LEGAJO_SEQ",sequenceName="LEGAJO_SEQ",initialValue=1,allocationSize=1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional=false)
+    @Column(name="idLegajo")
 	private Integer idLegajo;
         
-        @JoinColumn(name="idTipo",referencedColumnName="idTipo")
+    @JoinColumn(name="idTipo",referencedColumnName="idTipo")
 	@ManyToOne(optional=false,fetch=FetchType.LAZY)
 	private TipoLegajo tipoLegajo;
         
-        @Column(name="nroLegajo")
-        private String nroLegajo;
-        
-        @Column(name="asunto")
-        private String asunto;
-        
-        @Column(name="idProcedimiento")
-        private String idProcedimiento;
+    @Column(name="nroLegajo")
+    private String nroLegajo;
     
-        @Column(name="idMetodo")
-        private String idMetodo;
-        
-        @Column(name="observacion")
-        private String observacion;
-     
-        @Column(name="estado")
-        private String estado;
-        
-        @Basic(optional=false)
+    @Column(name="asunto")
+    private String asunto;
+    
+    @Column(name="idProcedimiento")
+    private String idProcedimiento;
+
+    @Column(name="idMetodo")
+    private String idMetodo;
+    
+    @Column(name="observacion")
+    private String observacion;
+ 
+    @Column(name="estado")
+    private String estado;
+    
+    @Basic(optional=false)
 	@Column(name="fechaCreacion")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fechaCreacion;
         
-        @Basic(optional=true)
+    @Basic(optional=true)
 	@Column(name="fechaModificacion")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fechaModificacion;
         
-        @Column(name="usuarioCreacion")
+    @Column(name="usuarioCreacion")
 	private Integer usuarioCreacion;
         
-        @Column(name="usuarioModificacion")
+    @Column(name="usuarioModificacion")
 	private Integer usuarioModificacion;
         
-        @JoinColumn(name="idUnidad",referencedColumnName="idunidad")
+    @JoinColumn(name="idUnidad",referencedColumnName="idunidad")
 	@ManyToOne(optional=false,fetch=FetchType.LAZY)
 	private Unidad unidad;
         

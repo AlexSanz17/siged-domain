@@ -28,8 +28,9 @@ import javax.persistence.Table;
 @Table(name="tipolegajounidad")
 public class TipoLegajoUnidad implements java.io.Serializable{
        @Id
-       @GeneratedValue(strategy=GenerationType.SEQUENCE,generator="TIPOLEGAJOUNIDAD_SEQ")
-       @SequenceGenerator(name="TIPOLEGAJOUNIDAD_SEQ",sequenceName="TIPOLEGAJOUNIDAD_SEQ",initialValue=1,allocationSize=1)
+       //@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="TIPOLEGAJOUNIDAD_SEQ")
+       //@SequenceGenerator(name="TIPOLEGAJOUNIDAD_SEQ",sequenceName="TIPOLEGAJOUNIDAD_SEQ",initialValue=1,allocationSize=1)
+       @GeneratedValue(strategy = GenerationType.IDENTITY)
        @Basic(optional=false)
        @Column(name="idTipoLegajoUnidad")
        private Integer idTipoLegajoUnidad;

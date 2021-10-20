@@ -26,9 +26,9 @@ import javax.persistence.TemporalType;
 @NamedQueries({@NamedQuery(name="DocumentoPendiente.findByIdDocumentoPendiente",query="SELECT d FROM DocumentoPendiente d where d.iddocumentopendiente = :idDocumentoPendiente ")})
 public class DocumentoPendiente implements Serializable{
         @Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="DOCUMENTOPENDIENTE_SEQ")
-	@SequenceGenerator(name="DOCUMENTOPENDIENTE_SEQ",sequenceName="DOCUMENTOPENDIENTE_SEQ",initialValue=1,allocationSize=1)
-	// @GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="DOCUMENTOPENDIENTE_SEQ")
+	//@SequenceGenerator(name="DOCUMENTOPENDIENTE_SEQ",sequenceName="DOCUMENTOPENDIENTE_SEQ",initialValue=1,allocationSize=1)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional=false)
 	@Column(name="iddocumentopendiente",nullable=false)
 	private Integer iddocumentopendiente;

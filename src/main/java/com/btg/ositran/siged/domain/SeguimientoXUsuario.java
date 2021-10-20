@@ -20,8 +20,9 @@ import javax.persistence.TemporalType;
 
 public class SeguimientoXUsuario {
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="SEGUIMIENTOXUSUARIO_SEQ")
-	@SequenceGenerator(name="SEGUIMIENTOXUSUARIO_SEQ",sequenceName="SEGUIMIENTOXUSUARIO_SEQ",initialValue=1,allocationSize=1)
+	//@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="SEGUIMIENTOXUSUARIO_SEQ")
+	//@SequenceGenerator(name="SEGUIMIENTOXUSUARIO_SEQ",sequenceName="SEGUIMIENTOXUSUARIO_SEQ",initialValue=1,allocationSize=1)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idseguimientousuario")
 	private Integer idSeguimientoUsuario;
 

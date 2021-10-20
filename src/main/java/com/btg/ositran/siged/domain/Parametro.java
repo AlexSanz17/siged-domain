@@ -14,14 +14,14 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="parametro")
-@NamedQueries({@NamedQuery(name="Parametro.findAll",query="SELECT p FROM Parametro p"),@NamedQuery(name="Parametro.findByIdparametro",query="SELECT p FROM Parametro p WHERE p.idparametro = :idparametro"),@NamedQuery(name="Parametro.findByTipo",query="SELECT p FROM Parametro p WHERE p.tipo = :tipo"),@NamedQuery(name="Parametro.findByTipoActivo",query="SELECT p FROM Parametro p WHERE p.tipo = :tipo and estado= '1'"),@NamedQuery(name="Parametro.findByValor",query="SELECT p FROM Parametro p WHERE p.valor = :valor "),@NamedQuery(name="Parametro.findByTipoAndValor",query="SELECT p FROM Parametro p WHERE p.valor = :valor and  p.tipo = :tipo"),@NamedQuery(name="Parametro.findByDescripcion",query="SELECT p FROM Parametro p WHERE p.descripcion = :descripcion")})
+@NamedQueries({@NamedQuery(name="Parametro.findAll",query="SELECT p FROM Parametro p"),@NamedQuery(name="Parametro.findByIdparametro",query="SELECT p FROM Parametro p WHERE p.idparametro = :idparametro"),@NamedQuery(name="Parametro.findByTipo",query="SELECT p FROM Parametro p WHERE p.tipo = :tipo"),@NamedQuery(name="Parametro.findByTipoActivo",query="SELECT p FROM Parametro p WHERE p.tipo = :tipo"),@NamedQuery(name="Parametro.findByValor",query="SELECT p FROM Parametro p WHERE p.valor = :valor "),@NamedQuery(name="Parametro.findByTipoAndValor",query="SELECT p FROM Parametro p WHERE p.valor = :valor and  p.tipo = :tipo"),@NamedQuery(name="Parametro.findByDescripcion",query="SELECT p FROM Parametro p WHERE p.descripcion = :descripcion")})
 public class Parametro implements Serializable{
 
 	private static final long serialVersionUID=1L;
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="PARAMETRO_SEQ")
-	@SequenceGenerator(name="PARAMETRO_SEQ",sequenceName="PARAMETRO_SEQ",initialValue=1,allocationSize=1)
-	// @GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="PARAMETRO_SEQ")
+	//@SequenceGenerator(name="PARAMETRO_SEQ",sequenceName="PARAMETRO_SEQ",initialValue=1,allocationSize=1)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional=false)
 	@Column(name="idparametro")
 	private Integer idparametro;

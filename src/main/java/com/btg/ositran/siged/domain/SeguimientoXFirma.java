@@ -30,34 +30,35 @@ import javax.persistence.TemporalType;
 
 public class SeguimientoXFirma {
     @Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="SEGUIMIENTOXFIRMA_SEQ")
-	@SequenceGenerator(name="SEGUIMIENTOXFIRMA_SEQ",sequenceName="SEGUIMIENTOXFIRMA_SEQ",initialValue=1,allocationSize=1)
-	@Column(name = "idSeguimientoFirma")
+	//@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="SEGUIMIENTOXFIRMA_SEQ")
+	//@SequenceGenerator(name="SEGUIMIENTOXFIRMA_SEQ",sequenceName="SEGUIMIENTOXFIRMA_SEQ",initialValue=1,allocationSize=1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idSeguimientoFirma")
 	private Integer idSeguimientoFirma;
     
-        @Column(name="idDocumento")
+    @Column(name="idDocumento")
 	@Basic(optional=false)
 	private Integer idDocumento;
         
-        @Column(name="unidadPropietario")
+    @Column(name="unidadPropietario")
 	private Integer unidadPropietario;
         
-        @Column(name="cargoPropietario")
+    @Column(name="cargoPropietario")
 	private Integer cargoPropietario;
 
 	@Column(name="idUsuario")
 	@Basic(optional=false)
 	private Integer idUsuario;
         
-        @Column(name="estado")
+    @Column(name="estado")
 	@Basic(optional=false)
 	private String estado;
         
-        @Column(name="fechaCreacion")
+    @Column(name="fechaCreacion")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fechaCreacion;
         
-        @Column(name="fechaModificacion")
+    @Column(name="fechaModificacion")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fechaModificacion;
         

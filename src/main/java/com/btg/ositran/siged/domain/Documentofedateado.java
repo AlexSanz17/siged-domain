@@ -19,8 +19,9 @@ import javax.persistence.TemporalType;
 public class Documentofedateado implements java.io.Serializable{
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="DOCUMENTOFEDATEADO_SEQ")
-	@SequenceGenerator(name="DOCUMENTOFEDATEADO_SEQ",sequenceName="DOCUMENTOFEDATEADO_SEQ",initialValue=1,allocationSize=1)
+	//@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="DOCUMENTOFEDATEADO_SEQ")
+	//@SequenceGenerator(name="DOCUMENTOFEDATEADO_SEQ",sequenceName="DOCUMENTOFEDATEADO_SEQ",initialValue=1,allocationSize=1)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional=false)
 	@Column(name="idoperacion")
 	private Integer idOperacion;

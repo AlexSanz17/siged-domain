@@ -26,9 +26,9 @@ public class CarpetaBusqueda implements Serializable{
 	private static final long serialVersionUID=1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="CARPETABUSQUEDA_SEQ")
-	@SequenceGenerator(name="CARPETABUSQUEDA_SEQ",sequenceName="CARPETABUSQUEDA_SEQ",initialValue=1,allocationSize=1)
-	// @GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="CARPETABUSQUEDA_SEQ")
+	//@SequenceGenerator(name="CARPETABUSQUEDA_SEQ",sequenceName="CARPETABUSQUEDA_SEQ",initialValue=1,allocationSize=1)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional=false)
 	@Column(name="idcarpetabusqueda")
 	private Integer idCarpetaBusqueda;

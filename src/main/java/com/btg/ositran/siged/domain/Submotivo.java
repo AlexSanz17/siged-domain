@@ -23,9 +23,9 @@ public class Submotivo implements Serializable{
 
 	private static final long serialVersionUID=1L;
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="SUBMOTIVO_SEQ")
-	@SequenceGenerator(name="SUBMOTIVO_SEQ",sequenceName="SUBMOTIVO_SEQ",initialValue=1,allocationSize=1)
-	// @GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="SUBMOTIVO_SEQ")
+	//@SequenceGenerator(name="SUBMOTIVO_SEQ",sequenceName="SUBMOTIVO_SEQ",initialValue=1,allocationSize=1)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional=false)
 	@Column(name="idsubmotivo")
 	private Integer idsubmotivo;

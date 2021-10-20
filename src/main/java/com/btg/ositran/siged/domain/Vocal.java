@@ -21,8 +21,9 @@ import javax.persistence.Table;
 public class Vocal implements Serializable{
 	private static final long serialVersionUID=1L;
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="VOCAL_SEQ")
-	@SequenceGenerator(name="VOCAL_SEQ",sequenceName="VOCAL_SEQ",initialValue=1,allocationSize=1)
+	//@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="VOCAL_SEQ")
+	//@SequenceGenerator(name="VOCAL_SEQ",sequenceName="VOCAL_SEQ",initialValue=1,allocationSize=1)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional=false)
 	@Column(name="idvocal")
 	private Integer idvocal;

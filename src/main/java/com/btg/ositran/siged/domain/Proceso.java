@@ -40,9 +40,9 @@ import javax.persistence.Transient;
 public class Proceso implements Serializable,Auditable{
 	private static final long serialVersionUID=1L;
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="PROCESO_SEQ")
-	@SequenceGenerator(name="PROCESO_SEQ",sequenceName="PROCESO_SEQ",initialValue=1,allocationSize=1)
-	// @GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="PROCESO_SEQ")
+	//@SequenceGenerator(name="PROCESO_SEQ",sequenceName="PROCESO_SEQ",initialValue=1,allocationSize=1)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional=false)
 	@Column(name="idproceso")
 	private Integer idproceso;

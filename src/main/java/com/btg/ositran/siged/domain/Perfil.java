@@ -25,9 +25,9 @@ public class Perfil implements Serializable,Auditable{
 
 	private static final long serialVersionUID=1L;
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="PERFIL_SEQ")
-	@SequenceGenerator(name="PERFIL_SEQ",sequenceName="PERFIL_SEQ",initialValue=1,allocationSize=1)
-	// @GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="PERFIL_SEQ")
+	//@SequenceGenerator(name="PERFIL_SEQ",sequenceName="PERFIL_SEQ",initialValue=1,allocationSize=1)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional=false)
 	@Column(name="idperfil")
 	private Integer idperfil;

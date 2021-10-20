@@ -27,8 +27,9 @@ public class Favorito implements Serializable{
 
 	private static final long serialVersionUID=1L;
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="FAVORITO_SEQ")
-	@SequenceGenerator(name="FAVORITO_SEQ",sequenceName="FAVORITO_SEQ",initialValue=1,allocationSize=1)
+	//@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="FAVORITO_SEQ")
+	//@SequenceGenerator(name="FAVORITO_SEQ",sequenceName="FAVORITO_SEQ",initialValue=1,allocationSize=1)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional=false)
 	@Column(name="idfavorito")
 	private Integer idFavorito;

@@ -32,8 +32,9 @@ import javax.persistence.TemporalType;
                @NamedQuery(name="LegajoDocumento.findDocumento",     query="SELECT d FROM LegajoDocumento d, Legajo l  where d.idDocumento = :idDocumento and d.estado = 'A' and d.idLegajo = l.idLegajo and l.estado not in ('I') and exists (select 1 from TipoLegajoUnidad t where t.idTipo = l.tipoLegajo.idTipo and t.unidad.idunidad = :idUnidad) order by l.fechaCreacion desc")})
 public class LegajoDocumento implements Serializable{
       @Id
-      @GeneratedValue(strategy=GenerationType.SEQUENCE,generator="LEGAJODOCUMENTO_SEQ")
-      @SequenceGenerator(name="LEGAJODOCUMENTO_SEQ",sequenceName="LEGAJODOCUMENTO_SEQ",initialValue=1,allocationSize=1)
+      //@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="LEGAJODOCUMENTO_SEQ")
+      //@SequenceGenerator(name="LEGAJODOCUMENTO_SEQ",sequenceName="LEGAJODOCUMENTO_SEQ",initialValue=1,allocationSize=1)
+      @GeneratedValue(strategy = GenerationType.IDENTITY)
       @Basic(optional=false)
       @Column(name="idLegajoDocumento")
       private Integer idLegajoDocumento;

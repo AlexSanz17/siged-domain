@@ -29,9 +29,9 @@ public class Estado implements Serializable{
 	private static final long serialVersionUID=1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="ESTADO_SEQ")
-	@SequenceGenerator(name="ESTADO_SEQ",sequenceName="ESTADO_SEQ",initialValue=1,allocationSize=1)
-	// @GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="ESTADO_SEQ")
+	//@SequenceGenerator(name="ESTADO_SEQ",sequenceName="ESTADO_SEQ",initialValue=1,allocationSize=1)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idestado;
 
 	@Column(name="descripcion")

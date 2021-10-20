@@ -15,8 +15,9 @@ import javax.persistence.Table;
 public class Proveido {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="PROVEIDO_SEQ")
-	@SequenceGenerator(name="PROVEIDO_SEQ",sequenceName="PROVEIDO_SEQ",initialValue=1,allocationSize=1)
+	//@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="PROVEIDO_SEQ")
+	//@SequenceGenerator(name="PROVEIDO_SEQ",sequenceName="PROVEIDO_SEQ",initialValue=1,allocationSize=1)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional=false)
 	@Column(name="idproveido")
 	private Integer idProveido;
