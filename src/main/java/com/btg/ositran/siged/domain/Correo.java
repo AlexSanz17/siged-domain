@@ -27,8 +27,6 @@ import javax.persistence.TemporalType;
 @Table(name="correo")
 public class Correo implements Serializable{
     @Id //JC82
-	//@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="CORREO_SEQ")
-	//@SequenceGenerator(name="CORREO_SEQ",sequenceName="CORREO_SEQ",initialValue=1,allocationSize=1)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional=false)
 	@Column(name="idCorreo")

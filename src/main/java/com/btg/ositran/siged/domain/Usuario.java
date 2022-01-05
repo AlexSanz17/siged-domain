@@ -205,6 +205,10 @@ public class Usuario implements Serializable,Auditable{
 	 */
 	@Transient
 	private Rol rol;
+	
+	@Basic(optional=false)
+	@Column(name="captcha")
+	private String captcha;
         
         public char getPermisoCargo() {
             return permisoCargo;
@@ -592,5 +596,15 @@ public class Usuario implements Serializable,Auditable{
         public void setProveido(String proveido) {
             this.proveido = proveido;
         }
+
+		public String getCaptcha() {
+			return captcha;
+		}
+
+		public void setCaptcha(String captcha) {
+			this.captcha = captcha;
+		}
+        
+        
 
 }
