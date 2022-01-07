@@ -28,7 +28,7 @@ public class FilaBandejaLegajo implements Serializable{
     @Column(name="idTipo")
 	private Integer idTipo;
         
-    @Column(name="desTipo")
+    @Column(name="descripcion")
 	private String desTipo;
 
     @Column(name="idUnidad")

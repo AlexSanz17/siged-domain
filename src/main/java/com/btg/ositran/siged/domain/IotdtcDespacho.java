@@ -18,7 +18,6 @@ import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -60,10 +59,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "IotdtcDespacho.findByDfecmod", query = "SELECT i FROM IotdtcDespacho i WHERE i.dfecmod = :dfecmod")})
 public class IotdtcDespacho implements Serializable {
     private static final long serialVersionUID = 1L;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
-    //@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="NU_INT_DES_EXT")
-    //@SequenceGenerator(name="NU_INT_DES_EXT",sequenceName="NU_INT_DES_EXT",initialValue=1,allocationSize=1)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "SIDEMIEXT")

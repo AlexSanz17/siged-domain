@@ -13,7 +13,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -21,7 +20,7 @@ import javax.persistence.Table;
 @NamedQueries({@NamedQuery(name="Estado.findAll",query="SELECT e FROM Estado e"),
 	@NamedQuery(name="Estado.findByIdestado",query="SELECT e FROM Estado e WHERE e.idestado = :idestado"),
 	@NamedQuery(name="Estado.findByDescripcion",query="SELECT e FROM Estado e WHERE e.descripcion = :descripcion"),
-	@NamedQuery(name="Estado.findByCodigo",query="SELECT e FROM Estado e WHERE e.codigo = :codigo AND rownum <= 1"),
+	@NamedQuery(name="Estado.findByCodigo",query="SELECT e FROM Estado e WHERE e.codigo = :codigo"),
 	@NamedQuery(name="Estado.findByTipo",query="SELECT e FROM Estado e WHERE e.tipo = :tipo"),
 	@NamedQuery(name="Estado.findByEstado",query="SELECT e FROM Estado e WHERE e.estado = :estado")})
 public class Estado implements Serializable{
@@ -29,8 +28,6 @@ public class Estado implements Serializable{
 	private static final long serialVersionUID=1L;
 
 	@Id
-	//@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="ESTADO_SEQ")
-	//@SequenceGenerator(name="ESTADO_SEQ",sequenceName="ESTADO_SEQ",initialValue=1,allocationSize=1)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idestado;
 
@@ -52,13 +49,6 @@ public class Estado implements Serializable{
 	@ManyToOne(cascade=CascadeType.REFRESH,optional=true,fetch=FetchType.LAZY)
 	private Proceso idproceso;
         
-	/*
-	 * @OneToMany(cascade = CascadeType.ALL, mappedBy = "idestadosiged") private
-	 * List<ExpedienteStor> expedientestorList;
-	 * 
-	 * @OneToMany(cascade = CascadeType.ALL, mappedBy = "estado") private
-	 * List<ExpedienteStor> expedientestorList1;
-	 */
 
 	public Estado(){
 	}

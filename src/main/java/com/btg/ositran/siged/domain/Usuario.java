@@ -19,27 +19,21 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
 @Table(name="usuario")
 @Inheritance(strategy=InheritanceType.JOINED)
-@NamedQueries({@NamedQuery(name="Usuario.findAll",query="SELECT u FROM Usuario u WHERE u.estado='A' order by nombres,apellidos"),@NamedQuery(name="Usuario.findAllUF",query="SELECT u FROM Usuario u WHERE u.estado='A' and u.usuariofinal='S' order by nombres,apellidos"),@NamedQuery(name="Usuario.findAllFinales",query="SELECT u FROM Usuario u WHERE u.usuariofinal = :usuariofinal AND u.estado='A' order by nombres,apellidos"),@NamedQuery(name="Usuario.findByIdusuario",query="SELECT u FROM Usuario u WHERE u.idusuario = :idusuario AND u.estado='A'"),@NamedQuery(name="Usuario.findByUsuario",query="SELECT u FROM Usuario u WHERE upper(u.usuario) = upper(:usuario) AND u.unidad.sede.idsede = :idsede AND u.estado='A'"),@NamedQuery(name="Usuario.findByUsuariofinal",query="SELECT u FROM Usuario u WHERE u.usuariofinal = :usuariofinal AND u.estado='A' order by upper(TRIM(apellidos))||''|| upper(nombres)"),
+@NamedQueries({@NamedQuery(name="Usuario.findAll",query="SELECT u FROM Usuario u WHERE u.estado='A' order by nombres,apellidos"),@NamedQuery(name="Usuario.findAllUF",query="SELECT u FROM Usuario u WHERE u.estado='A' and u.usuariofinal='S' order by nombres,apellidos"),@NamedQuery(name="Usuario.findAllFinales",query="SELECT u FROM Usuario u WHERE u.usuariofinal = :usuariofinal AND u.estado='A' order by nombres,apellidos"),@NamedQuery(name="Usuario.findByIdusuario",query="SELECT u FROM Usuario u WHERE u.idusuario = :idusuario AND u.estado='A'"),@NamedQuery(name="Usuario.findByUsuario",query="SELECT u FROM Usuario u WHERE upper(u.usuario) = upper(:usuario) AND u.unidad.sede.idsede = :idsede AND u.estado='A'"),@NamedQuery(name="Usuario.findByUsuariofinal",query="SELECT u FROM Usuario u WHERE u.usuariofinal = :usuariofinal AND u.estado='A' order by CONCAT(upper(TRIM(apellidos)),'', upper(nombres))"),
 		@NamedQuery(name="Usuario.findByCriteria",query="SELECT u FROM Usuario u WHERE u.usuario = :usr AND u.clave = :clv AND u.estado='A'"),@NamedQuery(name="Usuario.autenticarClaveSiged",query="SELECT u FROM  Usuario u WHERE u.usuario = :usr AND u.estado='A'"),
-		//@NamedQuery(name="Usuario.findByRol",query="SELECT u FROM Usuario u WHERE (SELECT r.idrol FROM Rol r WHERE r.nombre=:rol) in elements(u.roles) AND u.estado='A' order by nombres,apellidos"),
 		@NamedQuery(name="Usuario.findByParticipacionProceso",query="SELECT NEW Usuario (u.idusuario, u.nombres, u.apellidos, u.usuario, u.unidad) FROM Usuario u WHERE :proceso MEMBER OF u.procesosParticipante AND u.estado='A' order by UPPER(nombres)"),
 		@NamedQuery(name="Usuario.findByIdJefe",query="SELECT u FROM Usuario u WHERE u.jefe.idusuario = :idjefe AND u.estado='A' order by nombres,apellidos"),@NamedQuery(name="Usuario.findByUnidad",query="SELECT u FROM Usuario u WHERE u.unidad.idunidad = :idunidad AND u.jefe IS NULL"),
-		//@NamedQuery(name="Usuario.findFirstByRol",query="SELECT u FROM Usuario u WHERE (SELECT r.idrol FROM Rol r WHERE r.nombre=:descripcionrol) in elements(u.roles) AND u.estado='A' AND ROWNUM <=1 "),
-                @NamedQuery(name="Usuario.findByUsuarioEstado",query="SELECT u FROM Usuario u WHERE LOWER(u.usuario) = :usuario AND u.estado = :estado")})
-		//@NamedQuery(name="Usuario.findJefes",query="SELECT u FROM Usuario u WHERE (SELECT r.idrol FROM Rol r WHERE r.esJefe=:esJefe) in elements(u.roles) AND u.estado='A' order by nombres,apellidos")})
+        @NamedQuery(name="Usuario.findByUsuarioEstado",query="SELECT u FROM Usuario u WHERE LOWER(u.usuario) = :usuario AND u.estado = :estado")})
 public class Usuario implements Serializable,Auditable{
 
 	private static final long serialVersionUID=4300445690240196344L;
 	@Id
-	//@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="USUARIO_SEQ")
-	//@SequenceGenerator(name="USUARIO_SEQ",sequenceName="USUARIO_SEQ",initialValue=1,allocationSize=1)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional=false)
 	@Column(name="idusuario")
@@ -148,7 +142,7 @@ public class Usuario implements Serializable,Auditable{
 	@Column(name="estado")
 	private String estado;
         
-        @Column(name="idRol")
+    @Column(name="idRol")
 	private Integer idRol;
         
 	@Column(name="bandejaAgrupada")
