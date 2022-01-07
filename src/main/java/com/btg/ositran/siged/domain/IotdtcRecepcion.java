@@ -117,7 +117,6 @@ public class IotdtcRecepcion implements Serializable {
     @OneToMany(mappedBy = "sidrecext")
     private List<IotdtmDocExterno> iotdtmDocExternoList;
     
-    @Basic(optional = false)
     @Column(name = "IDDOCUMENTO")
     private Integer iddocumento;
 
