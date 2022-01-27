@@ -125,11 +125,4 @@
     <class>com.btg.ositran.siged.domain.Cargo</class>
     <class>com.btg.ositran.siged.domain.SeguimientoHoraDia</class>
   </persistence-unit>
-  <persistence-unit name="pidePU">
-  	<class>com.btg.ositran.pide.domain.PideIotdtcRecepcion</class>
-  	<class>com.btg.ositran.pide.domain.PideIotdtcDespacho</class>
-    <class>com.btg.ositran.pide.domain.PideIotdtmDocExterno</class>
-    <class>com.btg.ositran.pide.domain.PideIotdtdDocPrincipal</class>
-    <class>com.btg.ositran.pide.domain.PideIotdtdAnexo</class>    
-  </persistence-unit>
 </persistence>
