@@ -124,5 +124,7 @@
     <class>com.btg.ositran.siged.domain.Auditoria</class>
     <class>com.btg.ositran.siged.domain.Cargo</class>
     <class>com.btg.ositran.siged.domain.SeguimientoHoraDia</class>
+    <class>com.btg.ositran.siged.domain.IotdtcRecepcionMPV</class>
+    <class>com.btg.ositran.siged.domain.IotdtdAdjuntoMPV</class>
   </persistence-unit>
 </persistence>
