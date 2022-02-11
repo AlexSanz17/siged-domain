@@ -412,7 +412,7 @@ public class IotdtcRecepcionMPV implements Serializable {
 
 	@Override
 	public String toString() {
-		return "com.btg.ositran.siged.domain.IotdtcRecepcion[ sidrecext=" + sidrecext + " ]";
+		return "com.btg.ositran.siged.domain.IotdtcRecepcionMPV[ sidrecext=" + sidrecext + " ]";
 	}
 
 }
