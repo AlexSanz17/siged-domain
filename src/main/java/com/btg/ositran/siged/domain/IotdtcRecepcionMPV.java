@@ -75,7 +75,6 @@ public class IotdtcRecepcionMPV implements Serializable {
 	@Lob
 	@Column(name = "BCARSTD")
 	private byte[] bcarstd;
-	@Basic(optional = false)
 	@Column(name = "VCUO")
 	private String vcuo;
 	@Column(name = "VCUOREF")
