@@ -125,6 +125,12 @@ public class IotdtcRecepcionMPV implements Serializable {
 	
     @Column(name = "VNOMENTEMI")
     private String vnomentemi;
+    
+    @Column(name = "FLAGALFRESCO")
+    private Character flagalfresco;
+    
+    @Column(name = "RESULTADOALFRESCO")
+    private String resultadoalfresco;
 	
 	@OneToMany(mappedBy = "recepcion")
 	private List<IotdtdAdjuntoMPV> archivos;
@@ -379,6 +385,22 @@ public class IotdtcRecepcionMPV implements Serializable {
 
 	public void setVnomentemi(String vnomentemi) {
 		this.vnomentemi = vnomentemi;
+	}
+
+	public Character getFlagalfresco() {
+		return flagalfresco;
+	}
+
+	public void setFlagalfresco(Character flagalfresco) {
+		this.flagalfresco = flagalfresco;
+	}
+
+	public String getResultadoalfresco() {
+		return resultadoalfresco;
+	}
+
+	public void setResultadoalfresco(String resultadoalfresco) {
+		this.resultadoalfresco = resultadoalfresco;
 	}
 
 	public List<IotdtdAdjuntoMPV> getArchivos() {
