@@ -20,27 +20,28 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "IOTDTC_RECEPCION_MPV")
 @XmlRootElement
 @NamedQueries({ @NamedQuery(name = "IotdtcRecepcionMPV.findAll", query = "SELECT i FROM IotdtcRecepcionMPV i"),
-		@NamedQuery(name = "IotdtcRecepcionMPV.findBySidrecext", query = "SELECT i FROM IotdtcRecepcionMPV i WHERE i.sidrecext = :sidrecext"),
-		@NamedQuery(name = "IotdtcRecepcionMPV.findByVrucentrem", query = "SELECT i FROM IotdtcRecepcionMPV i WHERE i.vrucentrem = :vrucentrem"),
-		@NamedQuery(name = "IotdtcRecepcionMPV.findByVuniorgrem", query = "SELECT i FROM IotdtcRecepcionMPV i WHERE i.vuniorgrem = :vuniorgrem"),
-		@NamedQuery(name = "IotdtcRecepcionMPV.findByCtipdociderem", query = "SELECT i FROM IotdtcRecepcionMPV i WHERE i.ctipdociderem = :ctipdociderem"),
-		@NamedQuery(name = "IotdtcRecepcionMPV.findByVnumdociderem", query = "SELECT i FROM IotdtcRecepcionMPV i WHERE i.vnumdociderem = :vnumdociderem"),
-		@NamedQuery(name = "IotdtcRecepcionMPV.findByVnumregstd", query = "SELECT i FROM IotdtcRecepcionMPV i WHERE i.vnumregstd = :vnumregstd"),
-		@NamedQuery(name = "IotdtcRecepcionMPV.findByVanioregstd", query = "SELECT i FROM IotdtcRecepcionMPV i WHERE i.vanioregstd = :vanioregstd"),
-		@NamedQuery(name = "IotdtcRecepcionMPV.findByVuniorgstd", query = "SELECT i FROM IotdtcRecepcionMPV i WHERE i.vuniorgstd = :vuniorgstd"),
-		@NamedQuery(name = "IotdtcRecepcionMPV.findByCcoduniorgstd", query = "SELECT i FROM IotdtcRecepcionMPV i WHERE i.ccoduniorgstd = :ccoduniorgstd"),
-		@NamedQuery(name = "IotdtcRecepcionMPV.findByDfecregstd", query = "SELECT i FROM IotdtcRecepcionMPV i WHERE i.dfecregstd = :dfecregstd"),
-		@NamedQuery(name = "IotdtcRecepcionMPV.findByVusuregstd", query = "SELECT i FROM IotdtcRecepcionMPV i WHERE i.vusuregstd = :vusuregstd"),
-		@NamedQuery(name = "IotdtcRecepcionMPV.findByVcuo", query = "SELECT i FROM IotdtcRecepcionMPV i WHERE i.vcuo = :vcuo"),
-		@NamedQuery(name = "IotdtcRecepcionMPV.findByVcuoref", query = "SELECT i FROM IotdtcRecepcionMPV i WHERE i.vcuoref = :vcuoref"),
-		@NamedQuery(name = "IotdtcRecepcionMPV.findByVobs", query = "SELECT i FROM IotdtcRecepcionMPV i WHERE i.vobs = :vobs"),
-		@NamedQuery(name = "IotdtcRecepcionMPV.findByCflgest", query = "SELECT i FROM IotdtcRecepcionMPV i WHERE i.cflgest = :cflgest"),
-		@NamedQuery(name = "IotdtcRecepcionMPV.findByVusumod", query = "SELECT i FROM IotdtcRecepcionMPV i WHERE i.vusumod = :vusumod"),
-		@NamedQuery(name = "IotdtcRecepcionMPV.findByDfecmod", query = "SELECT i FROM IotdtcRecepcionMPV i WHERE i.dfecmod = :dfecmod"),
-		@NamedQuery(name = "IotdtcRecepcionMPV.findByCflgestobs", query = "SELECT i FROM IotdtcRecepcionMPV i WHERE i.cflgestobs = :cflgestobs"),
-		@NamedQuery(name = "IotdtcRecepcionMPV.findByCflgenvcar", query = "SELECT i FROM IotdtcRecepcionMPV i WHERE i.cflgenvcar = :cflgenvcar"),
-		@NamedQuery(name = "IotdtcRecepcionMPV.findByDfecreg", query = "SELECT i FROM IotdtcRecepcionMPV i WHERE i.dfecreg = :dfecreg") })
+	@NamedQuery(name = "IotdtcRecepcionMPV.findBySidrecext", query = "SELECT i FROM IotdtcRecepcionMPV i WHERE i.sidrecext = :sidrecext"),
+	@NamedQuery(name = "IotdtcRecepcionMPV.findByVrucentrem", query = "SELECT i FROM IotdtcRecepcionMPV i WHERE i.vrucentrem = :vrucentrem"),
+	@NamedQuery(name = "IotdtcRecepcionMPV.findByVuniorgrem", query = "SELECT i FROM IotdtcRecepcionMPV i WHERE i.vuniorgrem = :vuniorgrem"),
+	@NamedQuery(name = "IotdtcRecepcionMPV.findByCtipdociderem", query = "SELECT i FROM IotdtcRecepcionMPV i WHERE i.ctipdociderem = :ctipdociderem"),
+	@NamedQuery(name = "IotdtcRecepcionMPV.findByVnumdociderem", query = "SELECT i FROM IotdtcRecepcionMPV i WHERE i.vnumdociderem = :vnumdociderem"),
+	@NamedQuery(name = "IotdtcRecepcionMPV.findByVnumregstd", query = "SELECT i FROM IotdtcRecepcionMPV i WHERE i.vnumregstd = :vnumregstd"),
+	@NamedQuery(name = "IotdtcRecepcionMPV.findByVanioregstd", query = "SELECT i FROM IotdtcRecepcionMPV i WHERE i.vanioregstd = :vanioregstd"),
+	@NamedQuery(name = "IotdtcRecepcionMPV.findByVuniorgstd", query = "SELECT i FROM IotdtcRecepcionMPV i WHERE i.vuniorgstd = :vuniorgstd"),
+	@NamedQuery(name = "IotdtcRecepcionMPV.findByCcoduniorgstd", query = "SELECT i FROM IotdtcRecepcionMPV i WHERE i.ccoduniorgstd = :ccoduniorgstd"),
+	@NamedQuery(name = "IotdtcRecepcionMPV.findByDfecregstd", query = "SELECT i FROM IotdtcRecepcionMPV i WHERE i.dfecregstd = :dfecregstd"),
+	@NamedQuery(name = "IotdtcRecepcionMPV.findByVusuregstd", query = "SELECT i FROM IotdtcRecepcionMPV i WHERE i.vusuregstd = :vusuregstd"),
+	@NamedQuery(name = "IotdtcRecepcionMPV.findByVcuo", query = "SELECT i FROM IotdtcRecepcionMPV i WHERE i.vcuo = :vcuo"),
+	@NamedQuery(name = "IotdtcRecepcionMPV.findByVcuoref", query = "SELECT i FROM IotdtcRecepcionMPV i WHERE i.vcuoref = :vcuoref"),
+	@NamedQuery(name = "IotdtcRecepcionMPV.findByVobs", query = "SELECT i FROM IotdtcRecepcionMPV i WHERE i.vobs = :vobs"),
+	@NamedQuery(name = "IotdtcRecepcionMPV.findByCflgest", query = "SELECT i FROM IotdtcRecepcionMPV i WHERE i.cflgest = :cflgest"),
+	@NamedQuery(name = "IotdtcRecepcionMPV.findByVusumod", query = "SELECT i FROM IotdtcRecepcionMPV i WHERE i.vusumod = :vusumod"),
+	@NamedQuery(name = "IotdtcRecepcionMPV.findByDfecmod", query = "SELECT i FROM IotdtcRecepcionMPV i WHERE i.dfecmod = :dfecmod"),
+	@NamedQuery(name = "IotdtcRecepcionMPV.findByCflgestobs", query = "SELECT i FROM IotdtcRecepcionMPV i WHERE i.cflgestobs = :cflgestobs"),
+	@NamedQuery(name = "IotdtcRecepcionMPV.findByCflgenvcar", query = "SELECT i FROM IotdtcRecepcionMPV i WHERE i.cflgenvcar = :cflgenvcar"),
+	@NamedQuery(name = "IotdtcRecepcionMPV.findByDfecreg", query = "SELECT i FROM IotdtcRecepcionMPV i WHERE i.dfecreg = :dfecreg") })
 public class IotdtcRecepcionMPV implements Serializable {
+	
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -100,6 +101,12 @@ public class IotdtcRecepcionMPV implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dfecreg;
 	
+	@Column(name = "DESREMITENTE")
+	private String desRemitente;
+	
+	@Column(name = "DESCARGOREMITENTE")
+	private String desCargoRemitente;
+	
 	@Column(name = "IDDOCUMENTO")
 	private Integer iddocumento;
 	
@@ -134,15 +141,6 @@ public class IotdtcRecepcionMPV implements Serializable {
 	
 	@OneToMany(mappedBy = "recepcion")
 	private List<IotdtdAdjuntoMPV> archivos;
-
-
-	public Integer getIddocumento() {
-		return iddocumento;
-	}
-
-	public void setIddocumento(Integer iddocumento) {
-		this.iddocumento = iddocumento;
-	}
 
 	public IotdtcRecepcionMPV() {
 	}
@@ -345,6 +343,30 @@ public class IotdtcRecepcionMPV implements Serializable {
 
 	public void setCodtipoinstitucion(Character codtipoinstitucion) {
 		this.codtipoinstitucion = codtipoinstitucion;
+	}
+	
+	public String getDesRemitente() {
+		return desRemitente;
+	}
+
+	public void setDesRemitente(String desRemitente) {
+		this.desRemitente = desRemitente;
+	}
+
+	public String getDesCargoRemitente() {
+		return desCargoRemitente;
+	}
+
+	public void setDesCargoRemitente(String desCargoRemitente) {
+		this.desCargoRemitente = desCargoRemitente;
+	}
+	
+	public Integer getIddocumento() {
+		return iddocumento;
+	}
+
+	public void setIddocumento(Integer iddocumento) {
+		this.iddocumento = iddocumento;
 	}
 
 	public String getTipodocumento() {

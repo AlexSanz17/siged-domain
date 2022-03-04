@@ -6,6 +6,7 @@
 package com.btg.ositran.siged.domain;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
@@ -22,10 +23,6 @@ import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
-/**
- *
- * @author consultor_jti15
- */
 @Entity
 @Table(name = "IOTDTC_RECEPCION")
 @XmlRootElement
@@ -120,14 +117,6 @@ public class IotdtcRecepcion implements Serializable {
     @Column(name = "IDDOCUMENTO")
     private Integer iddocumento;
 
-    public Integer getIddocumento() {
-        return iddocumento;
-    }
-
-    public void setIddocumento(Integer iddocumento) {
-        this.iddocumento = iddocumento;
-    }
-
     public IotdtcRecepcion() {
     }
 
@@ -168,6 +157,14 @@ public class IotdtcRecepcion implements Serializable {
 
     public void setVuniorgrem(String vuniorgrem) {
         this.vuniorgrem = vuniorgrem;
+    }
+    
+    public Integer getIddocumento() {
+        return iddocumento;
+    }
+
+    public void setIddocumento(Integer iddocumento) {
+        this.iddocumento = iddocumento;
     }
 
     public Character getCtipdociderem() {
@@ -352,8 +349,14 @@ public class IotdtcRecepcion implements Serializable {
     }
 
     @Override
-    public String toString() {
-        return "com.btg.ositran.siged.domain.IotdtcRecepcion[ sidrecext=" + sidrecext + " ]";
-    }
-    
+	public String toString() {
+		return "IotdtcRecepcion [sidrecext=" + sidrecext + ", vrucentrem=" + vrucentrem + ", vuniorgrem=" + vuniorgrem
+			+ ", ctipdociderem=" + ctipdociderem + ", vnumdociderem=" + vnumdociderem + ", vnumregstd=" + vnumregstd
+			+ ", vanioregstd=" + vanioregstd + ", vuniorgstd=" + vuniorgstd + ", ccoduniorgstd=" + ccoduniorgstd
+			+ ", dfecregstd=" + dfecregstd + ", vusuregstd=" + vusuregstd + ", bcarstd=" + Arrays.toString(bcarstd)
+			+ ", vcuo=" + vcuo + ", vcuoref=" + vcuoref + ", vobs=" + vobs + ", vdesanxstd=" + vdesanxstd
+			+ ", cflgest=" + cflgest + ", vusumod=" + vusumod + ", dfecmod=" + dfecmod + ", cflgestobs="
+			+ cflgestobs + ", cflgenvcar=" + cflgenvcar + ", dfecreg=" + dfecreg + ", iotdtmDocExternoList="
+			+ iotdtmDocExternoList + ", iddocumento=" + iddocumento + "]";
+	}    
 }

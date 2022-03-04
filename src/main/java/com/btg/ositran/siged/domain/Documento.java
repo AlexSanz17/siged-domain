@@ -1,8 +1,10 @@
 package com.btg.ositran.siged.domain;
 
 import java.io.Serializable;
+
 import java.util.Date;
 import java.util.List;
+
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -20,31 +22,29 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.ManyToOne;
 
-
 @Entity
 @Table(name="documento")
 @NamedQueries({@NamedQuery(name="Documento.findAll",query="SELECT d FROM Documento d"),
-		@NamedQuery(name="Documento.findByIddocumento",query="SELECT d FROM Documento d WHERE d.idDocumento = :iddocumento"),
-		@NamedQuery(name="Documento.findByFechacreacion",query="SELECT d FROM Documento d WHERE d.fechaCreacion = :fechacreacion"),
-		@NamedQuery(name="Documento.consultafechafestiva",query="SELECT d FROM Documento d WHERE d.principal = 'S' AND d.plazo > 0 AND (d.fechaAccion<=:fechanolaborable AND d.fechaLimiteAtencion >=:fechanolaborable)"),
-		@NamedQuery(name="Documento.consultaDocumentoReferencia",query="SELECT d FROM Documento d WHERE d.documentoreferencia = :iddocumento and d.estado not in ('I','N') "),
-                @NamedQuery(name="Documento.consultaDocumentoReferenciaMover",query="SELECT d FROM Documento d WHERE d.documentoreferencia = :iddocumento "),
-                @NamedQuery(name="Documento.consultaDocumentoMultipleAtendido",query="SELECT d FROM Documento d WHERE d.documentoreferencia = :iddocumento and d.estado not in ('I','N') and d.flagMultiple is null and flagatendido is null"),
-                @NamedQuery(name="Documento.consultafechafija",query="SELECT d FROM Documento d WHERE d.principal = 'S' AND (d.plazo is null OR d.plazo = 0)  AND (d.fechaLimiteAtencion = :fechanolaborable OR ((d.fechaAccion<=:fechanolaborable AND d.fechaLimiteAtencion >=:fechanolaborable)))"),
-		@NamedQuery(name="Documento.findDocumentoPrincipal",query="SELECT d FROM Documento d WHERE d.expediente.id = :idexpediente AND d.principal = 'S' AND d.documentoreferencia is NULL"),
-		@NamedQuery(name="Documento.findByIdExpedienteDocumento",query="SELECT d FROM Documento d WHERE d.expediente.id = :idexpediente and d.estado not in ('I') AND d.documentoreferencia is NULL"),
-		@NamedQuery(name="Documento.findByIdOrigen", query="SELECT d FROM Documento d WHERE d.origen = :idOrigen"),
-                @NamedQuery(name="Documento.findByIdDocVirtual", query="SELECT d FROM Documento d WHERE d.nroVirtual = :nroVirtual and d.estado not in ('I','N')"),
-                @NamedQuery(name="Documento.findByIdExpediente",query="SELECT d FROM Documento d WHERE d.expediente.id = :idexpediente"),
-                @NamedQuery(name="Documento.findByIdNroTramite",query="SELECT d FROM Documento d WHERE d.ID_CODIGO = :nroTramite and d.documentoreferencia is NULL"),
-		@NamedQuery(name="Documento.buscarDocumentoMasAntiguoPor",query="SELECT d FROM Documento d WHERE d.expediente.id = :idexpediente AND d.fechaCreacion <= (SELECT MIN(d1.fechaCreacion) FROM Documento d1 WHERE d1.expediente.id = :idexpediente  AND d1.documentoreferencia is NULL) AND d.documentoreferencia is NULL"),
-		@NamedQuery(name="Documento.buscarLstPor1",query="SELECT d FROM Documento d WHERE d.expediente.id <> :idexpediente AND d.expediente.nroexpediente LIKE :nroexpediente AND d.numeroDocumento LIKE :nrodocumento AND d.numeroCaja LIKE :nrocaja"),
-		@NamedQuery(name="Documento.buscarLstPor2",query="SELECT d FROM Documento d WHERE d.expediente.id <> :idexpediente AND d.expediente.nroexpediente LIKE :nroexpediente AND d.numeroDocumento LIKE :nrodocumento AND d.numeroCaja LIKE :nrocaja AND d.tipoDocumento.idtipodocumento = :idtipodocumento"),
-		@NamedQuery(name="Documento.getDocumentosPorExpediente",query="SELECT d FROM Documento d WHERE d.estado not in ('I') and d.expediente.id=:idExpediente AND d.documentoreferencia is NULL ORDER BY d.origen DESC, d.fechaCreacion asc"),
-                @NamedQuery(name="Documento.getDocumentosPorLegajo",query="SELECT d FROM Documento d, LegajoDocumento l WHERE d.estado not in ('I') and l.idLegajo=:idLegajo AND l.estado = 'A' AND d.documentoreferencia is NULL AND l.idDocumento = d.idDocumento order by l.fechaCreacion desc"),
-		@NamedQuery(name="Documento.getDocumentosNoConfidencialesPorExpediente",query="SELECT d FROM Documento d WHERE d.expediente.id=:idExpediente AND d.confidencial != 'S' AND d.documentoreferencia is NULL ORDER BY d.fechaCreacion DESC"),
-		@NamedQuery(name="Documento.getDocumentoMasReciente",query="SELECT d FROM Documento d WHERE d.estado='A' AND d.expediente.id = :idExpediente AND d.idDocumento <> :idDocumento AND d.fechaCreacion >= (SELECT MAX(d1.fechaCreacion) FROM Documento d1 WHERE d1.estado='A' AND d1.expediente.id = :idExpediente AND d1.idDocumento <> :idDocumento)")})
-
+	@NamedQuery(name="Documento.findByIddocumento",query="SELECT d FROM Documento d WHERE d.idDocumento = :iddocumento"),
+	@NamedQuery(name="Documento.findByFechacreacion",query="SELECT d FROM Documento d WHERE d.fechaCreacion = :fechacreacion"),
+	@NamedQuery(name="Documento.consultafechafestiva",query="SELECT d FROM Documento d WHERE d.principal = 'S' AND d.plazo > 0 AND (d.fechaAccion<=:fechanolaborable AND d.fechaLimiteAtencion >=:fechanolaborable)"),
+	@NamedQuery(name="Documento.consultaDocumentoReferencia",query="SELECT d FROM Documento d WHERE d.documentoreferencia = :iddocumento and d.estado not in ('I','N') "),
+    @NamedQuery(name="Documento.consultaDocumentoReferenciaMover",query="SELECT d FROM Documento d WHERE d.documentoreferencia = :iddocumento "),
+    @NamedQuery(name="Documento.consultaDocumentoMultipleAtendido",query="SELECT d FROM Documento d WHERE d.documentoreferencia = :iddocumento and d.estado not in ('I','N') and d.flagMultiple is null and flagatendido is null"),
+    @NamedQuery(name="Documento.consultafechafija",query="SELECT d FROM Documento d WHERE d.principal = 'S' AND (d.plazo is null OR d.plazo = 0)  AND (d.fechaLimiteAtencion = :fechanolaborable OR ((d.fechaAccion<=:fechanolaborable AND d.fechaLimiteAtencion >=:fechanolaborable)))"),
+	@NamedQuery(name="Documento.findDocumentoPrincipal",query="SELECT d FROM Documento d WHERE d.expediente.id = :idexpediente AND d.principal = 'S' AND d.documentoreferencia is NULL"),
+	@NamedQuery(name="Documento.findByIdExpedienteDocumento",query="SELECT d FROM Documento d WHERE d.expediente.id = :idexpediente and d.estado not in ('I') AND d.documentoreferencia is NULL"),
+	@NamedQuery(name="Documento.findByIdOrigen", query="SELECT d FROM Documento d WHERE d.origen = :idOrigen"),
+    @NamedQuery(name="Documento.findByIdDocVirtual", query="SELECT d FROM Documento d WHERE d.nroVirtual = :nroVirtual and d.estado not in ('I','N')"),
+    @NamedQuery(name="Documento.findByIdExpediente",query="SELECT d FROM Documento d WHERE d.expediente.id = :idexpediente"),
+    @NamedQuery(name="Documento.findByIdNroTramite",query="SELECT d FROM Documento d WHERE d.ID_CODIGO = :nroTramite and d.documentoreferencia is NULL"),
+	@NamedQuery(name="Documento.buscarDocumentoMasAntiguoPor",query="SELECT d FROM Documento d WHERE d.expediente.id = :idexpediente AND d.fechaCreacion <= (SELECT MIN(d1.fechaCreacion) FROM Documento d1 WHERE d1.expediente.id = :idexpediente  AND d1.documentoreferencia is NULL) AND d.documentoreferencia is NULL"),
+	@NamedQuery(name="Documento.buscarLstPor1",query="SELECT d FROM Documento d WHERE d.expediente.id <> :idexpediente AND d.expediente.nroexpediente LIKE :nroexpediente AND d.numeroDocumento LIKE :nrodocumento AND d.numeroCaja LIKE :nrocaja"),
+	@NamedQuery(name="Documento.buscarLstPor2",query="SELECT d FROM Documento d WHERE d.expediente.id <> :idexpediente AND d.expediente.nroexpediente LIKE :nroexpediente AND d.numeroDocumento LIKE :nrodocumento AND d.numeroCaja LIKE :nrocaja AND d.tipoDocumento.idtipodocumento = :idtipodocumento"),
+	@NamedQuery(name="Documento.getDocumentosPorExpediente",query="SELECT d FROM Documento d WHERE d.estado not in ('I') and d.expediente.id=:idExpediente AND d.documentoreferencia is NULL ORDER BY d.origen DESC, d.fechaCreacion asc"),
+    @NamedQuery(name="Documento.getDocumentosPorLegajo",query="SELECT d FROM Documento d, LegajoDocumento l WHERE d.estado not in ('I') and l.idLegajo=:idLegajo AND l.estado = 'A' AND d.documentoreferencia is NULL AND l.idDocumento = d.idDocumento order by l.fechaCreacion desc"),
+	@NamedQuery(name="Documento.getDocumentosNoConfidencialesPorExpediente",query="SELECT d FROM Documento d WHERE d.expediente.id=:idExpediente AND d.confidencial != 'S' AND d.documentoreferencia is NULL ORDER BY d.fechaCreacion DESC"),
+	@NamedQuery(name="Documento.getDocumentoMasReciente",query="SELECT d FROM Documento d WHERE d.estado='A' AND d.expediente.id = :idExpediente AND d.idDocumento <> :idDocumento AND d.fechaCreacion >= (SELECT MAX(d1.fechaCreacion) FROM Documento d1 WHERE d1.estado='A' AND d1.expediente.id = :idExpediente AND d1.idDocumento <> :idDocumento)")})
 public class Documento implements Serializable{
     @Id //JC82
 	//@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="DOCUMENTO_SEQ")
@@ -60,58 +60,57 @@ public class Documento implements Serializable{
     @Column(name="unidadpropietario")
 	private Integer unidadpropietario;
         
-        
-        @Basic(optional=true)
-        @Column(name="idConcesionario")
+	@Basic(optional=true)
+	@Column(name="idConcesionario")
 	private Integer idConcesionario;
-    
-        @Basic(optional=true)
-        @Column(name="unidadenumera")
+	
+	@Basic(optional=true)
+	@Column(name="unidadenumera")
 	private Integer unidadenumera;
-     
-        @Basic(optional=false)
-        @Column(name="unidadautor")
+	
+	@Basic(optional=false)
+	@Column(name="unidadautor")
 	private Integer unidadautor;
-        
-        @Basic(optional=true)
-        @Column(name="bandeja")
-        private Integer bandeja;
-
-        @Basic(optional=true)
-        @Column(name="flaginicioflujo")
+	
+	@Basic(optional=true)
+	@Column(name="bandeja")
+	private Integer bandeja;
+	
+	@Basic(optional=true)
+	@Column(name="flaginicioflujo")
 	private String flaginicioflujo;
-               
-        @Basic(optional=true)
-        @Column(name="desCargoRemitente")
+	
+	@Basic(optional=true)
+	@Column(name="desCargoRemitente")
 	private String desCargoRemitente;
-        
-        @Basic(optional=true)
-        @Column(name="desUnidadRemitente")
+	
+	@Basic(optional=true)
+	@Column(name="desUnidadRemitente")
 	private String desUnidadRemitente;
-
-        @Basic(optional=true)
-        @Column(name="recepcionado")
+	
+	@Basic(optional=true)
+	@Column(name="recepcionado")
 	private String recepcionado;
-
-   
-        @Basic(optional=true)
-        @Column(name="desRemitente")
+	
+	
+	@Basic(optional=true)
+	@Column(name="desRemitente")
 	private String desRemitente; 
-   
-        @Basic(optional=true)
-        @Column(name="proyecto")
+	
+	@Basic(optional=true)
+	@Column(name="proyecto")
 	private Integer proyecto;
-
-        @Basic(optional=true)
-        @Column(name="origen")
+	
+	@Basic(optional=true)
+	@Column(name="origen")
 	private Integer origen;
-      
-        @Basic(optional=true)
-        @Column(name="flagatendido")
+	
+	@Basic(optional=true)
+	@Column(name="flagatendido")
 	private String flagatendido;
-        
-         @Basic(optional=false)
-        @Column(name="cargopropietario")
+	
+	@Basic(optional=false)
+	@Column(name="cargopropietario")
 	private Integer cargopropietario;
 
    
@@ -119,20 +118,19 @@ public class Documento implements Serializable{
 	@Column(name="documentoasociado")
 	private Integer documentoasociado;
 
-
 	@Basic(optional=true)
 	@Column(name="ID_CLIENTE")
 	private Integer ID_CLIENTE;
         
-        @Column(name="usuariocreacion")
+    @Column(name="usuariocreacion")
 	private Integer usuariocreacion;
         
-        @Column(name="usuariomodificacion")
+    @Column(name="usuariomodificacion")
 	private Integer usuarioModificacion;
 
-        @Basic(optional=true)
-        @Column(name="flagMultiple")
-        private String flagMultiple;
+    @Basic(optional=true)
+    @Column(name="flagMultiple")
+    private String flagMultiple;
 
 	@Basic(optional=true)
 	@Column(name="ID_EXTERNO")
@@ -156,7 +154,6 @@ public class Documento implements Serializable{
 	@Column(name="nrofoliospide")
 	private Integer numeroFoliosPIDE;
 
-        ///
         @Basic(optional=true)
 	@Column(name="nrofoliosoriginales")
 	private Integer numeroFoliosOriginales;
@@ -169,7 +166,6 @@ public class Documento implements Serializable{
 	@Column(name="imagenesdigitalizadas")
 	private Integer imagenesDigitalizadas;
         
-        ////
         @Basic(optional=true)
         @Column (name="aniofiscal")
         private Integer anioFiscal;
@@ -227,8 +223,9 @@ public class Documento implements Serializable{
         @Column(name="flagsideco")
         private String flagsideco;
 
-        @Column(name="plazo")
+    @Column(name="plazo")
 	private Integer plazo;
+    
 	@Column(name="fechalimiteatencion")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fechaLimiteAtencion;
@@ -411,19 +408,15 @@ public class Documento implements Serializable{
 	public void setID_CLIENTE(Integer iD_CLIENTE) {
 		ID_CLIENTE = iD_CLIENTE;
 	}
-
-	
-        
-        public Integer getDocumentoasociado() {
+    
+    public Integer getDocumentoasociado() {
 		return documentoasociado;
 	}
 
 	public void setDocumentoasociado(Integer documentoasociado) {
 		this.documentoasociado = documentoasociado;
 	}
-
 	
-
         public CargoAdministrado getCargoRemitente() {
             return cargoRemitente;
         }
@@ -549,7 +542,7 @@ public class Documento implements Serializable{
 
 	private transient String indAlerta;
 	
-        private transient String nombreTipoDocumento;
+    private transient String nombreTipoDocumento;
 
 	private transient String nroexpediente;
 
@@ -591,15 +584,15 @@ public class Documento implements Serializable{
 
 	private transient String acciones;
         
-        private transient String nroReferencias;
+    private transient String nroReferencias;
 
-        public String getNroReferencias() {
-            return nroReferencias;
-        }
+    public String getNroReferencias() {
+        return nroReferencias;
+    }
 
-        public void setNroReferencias(String nroReferencias) {
-            this.nroReferencias = nroReferencias;
-        }
+    public void setNroReferencias(String nroReferencias) {
+        this.nroReferencias = nroReferencias;
+    }
 
 	public String getAcciones() {
 		return acciones;
@@ -991,25 +984,6 @@ public class Documento implements Serializable{
 			this.estado=estado;
 		}
 	}
-
-	@Override
-	public int hashCode(){
-		int hash=0;
-		hash+=(idDocumento != null ? idDocumento.hashCode() : 0);
-		return hash;
-	}
-        
-        @Override
-	public boolean equals(Object object){
-		if(!(object instanceof Documento)){
-			return false;
-		}
-		Documento other=(Documento) object;
-		if((this.idDocumento == null && other.idDocumento != null) || (this.idDocumento != null && !this.idDocumento.equals(other.idDocumento))){
-			return false;
-		}
-		return true;
-	}
         
 	public String getNombreTipoDocumento(){
 		return nombreTipoDocumento;
@@ -1171,38 +1145,7 @@ public class Documento implements Serializable{
 
 	public void setConcopias(List<String> concopias){
 		this.concopias=concopias;
-	}
-
-	@Override
-	public String toString() {
-		return "Documento [idDocumento=" + idDocumento + ", principal="
-				+ principal + ", delExpediente=" + delExpediente
-				+ ", numeroDocumento=" + numeroDocumento + ", numeroFolios="
-				+ numeroFolios + ", numeroCaja=" + numeroCaja
-				+ ", numeroMesaPartes=" + numeroMesaPartes + ", asunto="
-				+ asunto + ", ultimoAsunto=" + ultimoAsunto + ", contenido="
-				+ contenido + ", observacion=" + observacion
-				+ ", fechaDocumento=" + fechaDocumento + ", fechaAccion="
-				+ fechaAccion + ", plazo=" + plazo + ", fechaLimiteAtencion="
-				+ fechaLimiteAtencion + ", fechaCreacion=" + fechaCreacion
-				+ ", fechaCreacionMonth=" + fechaCreacionMonth
-				+ ", fechaCreacionYear=" + fechaCreacionYear + ", estado="
-				+ estado + ", estaEnFlujo=" + estaEnFlujo
-				+ ", observacionRechazo=" + observacionRechazo
-				+ ", observacionDigitalizador=" + observacionDigitalizador
-				+ ", estadoAlarma=" + estadoAlarma + ", creaExpediente="
-				+ creaExpediente + ", estadoplazo=" + estadoplazo
-				+ ", fechaCargo=" + fechaCargo + ", firmado=" + firmado
-				+ ", enumerado=" + enumerado //+ ", proceso=" + proceso
-				+ ", accion=" + accion + ", expediente=" + expediente
-				+ ", tipoDocumento=" + tipoDocumento + ", propietario="
-				+ propietario + ", firmante=" + firmante + ", enumerador="
-				+ enumerador + ", documentoStor=" + documentoStor
-				+ ", archivos=" + archivos + ", leido=" + leido
-				+ ", remitente=" + remitente + ", autor=" + autor
-				+ ", documentoreferencia=" + documentoreferencia
-				+ ", prioridad=" + prioridad + "]";
-	}
+	}	
 
 	public String getEtapa(){
 		return etapa;
@@ -1356,179 +1299,235 @@ public class Documento implements Serializable{
 		this.indAlerta = indAlerta;
 	}
         
-            public Integer getUnidadpropietario() {
-              return unidadpropietario;
-         }
+    public Integer getUnidadpropietario() {
+    	return unidadpropietario;
+    }
 
-        public void setUnidadpropietario(Integer unidadpropietario) {
-            this.unidadpropietario = unidadpropietario;
-        }
+    public void setUnidadpropietario(Integer unidadpropietario) {
+        this.unidadpropietario = unidadpropietario;
+    }
 
-        public Integer getCargopropietario() {
-            return cargopropietario;
-        }
+    public Integer getCargopropietario() {
+        return cargopropietario;
+    }
 
-        public void setCargopropietario(Integer cargopropietario) {
-            this.cargopropietario = cargopropietario;
-        }
+    public void setCargopropietario(Integer cargopropietario) {
+        this.cargopropietario = cargopropietario;
+    }
+    
+    public Integer getUsuariocreacion() {
+        return usuariocreacion;
+    }
+
+    public void setUsuariocreacion(Integer usuariocreacion) {
+        this.usuariocreacion = usuariocreacion;
+    }
+    
+     public String getFlagMultiple() {
+       return flagMultiple;
+    }
+
+    public void setFlagMultiple(String flagMultiple) {
+        this.flagMultiple = flagMultiple;
+    }
+    
+    public Date getFechaReunion() {
+        return fechaReunion;
+    }
+
+    public void setFechaReunion(Date fechaReunion) {
+        this.fechaReunion = fechaReunion;
+    }
+
+    public String getLugar() {
+        return lugar;
+    }
+
+    public void setLugar(String lugar) {
+        this.lugar = lugar;
+    }
+
+    public String getObjetivo() {
+        return objetivo;
+    }
+
+    public void setObjetivo(String objetivo) {
+        this.objetivo = objetivo;
+    }
+
+    public Integer getCodInfraestructura() {
+        return codInfraestructura;
+    }
+
+    public void setCodInfraestructura(Integer codInfraestructura) {
+        this.codInfraestructura = codInfraestructura;
+    }
+
+    public Integer getCodMateria() {
+        return codMateria;
+    }
+
+    public void setCodMateria(Integer codMateria) {
+        this.codMateria = codMateria;
+    }
+    
+     public Date getFechaModificacion() {
+        return fechaModificacion;
+    }
+
+    public void setFechaModificacion(Date fechaModificacion) {
+        this.fechaModificacion = fechaModificacion;
+    }
+    
+     public Integer getUsuarioModificacion() {
+        return usuarioModificacion;
+    }
+
+    public void setUsuarioModificacion(Integer usuarioModificacion) {
+        this.usuarioModificacion = usuarioModificacion;
+    }
+    
+    public Integer getProyecto() {
+        return proyecto;
+    }
+
+    public void setProyecto(Integer proyecto) {
+        this.proyecto = proyecto;
+    }
+    
+    public String getDesCargoRemitente() {
+        return desCargoRemitente;
+    }
+
+    public void setDesCargoRemitente(String desCargoRemitente) {
+        this.desCargoRemitente = desCargoRemitente;
+    }
+
+    public String getDesRemitente() {
+        return desRemitente;
+    }
+
+    public void setDesRemitente(String desRemitente) {
+        this.desRemitente = desRemitente;
+    }
+    
+     public String getRecepcionado() {
+        return recepcionado;
+    }
+
+    public void setRecepcionado(String recepcionado) {
+        this.recepcionado = recepcionado;
+    }
+    
+    public String getDesUnidadRemitente() {
+        return desUnidadRemitente;
+    }
+
+    public void setDesUnidadRemitente(String desUnidadRemitente) {
+        this.desUnidadRemitente = desUnidadRemitente;
+    }
+    
+    public Integer getUnidadenumera() {
+        return unidadenumera;
+    }
+
+    public void setUnidadenumera(Integer unidadenumera) {
+        this.unidadenumera = unidadenumera;
+    }     
+    
+     public Integer getNumeroFoliosOriginales() {
+        return numeroFoliosOriginales;
+    }
+
+    public void setNumeroFoliosOriginales(Integer numeroFoliosOriginales) {
+        this.numeroFoliosOriginales = numeroFoliosOriginales;
+    }
+
+    public Integer getNumeroFoliosCopias() {
+        return numeroFoliosCopias;
+    }
+
+    public void setNumeroFoliosCopias(Integer numeroFoliosCopias) {
+        this.numeroFoliosCopias = numeroFoliosCopias;
+    }
+
+    public Integer getImagenesDigitalizadas() {
+        return imagenesDigitalizadas;
+    }
+
+    public void setImagenesDigitalizadas(Integer imagenesDigitalizadas) {
+        this.imagenesDigitalizadas = imagenesDigitalizadas;
+    }
+    
+    public Integer getNroVirtual() {
+        return nroVirtual;
+    }
+
+    public void setNroVirtual(Integer nroVirtual) {
+        this.nroVirtual = nroVirtual;
+    }
+    
+    public Integer getNumeroFoliosPIDE() {
+        return numeroFoliosPIDE;
+    }
+
+    public void setNumeroFoliosPIDE(Integer numeroFoliosPIDE) {
+        this.numeroFoliosPIDE = numeroFoliosPIDE;
+    }
+    
+    @Override
+	public int hashCode(){
+		int hash=0;
+		hash+=(idDocumento != null ? idDocumento.hashCode() : 0);
+		return hash;
+	}
         
-        public Integer getUsuariocreacion() {
-            return usuariocreacion;
-        }
+        @Override
+	public boolean equals(Object object){
+		if(!(object instanceof Documento)){
+			return false;
+		}
+		Documento other=(Documento) object;
+		if((this.idDocumento == null && other.idDocumento != null) || (this.idDocumento != null && !this.idDocumento.equals(other.idDocumento))){
+			return false;
+		}
+		return true;
+	}
 
-        public void setUsuariocreacion(Integer usuariocreacion) {
-            this.usuariocreacion = usuariocreacion;
-        }
-        
-         public String getFlagMultiple() {
-           return flagMultiple;
-        }
-
-        public void setFlagMultiple(String flagMultiple) {
-            this.flagMultiple = flagMultiple;
-        }
-        
-        public Date getFechaReunion() {
-            return fechaReunion;
-        }
-
-        public void setFechaReunion(Date fechaReunion) {
-            this.fechaReunion = fechaReunion;
-        }
-
-        public String getLugar() {
-            return lugar;
-        }
-
-        public void setLugar(String lugar) {
-            this.lugar = lugar;
-        }
-
-        public String getObjetivo() {
-            return objetivo;
-        }
-
-        public void setObjetivo(String objetivo) {
-            this.objetivo = objetivo;
-        }
-
-        public Integer getCodInfraestructura() {
-            return codInfraestructura;
-        }
-
-        public void setCodInfraestructura(Integer codInfraestructura) {
-            this.codInfraestructura = codInfraestructura;
-        }
-
-        public Integer getCodMateria() {
-            return codMateria;
-        }
-
-        public void setCodMateria(Integer codMateria) {
-            this.codMateria = codMateria;
-        }
-        
-         public Date getFechaModificacion() {
-            return fechaModificacion;
-        }
-
-        public void setFechaModificacion(Date fechaModificacion) {
-            this.fechaModificacion = fechaModificacion;
-        }
-        
-         public Integer getUsuarioModificacion() {
-            return usuarioModificacion;
-        }
-
-        public void setUsuarioModificacion(Integer usuarioModificacion) {
-            this.usuarioModificacion = usuarioModificacion;
-        }
-        
-        public Integer getProyecto() {
-            return proyecto;
-        }
-
-        public void setProyecto(Integer proyecto) {
-            this.proyecto = proyecto;
-        }
-        
-        public String getDesCargoRemitente() {
-            return desCargoRemitente;
-        }
-
-        public void setDesCargoRemitente(String desCargoRemitente) {
-            this.desCargoRemitente = desCargoRemitente;
-        }
-
-        public String getDesRemitente() {
-            return desRemitente;
-        }
-
-        public void setDesRemitente(String desRemitente) {
-            this.desRemitente = desRemitente;
-        }
-        
-         public String getRecepcionado() {
-            return recepcionado;
-        }
-
-        public void setRecepcionado(String recepcionado) {
-            this.recepcionado = recepcionado;
-        }
-        
-        public String getDesUnidadRemitente() {
-            return desUnidadRemitente;
-        }
-
-        public void setDesUnidadRemitente(String desUnidadRemitente) {
-            this.desUnidadRemitente = desUnidadRemitente;
-        }
-        
-        public Integer getUnidadenumera() {
-            return unidadenumera;
-        }
-
-        public void setUnidadenumera(Integer unidadenumera) {
-            this.unidadenumera = unidadenumera;
-        }     
-        
-         public Integer getNumeroFoliosOriginales() {
-            return numeroFoliosOriginales;
-        }
-
-        public void setNumeroFoliosOriginales(Integer numeroFoliosOriginales) {
-            this.numeroFoliosOriginales = numeroFoliosOriginales;
-        }
-
-        public Integer getNumeroFoliosCopias() {
-            return numeroFoliosCopias;
-        }
-
-        public void setNumeroFoliosCopias(Integer numeroFoliosCopias) {
-            this.numeroFoliosCopias = numeroFoliosCopias;
-        }
-
-        public Integer getImagenesDigitalizadas() {
-            return imagenesDigitalizadas;
-        }
-
-        public void setImagenesDigitalizadas(Integer imagenesDigitalizadas) {
-            this.imagenesDigitalizadas = imagenesDigitalizadas;
-        }
-        
-        public Integer getNroVirtual() {
-            return nroVirtual;
-        }
-
-        public void setNroVirtual(Integer nroVirtual) {
-            this.nroVirtual = nroVirtual;
-        }
-        
-        public Integer getNumeroFoliosPIDE() {
-            return numeroFoliosPIDE;
-        }
-
-        public void setNumeroFoliosPIDE(Integer numeroFoliosPIDE) {
-            this.numeroFoliosPIDE = numeroFoliosPIDE;
-        }
+    @Override
+	public String toString() {
+		return "Documento [idDocumento=" + idDocumento + ", principal=" + principal + ", unidadpropietario="
+			+ unidadpropietario + ", idConcesionario=" + idConcesionario + ", unidadenumera=" + unidadenumera
+			+ ", unidadautor=" + unidadautor + ", bandeja=" + bandeja + ", flaginicioflujo=" + flaginicioflujo
+			+ ", desCargoRemitente=" + desCargoRemitente + ", desUnidadRemitente=" + desUnidadRemitente
+			+ ", recepcionado=" + recepcionado + ", desRemitente=" + desRemitente + ", proyecto=" + proyecto
+			+ ", origen=" + origen + ", flagatendido=" + flagatendido + ", cargopropietario=" + cargopropietario
+			+ ", documentoasociado=" + documentoasociado + ", ID_CLIENTE=" + ID_CLIENTE + ", usuariocreacion="
+			+ usuariocreacion + ", usuarioModificacion=" + usuarioModificacion + ", flagMultiple=" + flagMultiple
+			+ ", ID_EXTERNO=" + ID_EXTERNO + ", ID_CODIGO=" + ID_CODIGO + ", delExpediente=" + delExpediente
+			+ ", numeroDocumento=" + numeroDocumento + ", numeroFolios=" + numeroFolios + ", numeroFoliosPIDE="
+			+ numeroFoliosPIDE + ", numeroFoliosOriginales=" + numeroFoliosOriginales + ", numeroFoliosCopias="
+			+ numeroFoliosCopias + ", imagenesDigitalizadas=" + imagenesDigitalizadas + ", anioFiscal=" + anioFiscal
+			+ ", numeroCaja=" + numeroCaja + ", numeroMesaPartes=" + numeroMesaPartes + ", asunto=" + asunto
+			+ ", ultimoAsunto=" + ultimoAsunto + ", contenido=" + contenido + ", observacion=" + observacion
+			+ ", fechaDocumento=" + fechaDocumento + ", fechaReunion=" + fechaReunion + ", fechaModificacion="
+			+ fechaModificacion + ", lugar=" + lugar + ", objetivo=" + objetivo + ", codInfraestructura="
+			+ codInfraestructura + ", codMateria=" + codMateria + ", nroVirtual=" + nroVirtual + ", fechaAccion="
+			+ fechaAccion + ", flagsideco=" + flagsideco + ", plazo=" + plazo + ", fechaLimiteAtencion="
+			+ fechaLimiteAtencion + ", fechaCreacion=" + fechaCreacion + ", fechaCreacionMonth="
+			+ fechaCreacionMonth + ", fechaCreacionYear=" + fechaCreacionYear + ", estado=" + estado
+			+ ", estaEnFlujo=" + estaEnFlujo + ", observacionRechazo=" + observacionRechazo
+			+ ", observacionDigitalizador=" + observacionDigitalizador + ", estadoAlarma=" + estadoAlarma
+			+ ", creaExpediente=" + creaExpediente + ", estadoplazo=" + estadoplazo + ", fechaCargo=" + fechaCargo
+			+ ", firmado=" + firmado + ", enumerado=" + enumerado + ", accion=" + accion + ", expediente="
+			+ expediente + ", tipoDocumento=" + tipoDocumento + ", cliente=" + cliente + ", tipoInstitucion="
+			+ tipoInstitucion + ", detalleRemitente=" + detalleRemitente + ", cargoRemitente=" + cargoRemitente
+			+ ", propietario=" + propietario + ", firmante=" + firmante + ", enumerador=" + enumerador
+			+ ", documentoStor=" + documentoStor + ", archivos=" + archivos + ", leido=" + leido + ", remitente="
+			+ remitente + ", autor=" + autor + ", codTipoInstitucion=" + codTipoInstitucion + ", codRemitente="
+			+ codRemitente + ", codCargoRemitente=" + codCargoRemitente + ", documentoreferencia="
+			+ documentoreferencia + ", despachado=" + despachado + ", fechaLecturaDocumento="
+			+ fechaLecturaDocumento + ", nombrePCLecturaDocumento=" + nombrePCLecturaDocumento + ", prioridad="
+			+ prioridad + ", referenciados=" + referenciados + ", confidencial=" + confidencial + "]";
+	}
 }

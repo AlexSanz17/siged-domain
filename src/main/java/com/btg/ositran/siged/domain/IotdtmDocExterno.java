@@ -27,10 +27,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
-/**
- *
- * @author consultor_jti15
- */
+
 @Entity
 @Table(name = "IOTDTM_DOC_EXTERNO")
 @XmlRootElement
@@ -94,13 +91,11 @@ public class IotdtmDocExterno implements Serializable {
     @Column(name = "VURLDOCANX")
     private String vurldocanx;
     
-    
     @OneToMany(mappedBy = "siddocext",fetch=FetchType.LAZY)
     private List<IotdtdDocPrincipal> iotdtdDocPrincipalList;
     @OneToMany(mappedBy = "siddocext" ,fetch=FetchType.LAZY)
     private List<IotdtdAnexo> iotdtdAnexoList;
-    
-    
+      
     @JoinColumn(name = "SIDEMIEXT", referencedColumnName = "SIDEMIEXT")
     @ManyToOne
     private IotdtcDespacho sidemiext;
@@ -232,7 +227,6 @@ public class IotdtmDocExterno implements Serializable {
         this.vurldocanx = vurldocanx;
     }
 
-
     public List<IotdtdDocPrincipal> getIotdtdDocPrincipalList() {
         return iotdtdDocPrincipalList;
     }
@@ -240,7 +234,6 @@ public class IotdtmDocExterno implements Serializable {
     public void setIotdtdDocPrincipalList(List<IotdtdDocPrincipal> iotdtdDocPrincipalList) {
         this.iotdtdDocPrincipalList = iotdtdDocPrincipalList;
     }
-
 
     public List<IotdtdAnexo> getIotdtdAnexoList() {
         return iotdtdAnexoList;
@@ -287,8 +280,13 @@ public class IotdtmDocExterno implements Serializable {
     }
 
     @Override
-    public String toString() {
-        return "com.btg.ositran.siged.domain.IotdtmDocExterno[ siddocext=" + siddocext + " ]";
-    }
+	public String toString() {
+		return "IotdtmDocExterno [siddocext=" + siddocext + ", vnomentemi=" + vnomentemi + ", ccodtipdoc=" + ccodtipdoc
+			+ ", vnumdoc=" + vnumdoc + ", dfecdoc=" + dfecdoc + ", vuniorgdst=" + vuniorgdst + ", vnomdst="
+			+ vnomdst + ", vnomcardst=" + vnomcardst + ", vasu=" + vasu + ", cindtup=" + cindtup + ", snumanx="
+			+ snumanx + ", snumfol=" + snumfol + ", vurldocanx=" + vurldocanx + ", iotdtdDocPrincipalList="
+			+ iotdtdDocPrincipalList + ", iotdtdAnexoList=" + iotdtdAnexoList + ", sidemiext=" + sidemiext
+			+ ", sidrecext=" + sidrecext + "]";
+	}
     
 }
