@@ -27,24 +27,24 @@ import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
-@Table(name = "IOTDTM_DOC_EXTERNO")
+@Table(name = "IOTDTM_DOC_EXTERNO", schema = "IDOSGD")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "IotdtmDocExterno.findAll", query = "SELECT i FROM IotdtmDocExterno i"),
-    @NamedQuery(name = "IotdtmDocExterno.findBySiddocext", query = "SELECT i FROM IotdtmDocExterno i WHERE i.siddocext = :siddocext"),
-    @NamedQuery(name = "IotdtmDocExterno.findByVnomentemi", query = "SELECT i FROM IotdtmDocExterno i WHERE i.vnomentemi = :vnomentemi"),
-    @NamedQuery(name = "IotdtmDocExterno.findByCcodtipdoc", query = "SELECT i FROM IotdtmDocExterno i WHERE i.ccodtipdoc = :ccodtipdoc"),
-    @NamedQuery(name = "IotdtmDocExterno.findByVnumdoc", query = "SELECT i FROM IotdtmDocExterno i WHERE i.vnumdoc = :vnumdoc"),
-    @NamedQuery(name = "IotdtmDocExterno.findByDfecdoc", query = "SELECT i FROM IotdtmDocExterno i WHERE i.dfecdoc = :dfecdoc"),
-    @NamedQuery(name = "IotdtmDocExterno.findByVuniorgdst", query = "SELECT i FROM IotdtmDocExterno i WHERE i.vuniorgdst = :vuniorgdst"),
-    @NamedQuery(name = "IotdtmDocExterno.findByVnomdst", query = "SELECT i FROM IotdtmDocExterno i WHERE i.vnomdst = :vnomdst"),
-    @NamedQuery(name = "IotdtmDocExterno.findByVnomcardst", query = "SELECT i FROM IotdtmDocExterno i WHERE i.vnomcardst = :vnomcardst"),
-    @NamedQuery(name = "IotdtmDocExterno.findByVasu", query = "SELECT i FROM IotdtmDocExterno i WHERE i.vasu = :vasu"),
-    @NamedQuery(name = "IotdtmDocExterno.findByCindtup", query = "SELECT i FROM IotdtmDocExterno i WHERE i.cindtup = :cindtup"),
-    @NamedQuery(name = "IotdtmDocExterno.findBySnumanx", query = "SELECT i FROM IotdtmDocExterno i WHERE i.snumanx = :snumanx"),
-    @NamedQuery(name = "IotdtmDocExterno.findBySnumfol", query = "SELECT i FROM IotdtmDocExterno i WHERE i.snumfol = :snumfol"),
-    @NamedQuery(name = "IotdtmDocExterno.findByVurldocanx", query = "SELECT i FROM IotdtmDocExterno i WHERE i.vurldocanx = :vurldocanx")})
-public class IotdtmDocExterno implements Serializable {
+    @NamedQuery(name = "IotdtmDocExternoPIDE.findAll", query = "SELECT i FROM IotdtmDocExternoPIDE i"),
+    @NamedQuery(name = "IotdtmDocExternoPIDE.findBySiddocext", query = "SELECT i FROM IotdtmDocExternoPIDE i WHERE i.siddocext = :siddocext"),
+    @NamedQuery(name = "IotdtmDocExternoPIDE.findByVnomentemi", query = "SELECT i FROM IotdtmDocExternoPIDE i WHERE i.vnomentemi = :vnomentemi"),
+    @NamedQuery(name = "IotdtmDocExternoPIDE.findByCcodtipdoc", query = "SELECT i FROM IotdtmDocExternoPIDE i WHERE i.ccodtipdoc = :ccodtipdoc"),
+    @NamedQuery(name = "IotdtmDocExternoPIDE.findByVnumdoc", query = "SELECT i FROM IotdtmDocExternoPIDE i WHERE i.vnumdoc = :vnumdoc"),
+    @NamedQuery(name = "IotdtmDocExternoPIDE.findByDfecdoc", query = "SELECT i FROM IotdtmDocExternoPIDE i WHERE i.dfecdoc = :dfecdoc"),
+    @NamedQuery(name = "IotdtmDocExternoPIDE.findByVuniorgdst", query = "SELECT i FROM IotdtmDocExternoPIDE i WHERE i.vuniorgdst = :vuniorgdst"),
+    @NamedQuery(name = "IotdtmDocExternoPIDE.findByVnomdst", query = "SELECT i FROM IotdtmDocExternoPIDE i WHERE i.vnomdst = :vnomdst"),
+    @NamedQuery(name = "IotdtmDocExternoPIDE.findByVnomcardst", query = "SELECT i FROM IotdtmDocExternoPIDE i WHERE i.vnomcardst = :vnomcardst"),
+    @NamedQuery(name = "IotdtmDocExternoPIDE.findByVasu", query = "SELECT i FROM IotdtmDocExternoPIDE i WHERE i.vasu = :vasu"),
+    @NamedQuery(name = "IotdtmDocExternoPIDE.findByCindtup", query = "SELECT i FROM IotdtmDocExternoPIDE i WHERE i.cindtup = :cindtup"),
+    @NamedQuery(name = "IotdtmDocExternoPIDE.findBySnumanx", query = "SELECT i FROM IotdtmDocExternoPIDE i WHERE i.snumanx = :snumanx"),
+    @NamedQuery(name = "IotdtmDocExternoPIDE.findBySnumfol", query = "SELECT i FROM IotdtmDocExternoPIDE i WHERE i.snumfol = :snumfol"),
+    @NamedQuery(name = "IotdtmDocExternoPIDE.findByVurldocanx", query = "SELECT i FROM IotdtmDocExternoPIDE i WHERE i.vurldocanx = :vurldocanx")})
+public class IotdtmDocExternoPIDE implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -89,27 +89,27 @@ public class IotdtmDocExterno implements Serializable {
     private Integer ssidemiext;
     @Column(name = "SIDRECEXT", insertable=false, updatable=false)
     private Integer ssidrecext;
-
-	@OneToMany(mappedBy = "siddocext",fetch=FetchType.LAZY)
-    private List<IotdtdDocPrincipal> iotdtdDocPrincipalList;
+    
+    @OneToMany(mappedBy = "siddocext",fetch=FetchType.LAZY)
+    private List<IotdtdDocPrincipalPIDE> iotdtdDocPrincipalList;
     @OneToMany(mappedBy = "siddocext" ,fetch=FetchType.LAZY)
-    private List<IotdtdAnexo> iotdtdAnexoList;
+    private List<IotdtdAnexoPIDE> iotdtdAnexoList;
       
     @JoinColumn(name = "SIDEMIEXT", referencedColumnName = "SIDEMIEXT")
     @ManyToOne
-    private IotdtcDespacho sidemiext;
+    private IotdtcDespachoPIDE sidemiext;
     @JoinColumn(name = "SIDRECEXT", referencedColumnName = "SIDRECEXT")
     @ManyToOne
-    private IotdtcRecepcion sidrecext;
+    private IotdtcRecepcionPIDE sidrecext;
 
-    public IotdtmDocExterno() {
+    public IotdtmDocExternoPIDE() {
     }
 
-    public IotdtmDocExterno(Integer siddocext) {
+    public IotdtmDocExternoPIDE(Integer siddocext) {
         this.siddocext = siddocext;
     }
 
-    public IotdtmDocExterno(Integer siddocext, String vnomentemi, String ccodtipdoc, String vnumdoc, Date dfecdoc, String vuniorgdst, String vnomdst, String vnomcardst, String vasu, BigInteger snumfol) {
+    public IotdtmDocExternoPIDE(Integer siddocext, String vnomentemi, String ccodtipdoc, String vnumdoc, Date dfecdoc, String vuniorgdst, String vnomdst, String vnomcardst, String vasu, BigInteger snumfol) {
         this.siddocext = siddocext;
         this.vnomentemi = vnomentemi;
         this.ccodtipdoc = ccodtipdoc;
@@ -242,35 +242,35 @@ public class IotdtmDocExterno implements Serializable {
 		this.ssidrecext = ssidrecext;
 	}
 	
-    public List<IotdtdDocPrincipal> getIotdtdDocPrincipalList() {
+    public List<IotdtdDocPrincipalPIDE> getIotdtdDocPrincipalList() {
         return iotdtdDocPrincipalList;
     }
 
-    public void setIotdtdDocPrincipalList(List<IotdtdDocPrincipal> iotdtdDocPrincipalList) {
+    public void setIotdtdDocPrincipalList(List<IotdtdDocPrincipalPIDE> iotdtdDocPrincipalList) {
         this.iotdtdDocPrincipalList = iotdtdDocPrincipalList;
     }
 
-    public List<IotdtdAnexo> getIotdtdAnexoList() {
+    public List<IotdtdAnexoPIDE> getIotdtdAnexoList() {
         return iotdtdAnexoList;
     }
 
-    public void setIotdtdAnexoList(List<IotdtdAnexo> iotdtdAnexoList) {
+    public void setIotdtdAnexoList(List<IotdtdAnexoPIDE> iotdtdAnexoList) {
         this.iotdtdAnexoList = iotdtdAnexoList;
     }
 
-    public IotdtcDespacho getSidemiext() {
+    public IotdtcDespachoPIDE getSidemiext() {
         return sidemiext;
     }
 
-    public void setSidemiext(IotdtcDespacho sidemiext) {
+    public void setSidemiext(IotdtcDespachoPIDE sidemiext) {
         this.sidemiext = sidemiext;
     }
 
-    public IotdtcRecepcion getSidrecext() {
+    public IotdtcRecepcionPIDE getSidrecext() {
         return sidrecext;
     }
 
-    public void setSidrecext(IotdtcRecepcion sidrecext) {
+    public void setSidrecext(IotdtcRecepcionPIDE sidrecext) {
         this.sidrecext = sidrecext;
     }
 
@@ -284,10 +284,10 @@ public class IotdtmDocExterno implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof IotdtmDocExterno)) {
+        if (!(object instanceof IotdtmDocExternoPIDE)) {
             return false;
         }
-        IotdtmDocExterno other = (IotdtmDocExterno) object;
+        IotdtmDocExternoPIDE other = (IotdtmDocExternoPIDE) object;
         if ((this.siddocext == null && other.siddocext != null) || (this.siddocext != null && !this.siddocext.equals(other.siddocext))) {
             return false;
         }
@@ -296,12 +296,7 @@ public class IotdtmDocExterno implements Serializable {
 
     @Override
 	public String toString() {
-		return "IotdtmDocExterno [siddocext=" + siddocext + ", vnomentemi=" + vnomentemi + ", ccodtipdoc=" + ccodtipdoc
-			+ ", vnumdoc=" + vnumdoc + ", dfecdoc=" + dfecdoc + ", vuniorgdst=" + vuniorgdst + ", vnomdst="
-			+ vnomdst + ", vnomcardst=" + vnomcardst + ", vasu=" + vasu + ", cindtup=" + cindtup + ", snumanx="
-			+ snumanx + ", snumfol=" + snumfol + ", vurldocanx=" + vurldocanx + ", iotdtdDocPrincipalList="
-			+ iotdtdDocPrincipalList + ", iotdtdAnexoList=" + iotdtdAnexoList + ", sidemiext=" + sidemiext
-			+ ", sidrecext=" + sidrecext + "]";
+		return "IotdtmDocExternoPIDE [siddocext=" + siddocext + "]";
 	}
     
 }

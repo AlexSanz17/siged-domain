@@ -8,10 +8,11 @@ package com.btg.ositran.siged.domain;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
@@ -20,40 +21,39 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
-@Table(name = "IOTDTC_DESPACHO")
+@Table(name = "IOTDTC_DESPACHO", schema = "IDOSGD")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "IotdtcDespacho.findAll", query = "SELECT i FROM IotdtcDespacho i"),
-    @NamedQuery(name = "IotdtcDespacho.findBySidemiext", query = "SELECT i FROM IotdtcDespacho i WHERE i.sidemiext = :sidemiext"),
-    @NamedQuery(name = "IotdtcDespacho.findByVnumregstd", query = "SELECT i FROM IotdtcDespacho i WHERE i.vnumregstd = :vnumregstd"),
-    @NamedQuery(name = "IotdtcDespacho.findByVanioregstd", query = "SELECT i FROM IotdtcDespacho i WHERE i.vanioregstd = :vanioregstd"),
-    @NamedQuery(name = "IotdtcDespacho.findByCtipdociderem", query = "SELECT i FROM IotdtcDespacho i WHERE i.ctipdociderem = :ctipdociderem"),
-    @NamedQuery(name = "IotdtcDespacho.findByVnumdociderem", query = "SELECT i FROM IotdtcDespacho i WHERE i.vnumdociderem = :vnumdociderem"),
-    @NamedQuery(name = "IotdtcDespacho.findByVcoduniorgrem", query = "SELECT i FROM IotdtcDespacho i WHERE i.vcoduniorgrem = :vcoduniorgrem"),
-    @NamedQuery(name = "IotdtcDespacho.findByVuniorgrem", query = "SELECT i FROM IotdtcDespacho i WHERE i.vuniorgrem = :vuniorgrem"),
-    @NamedQuery(name = "IotdtcDespacho.findByVcuo", query = "SELECT i FROM IotdtcDespacho i WHERE i.vcuo = :vcuo"),
-    @NamedQuery(name = "IotdtcDespacho.findByVrucentrec", query = "SELECT i FROM IotdtcDespacho i WHERE i.vrucentrec = :vrucentrec"),
-    @NamedQuery(name = "IotdtcDespacho.findByVnomentrec", query = "SELECT i FROM IotdtcDespacho i WHERE i.vnomentrec = :vnomentrec"),
-    @NamedQuery(name = "IotdtcDespacho.findByVnumregstdrec", query = "SELECT i FROM IotdtcDespacho i WHERE i.vnumregstdrec = :vnumregstdrec"),
-    @NamedQuery(name = "IotdtcDespacho.findByVanioregstdrec", query = "SELECT i FROM IotdtcDespacho i WHERE i.vanioregstdrec = :vanioregstdrec"),
-    @NamedQuery(name = "IotdtcDespacho.findByDfecregstdrec", query = "SELECT i FROM IotdtcDespacho i WHERE i.dfecregstdrec = :dfecregstdrec"),
-    @NamedQuery(name = "IotdtcDespacho.findByVusuregstdrec", query = "SELECT i FROM IotdtcDespacho i WHERE i.vusuregstdrec = :vusuregstdrec"),
-    @NamedQuery(name = "IotdtcDespacho.findByVuniorgstdrec", query = "SELECT i FROM IotdtcDespacho i WHERE i.vuniorgstdrec = :vuniorgstdrec"),
-    @NamedQuery(name = "IotdtcDespacho.findByVobs", query = "SELECT i FROM IotdtcDespacho i WHERE i.vobs = :vobs"),
-    @NamedQuery(name = "IotdtcDespacho.findByVcuoref", query = "SELECT i FROM IotdtcDespacho i WHERE i.vcuoref = :vcuoref"),
-    @NamedQuery(name = "IotdtcDespacho.findByCflgest", query = "SELECT i FROM IotdtcDespacho i WHERE i.cflgest = :cflgest"),
-    @NamedQuery(name = "IotdtcDespacho.findByCflgenv", query = "SELECT i FROM IotdtcDespacho i WHERE i.cflgenv = :cflgenv"),
-    @NamedQuery(name = "IotdtcDespacho.findByDfecenv", query = "SELECT i FROM IotdtcDespacho i WHERE i.dfecenv = :dfecenv"),
-    @NamedQuery(name = "IotdtcDespacho.findByVusureg", query = "SELECT i FROM IotdtcDespacho i WHERE i.vusureg = :vusureg"),
-    @NamedQuery(name = "IotdtcDespacho.findByDfecreg", query = "SELECT i FROM IotdtcDespacho i WHERE i.dfecreg = :dfecreg"),
-    @NamedQuery(name = "IotdtcDespacho.findByVusumod", query = "SELECT i FROM IotdtcDespacho i WHERE i.vusumod = :vusumod"),
-    @NamedQuery(name = "IotdtcDespacho.findByDfecmod", query = "SELECT i FROM IotdtcDespacho i WHERE i.dfecmod = :dfecmod")})
-public class IotdtcDespacho implements Serializable {
+    @NamedQuery(name = "IotdtcDespachoPIDE.findAll", query = "SELECT i FROM IotdtcDespachoPIDE i"),
+    @NamedQuery(name = "IotdtcDespachoPIDE.findBySidemiext", query = "SELECT i FROM IotdtcDespachoPIDE i WHERE i.sidemiext = :sidemiext"),
+    @NamedQuery(name = "IotdtcDespachoPIDE.findByVnumregstd", query = "SELECT i FROM IotdtcDespachoPIDE i WHERE i.vnumregstd = :vnumregstd"),
+    @NamedQuery(name = "IotdtcDespachoPIDE.findByVanioregstd", query = "SELECT i FROM IotdtcDespachoPIDE i WHERE i.vanioregstd = :vanioregstd"),
+    @NamedQuery(name = "IotdtcDespachoPIDE.findByCtipdociderem", query = "SELECT i FROM IotdtcDespachoPIDE i WHERE i.ctipdociderem = :ctipdociderem"),
+    @NamedQuery(name = "IotdtcDespachoPIDE.findByVnumdociderem", query = "SELECT i FROM IotdtcDespachoPIDE i WHERE i.vnumdociderem = :vnumdociderem"),
+    @NamedQuery(name = "IotdtcDespachoPIDE.findByVcoduniorgrem", query = "SELECT i FROM IotdtcDespachoPIDE i WHERE i.vcoduniorgrem = :vcoduniorgrem"),
+    @NamedQuery(name = "IotdtcDespachoPIDE.findByVuniorgrem", query = "SELECT i FROM IotdtcDespachoPIDE i WHERE i.vuniorgrem = :vuniorgrem"),
+    @NamedQuery(name = "IotdtcDespachoPIDE.findByVcuo", query = "SELECT i FROM IotdtcDespachoPIDE i WHERE i.vcuo = :vcuo"),
+    @NamedQuery(name = "IotdtcDespachoPIDE.findByVrucentrec", query = "SELECT i FROM IotdtcDespachoPIDE i WHERE i.vrucentrec = :vrucentrec"),
+    @NamedQuery(name = "IotdtcDespachoPIDE.findByVnomentrec", query = "SELECT i FROM IotdtcDespachoPIDE i WHERE i.vnomentrec = :vnomentrec"),
+    @NamedQuery(name = "IotdtcDespachoPIDE.findByVnumregstdrec", query = "SELECT i FROM IotdtcDespachoPIDE i WHERE i.vnumregstdrec = :vnumregstdrec"),
+    @NamedQuery(name = "IotdtcDespachoPIDE.findByVanioregstdrec", query = "SELECT i FROM IotdtcDespachoPIDE i WHERE i.vanioregstdrec = :vanioregstdrec"),
+    @NamedQuery(name = "IotdtcDespachoPIDE.findByDfecregstdrec", query = "SELECT i FROM IotdtcDespachoPIDE i WHERE i.dfecregstdrec = :dfecregstdrec"),
+    @NamedQuery(name = "IotdtcDespachoPIDE.findByVusuregstdrec", query = "SELECT i FROM IotdtcDespachoPIDE i WHERE i.vusuregstdrec = :vusuregstdrec"),
+    @NamedQuery(name = "IotdtcDespachoPIDE.findByVuniorgstdrec", query = "SELECT i FROM IotdtcDespachoPIDE i WHERE i.vuniorgstdrec = :vuniorgstdrec"),
+    @NamedQuery(name = "IotdtcDespachoPIDE.findByVobs", query = "SELECT i FROM IotdtcDespachoPIDE i WHERE i.vobs = :vobs"),
+    @NamedQuery(name = "IotdtcDespachoPIDE.findByVcuoref", query = "SELECT i FROM IotdtcDespachoPIDE i WHERE i.vcuoref = :vcuoref"),
+    @NamedQuery(name = "IotdtcDespachoPIDE.findByCflgest", query = "SELECT i FROM IotdtcDespachoPIDE i WHERE i.cflgest = :cflgest"),
+//    @NamedQuery(name = "IotdtcDespachoPIDE.findByCflgenv", query = "SELECT i FROM IotdtcDespachoPIDE i WHERE i.cflgenv = :cflgenv"),
+    @NamedQuery(name = "IotdtcDespachoPIDE.findByDfecenv", query = "SELECT i FROM IotdtcDespachoPIDE i WHERE i.dfecenv = :dfecenv"),
+    @NamedQuery(name = "IotdtcDespachoPIDE.findByVusureg", query = "SELECT i FROM IotdtcDespachoPIDE i WHERE i.vusureg = :vusureg"),
+    @NamedQuery(name = "IotdtcDespachoPIDE.findByDfecreg", query = "SELECT i FROM IotdtcDespachoPIDE i WHERE i.dfecreg = :dfecreg"),
+    @NamedQuery(name = "IotdtcDespachoPIDE.findByVusumod", query = "SELECT i FROM IotdtcDespachoPIDE i WHERE i.vusumod = :vusumod"),
+    @NamedQuery(name = "IotdtcDespachoPIDE.findByDfecmod", query = "SELECT i FROM IotdtcDespachoPIDE i WHERE i.dfecmod = :dfecmod")})
+public class IotdtcDespachoPIDE implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -114,9 +114,9 @@ public class IotdtcDespacho implements Serializable {
     @Basic(optional = false)
     @Column(name = "CFLGEST")
     private Character cflgest;
-    @Basic(optional = false)
-    @Column(name = "CFLGENV")
-    private Character cflgenv;
+//    @Basic(optional = false)
+//    @Column(name = "CFLGENV")
+//    private Character cflgenv;
     @Column(name = "DFECENV")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dfecenv;
@@ -134,35 +134,35 @@ public class IotdtcDespacho implements Serializable {
     private Date dfecmod;
     
     @OneToMany(mappedBy = "sidemiext")
-    private List<IotdtmDocExterno> iotdtmDocExternoList;
+    private List<IotdtmDocExternoPIDE> iotdtmDocExternoList;
 
-    @Basic(optional = false)
-    @Column(name = "IDDOCUMENTO")
-    private Integer iddocumento;
+//    @Basic(optional = false)
+//    @Column(name = "IDDOCUMENTO")
+//    private Integer iddocumento;
 
-    public Integer getIddocumento() {
-        return iddocumento;
-    }
-
-    public void setIddocumento(Integer iddocumento) {
-        this.iddocumento = iddocumento;
-    }
+//    public Integer getIddocumento() {
+//        return iddocumento;
+//    }
+//
+//    public void setIddocumento(Integer iddocumento) {
+//        this.iddocumento = iddocumento;
+//    }
     
-    public IotdtcDespacho() {
+    public IotdtcDespachoPIDE() {
     }
 
-    public IotdtcDespacho(Integer sidemiext) {
+    public IotdtcDespachoPIDE(Integer sidemiext) {
         this.sidemiext = sidemiext;
     }
 
-    public IotdtcDespacho(Integer sidemiext, Character ctipdociderem, String vnumdociderem, String vrucentrec, String vnomentrec, Character cflgest, Character cflgenv, String vusureg, Date dfecreg) {
+    public IotdtcDespachoPIDE(Integer sidemiext, Character ctipdociderem, String vnumdociderem, String vrucentrec, String vnomentrec, Character cflgest, Character cflgenv, String vusureg, Date dfecreg) {
         this.sidemiext = sidemiext;
         this.ctipdociderem = ctipdociderem;
         this.vnumdociderem = vnumdociderem;
         this.vrucentrec = vrucentrec;
         this.vnomentrec = vnomentrec;
         this.cflgest = cflgest;
-        this.cflgenv = cflgenv;
+//        this.cflgenv = cflgenv;
         this.vusureg = vusureg;
         this.dfecreg = dfecreg;
     }
@@ -319,13 +319,13 @@ public class IotdtcDespacho implements Serializable {
         this.cflgest = cflgest;
     }
 
-    public Character getCflgenv() {
-        return cflgenv;
-    }
-
-    public void setCflgenv(Character cflgenv) {
-        this.cflgenv = cflgenv;
-    }
+//    public Character getCflgenv() {
+//        return cflgenv;
+//    }
+//
+//    public void setCflgenv(Character cflgenv) {
+//        this.cflgenv = cflgenv;
+//    }
 
     public Date getDfecenv() {
         return dfecenv;
@@ -368,11 +368,11 @@ public class IotdtcDespacho implements Serializable {
     }
 
     @XmlTransient
-    public List<IotdtmDocExterno> getIotdtmDocExternoList() {
+    public List<IotdtmDocExternoPIDE> getIotdtmDocExternoList() {
         return iotdtmDocExternoList;
     }
 
-    public void setIotdtmDocExternoList(List<IotdtmDocExterno> iotdtmDocExternoList) {
+    public void setIotdtmDocExternoList(List<IotdtmDocExternoPIDE> iotdtmDocExternoList) {
         this.iotdtmDocExternoList = iotdtmDocExternoList;
     }
 
@@ -386,10 +386,10 @@ public class IotdtcDespacho implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof IotdtcDespacho)) {
+        if (!(object instanceof IotdtcDespachoPIDE)) {
             return false;
         }
-        IotdtcDespacho other = (IotdtcDespacho) object;
+        IotdtcDespachoPIDE other = (IotdtcDespachoPIDE) object;
         if ((this.sidemiext == null && other.sidemiext != null) || (this.sidemiext != null && !this.sidemiext.equals(other.sidemiext))) {
             return false;
         }
@@ -398,7 +398,7 @@ public class IotdtcDespacho implements Serializable {
 
     @Override
     public String toString() {
-        return "com.btg.ositran.siged.domain.IotdtcDespacho[ sidemiext=" + sidemiext + " ]";
+        return "IotdtcDespachoPIDE[ sidemiext=" + sidemiext + " ]";
     }
     
 }

@@ -130,7 +130,11 @@
 		<class>com.btg.ositran.siged.domain.IotdtcRecepcionMPV</class>
 		<class>com.btg.ositran.siged.domain.IotdtdAdjuntoMPV</class>
 	</persistence-unit>
-	<persistence-unit name="interoperabilidad">
-		<class>com.btg.ositran.siged.domain.IotdtcRecepcionSchemaIdsgd</class>
+	<persistence-unit name="pidePU">
+		<class>com.btg.ositran.siged.domain.IotdtcRecepcionPIDE</class>
+		<class>com.btg.ositran.siged.domain.IotdtcDespachoPIDE</class>
+		<class>com.btg.ositran.siged.domain.IotdtmDocExternoPIDE</class>
+		<class>com.btg.ositran.siged.domain.IotdtdDocPrincipalPIDE</class>
+		<class>com.btg.ositran.siged.domain.IotdtdAnexoPIDE</class>
 	</persistence-unit>
 </persistence>

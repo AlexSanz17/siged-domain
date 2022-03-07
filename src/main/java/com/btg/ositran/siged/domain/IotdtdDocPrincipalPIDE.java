@@ -24,15 +24,15 @@ import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
-@Table(name = "IOTDTD_DOC_PRINCIPAL")
+@Table(name = "IOTDTD_DOC_PRINCIPAL", schema = "IDOSGD")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "IotdtdDocPrincipal.findAll", query = "SELECT i FROM IotdtdDocPrincipal i"),
-    @NamedQuery(name = "IotdtdDocPrincipal.findBySiddocpri", query = "SELECT i FROM IotdtdDocPrincipal i WHERE i.siddocpri = :siddocpri"),
-    @NamedQuery(name = "IotdtdDocPrincipal.findByVnomdoc", query = "SELECT i FROM IotdtdDocPrincipal i WHERE i.vnomdoc = :vnomdoc"),
-    @NamedQuery(name = "IotdtdDocPrincipal.findByCcodest", query = "SELECT i FROM IotdtdDocPrincipal i WHERE i.ccodest = :ccodest"),
-    @NamedQuery(name = "IotdtdDocPrincipal.findByDfecreg", query = "SELECT i FROM IotdtdDocPrincipal i WHERE i.dfecreg = :dfecreg")})
-public class IotdtdDocPrincipal implements Serializable {
+    @NamedQuery(name = "IotdtdDocPrincipalPIDE.findAll", query = "SELECT i FROM IotdtdDocPrincipalPIDE i"),
+    @NamedQuery(name = "IotdtdDocPrincipalPIDE.findBySiddocpri", query = "SELECT i FROM IotdtdDocPrincipalPIDE i WHERE i.siddocpri = :siddocpri"),
+    @NamedQuery(name = "IotdtdDocPrincipalPIDE.findByVnomdoc", query = "SELECT i FROM IotdtdDocPrincipalPIDE i WHERE i.vnomdoc = :vnomdoc"),
+    @NamedQuery(name = "IotdtdDocPrincipalPIDE.findByCcodest", query = "SELECT i FROM IotdtdDocPrincipalPIDE i WHERE i.ccodest = :ccodest"),
+    @NamedQuery(name = "IotdtdDocPrincipalPIDE.findByDfecreg", query = "SELECT i FROM IotdtdDocPrincipalPIDE i WHERE i.dfecreg = :dfecreg")})
+public class IotdtdDocPrincipalPIDE implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -55,19 +55,19 @@ public class IotdtdDocPrincipal implements Serializable {
     
     @Column(name = "SIDDOCEXT", insertable=false, updatable=false)
     private Integer ssiddocext;
-
-	@JoinColumn(name = "SIDDOCEXT", referencedColumnName = "SIDDOCEXT")
+    
+    @JoinColumn(name = "SIDDOCEXT", referencedColumnName = "SIDDOCEXT")
     @ManyToOne(optional = false)
-    private IotdtmDocExterno siddocext;
+    private IotdtmDocExternoPIDE siddocext;
 
-    public IotdtdDocPrincipal() {
+    public IotdtdDocPrincipalPIDE() {
     }
 
-    public IotdtdDocPrincipal(Integer siddocpri) {
+    public IotdtdDocPrincipalPIDE(Integer siddocpri) {
         this.siddocpri = siddocpri;
     }
 
-    public IotdtdDocPrincipal(Integer siddocpri, String vnomdoc, byte[] bpdfdoc, Character ccodest, Date dfecreg) {
+    public IotdtdDocPrincipalPIDE(Integer siddocpri, String vnomdoc, byte[] bpdfdoc, Character ccodest, Date dfecreg) {
         this.siddocpri = siddocpri;
         this.vnomdoc = vnomdoc;
         this.bpdfdoc = bpdfdoc;
@@ -123,11 +123,11 @@ public class IotdtdDocPrincipal implements Serializable {
 		this.ssiddocext = ssiddocext;
 	}
 	
-    public IotdtmDocExterno getSiddocext() {
+    public IotdtmDocExternoPIDE getSiddocext() {
         return siddocext;
     }
 
-    public void setSiddocext(IotdtmDocExterno siddocext) {
+    public void setSiddocext(IotdtmDocExternoPIDE siddocext) {
         this.siddocext = siddocext;
     }
 
@@ -141,10 +141,10 @@ public class IotdtdDocPrincipal implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof IotdtdDocPrincipal)) {
+        if (!(object instanceof IotdtdDocPrincipalPIDE)) {
             return false;
         }
-        IotdtdDocPrincipal other = (IotdtdDocPrincipal) object;
+        IotdtdDocPrincipalPIDE other = (IotdtdDocPrincipalPIDE) object;
         if ((this.siddocpri == null && other.siddocpri != null) || (this.siddocpri != null && !this.siddocpri.equals(other.siddocpri))) {
             return false;
         }
@@ -152,8 +152,8 @@ public class IotdtdDocPrincipal implements Serializable {
     }
 
     @Override
-    public String toString() {
-        return "com.btg.ositran.siged.domain.IotdtdDocPrincipal[ siddocpri=" + siddocpri + " ]";
-    }
+	public String toString() {
+		return "IotdtdDocPrincipalPIDE [siddocpri=" + siddocpri + "]";
+	}
     
 }

@@ -6,31 +6,33 @@
 package com.btg.ositran.siged.domain;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
-
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
-@Table(name = "IOTDTD_ANEXO")
+@Table(name = "IOTDTD_ANEXO", schema = "IDOSGD")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "IotdtdAnexo.findAll", query = "SELECT i FROM IotdtdAnexo i"),
-    @NamedQuery(name = "IotdtdAnexo.findBySiddocanx", query = "SELECT i FROM IotdtdAnexo i WHERE i.siddocanx = :siddocanx"),
-    @NamedQuery(name = "IotdtdAnexo.findByVnomdoc", query = "SELECT i FROM IotdtdAnexo i WHERE i.vnomdoc = :vnomdoc"),
-    @NamedQuery(name = "IotdtdAnexo.findByDfecreg", query = "SELECT i FROM IotdtdAnexo i WHERE i.dfecreg = :dfecreg")})
-public class IotdtdAnexo implements Serializable {
+    @NamedQuery(name = "IotdtdAnexoPIDE.findAll", query = "SELECT i FROM IotdtdAnexoPIDE i"),
+    @NamedQuery(name = "IotdtdAnexoPIDE.findBySiddocanx", query = "SELECT i FROM IotdtdAnexoPIDE i WHERE i.siddocanx = :siddocanx"),
+    @NamedQuery(name = "IotdtdAnexoPIDE.findByVnomdoc", query = "SELECT i FROM IotdtdAnexoPIDE i WHERE i.vnomdoc = :vnomdoc"),
+    @NamedQuery(name = "IotdtdAnexoPIDE.findByDfecreg", query = "SELECT i FROM IotdtdAnexoPIDE i WHERE i.dfecreg = :dfecreg")})
+public class IotdtdAnexoPIDE implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -49,16 +51,16 @@ public class IotdtdAnexo implements Serializable {
     
     @JoinColumn(name = "SIDDOCEXT", referencedColumnName = "SIDDOCEXT")
     @ManyToOne(optional = false)
-    private IotdtmDocExterno siddocext;
+    private IotdtmDocExternoPIDE siddocext;
 
-    public IotdtdAnexo() {
+    public IotdtdAnexoPIDE() {
     }
 
-    public IotdtdAnexo(Integer siddocanx) {
+    public IotdtdAnexoPIDE(Integer siddocanx) {
         this.siddocanx = siddocanx;
     }
 
-    public IotdtdAnexo(Integer siddocanx, String vnomdoc, Date dfecreg) {
+    public IotdtdAnexoPIDE(Integer siddocanx, String vnomdoc, Date dfecreg) {
         this.siddocanx = siddocanx;
         this.vnomdoc = vnomdoc;
         this.dfecreg = dfecreg;
@@ -96,11 +98,11 @@ public class IotdtdAnexo implements Serializable {
 		this.ssiddocext = ssiddocext;
 	}
 	
-    public IotdtmDocExterno getSiddocext() {
+    public IotdtmDocExternoPIDE getSiddocext() {
         return siddocext;
     }
 
-    public void setSiddocext(IotdtmDocExterno siddocext) {
+    public void setSiddocext(IotdtmDocExternoPIDE siddocext) {
         this.siddocext = siddocext;
     }
 
@@ -114,10 +116,10 @@ public class IotdtdAnexo implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof IotdtdAnexo)) {
+        if (!(object instanceof IotdtdAnexoPIDE)) {
             return false;
         }
-        IotdtdAnexo other = (IotdtdAnexo) object;
+        IotdtdAnexoPIDE other = (IotdtdAnexoPIDE) object;
         if ((this.siddocanx == null && other.siddocanx != null) || (this.siddocanx != null && !this.siddocanx.equals(other.siddocanx))) {
             return false;
         }
@@ -126,7 +128,7 @@ public class IotdtdAnexo implements Serializable {
 
     @Override
     public String toString() {
-        return "com.btg.ositran.siged.domain.IotdtdAnexo[ siddocanx=" + siddocanx + " ]";
+        return "IotdtdAnexoPIDE[ siddocanx=" + siddocanx + " ]";
     }
     
 }

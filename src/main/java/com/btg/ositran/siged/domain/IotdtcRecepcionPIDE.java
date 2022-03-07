@@ -22,39 +22,33 @@ import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
-/**
- *
- * @author consultor_jti15
- */
 @Entity
 @Table(name = "IOTDTC_RECEPCION", schema = "IDOSGD")
 @XmlRootElement
 @NamedQueries({
-		@NamedQuery(name = "IotdtcRecepcionSchemaIdsgd.findAll", query = "SELECT i FROM IotdtcRecepcionSchemaIdsgd i"),
-		@NamedQuery(name = "IotdtcRecepcionSchemaIdsgd.findBySidrecext", query = "SELECT i FROM IotdtcRecepcionSchemaIdsgd i WHERE i.sidrecext = :sidrecext"),
-		@NamedQuery(name = "IotdtcRecepcionSchemaIdsgd.findByVrucentrem", query = "SELECT i FROM IotdtcRecepcionSchemaIdsgd i WHERE i.vrucentrem = :vrucentrem"),
-		@NamedQuery(name = "IotdtcRecepcionSchemaIdsgd.findByVuniorgrem", query = "SELECT i FROM IotdtcRecepcionSchemaIdsgd i WHERE i.vuniorgrem = :vuniorgrem"),
-		@NamedQuery(name = "IotdtcRecepcionSchemaIdsgd.findByCtipdociderem", query = "SELECT i FROM IotdtcRecepcionSchemaIdsgd i WHERE i.ctipdociderem = :ctipdociderem"),
-		@NamedQuery(name = "IotdtcRecepcionSchemaIdsgd.findByVnumdociderem", query = "SELECT i FROM IotdtcRecepcionSchemaIdsgd i WHERE i.vnumdociderem = :vnumdociderem"),
-		@NamedQuery(name = "IotdtcRecepcionSchemaIdsgd.findByVnumregstd", query = "SELECT i FROM IotdtcRecepcionSchemaIdsgd i WHERE i.vnumregstd = :vnumregstd"),
-		@NamedQuery(name = "IotdtcRecepcionSchemaIdsgd.findByVanioregstd", query = "SELECT i FROM IotdtcRecepcionSchemaIdsgd i WHERE i.vanioregstd = :vanioregstd"),
-		@NamedQuery(name = "IotdtcRecepcionSchemaIdsgd.findByVuniorgstd", query = "SELECT i FROM IotdtcRecepcionSchemaIdsgd i WHERE i.vuniorgstd = :vuniorgstd"),
-		@NamedQuery(name = "IotdtcRecepcionSchemaIdsgd.findByCcoduniorgstd", query = "SELECT i FROM IotdtcRecepcionSchemaIdsgd i WHERE i.ccoduniorgstd = :ccoduniorgstd"),
-		@NamedQuery(name = "IotdtcRecepcionSchemaIdsgd.findByDfecregstd", query = "SELECT i FROM IotdtcRecepcionSchemaIdsgd i WHERE i.dfecregstd = :dfecregstd"),
-		@NamedQuery(name = "IotdtcRecepcionSchemaIdsgd.findByVusuregstd", query = "SELECT i FROM IotdtcRecepcionSchemaIdsgd i WHERE i.vusuregstd = :vusuregstd"),
-		@NamedQuery(name = "IotdtcRecepcionSchemaIdsgd.findByVcuo", query = "SELECT i FROM IotdtcRecepcionSchemaIdsgd i WHERE i.vcuo = :vcuo"),
-		@NamedQuery(name = "IotdtcRecepcionSchemaIdsgd.findByVcuoref", query = "SELECT i FROM IotdtcRecepcionSchemaIdsgd i WHERE i.vcuoref = :vcuoref"),
-		@NamedQuery(name = "IotdtcRecepcionSchemaIdsgd.findByVobs", query = "SELECT i FROM IotdtcRecepcionSchemaIdsgd i WHERE i.vobs = :vobs"),
-		@NamedQuery(name = "IotdtcRecepcionSchemaIdsgd.findByCflgest", query = "SELECT i FROM IotdtcRecepcionSchemaIdsgd i WHERE i.cflgest = :cflgest"),
-		@NamedQuery(name = "IotdtcRecepcionSchemaIdsgd.findByVusumod", query = "SELECT i FROM IotdtcRecepcionSchemaIdsgd i WHERE i.vusumod = :vusumod"),
-		@NamedQuery(name = "IotdtcRecepcionSchemaIdsgd.findByDfecmod", query = "SELECT i FROM IotdtcRecepcionSchemaIdsgd i WHERE i.dfecmod = :dfecmod"),
-		@NamedQuery(name = "IotdtcRecepcionSchemaIdsgd.findByCflgestobs", query = "SELECT i FROM IotdtcRecepcionSchemaIdsgd i WHERE i.cflgestobs = :cflgestobs"),
-		@NamedQuery(name = "IotdtcRecepcionSchemaIdsgd.findByCflgenvcar", query = "SELECT i FROM IotdtcRecepcionSchemaIdsgd i WHERE i.cflgenvcar = :cflgenvcar"),
-		@NamedQuery(name = "IotdtcRecepcionSchemaIdsgd.findByDfecreg", query = "SELECT i FROM IotdtcRecepcionSchemaIdsgd i WHERE i.dfecreg = :dfecreg") })
-public class IotdtcRecepcionSchemaIdsgd implements Serializable {
+		@NamedQuery(name = "IotdtcRecepcionPIDE.findAll", query = "SELECT i FROM IotdtcRecepcionPIDE i"),
+		@NamedQuery(name = "IotdtcRecepcionPIDE.findBySidrecext", query = "SELECT i FROM IotdtcRecepcionPIDE i WHERE i.sidrecext = :sidrecext"),
+		@NamedQuery(name = "IotdtcRecepcionPIDE.findByVrucentrem", query = "SELECT i FROM IotdtcRecepcionPIDE i WHERE i.vrucentrem = :vrucentrem"),
+		@NamedQuery(name = "IotdtcRecepcionPIDE.findByVuniorgrem", query = "SELECT i FROM IotdtcRecepcionPIDE i WHERE i.vuniorgrem = :vuniorgrem"),
+		@NamedQuery(name = "IotdtcRecepcionPIDE.findByCtipdociderem", query = "SELECT i FROM IotdtcRecepcionPIDE i WHERE i.ctipdociderem = :ctipdociderem"),
+		@NamedQuery(name = "IotdtcRecepcionPIDE.findByVnumdociderem", query = "SELECT i FROM IotdtcRecepcionPIDE i WHERE i.vnumdociderem = :vnumdociderem"),
+		@NamedQuery(name = "IotdtcRecepcionPIDE.findByVnumregstd", query = "SELECT i FROM IotdtcRecepcionPIDE i WHERE i.vnumregstd = :vnumregstd"),
+		@NamedQuery(name = "IotdtcRecepcionPIDE.findByVanioregstd", query = "SELECT i FROM IotdtcRecepcionPIDE i WHERE i.vanioregstd = :vanioregstd"),
+		@NamedQuery(name = "IotdtcRecepcionPIDE.findByVuniorgstd", query = "SELECT i FROM IotdtcRecepcionPIDE i WHERE i.vuniorgstd = :vuniorgstd"),
+		@NamedQuery(name = "IotdtcRecepcionPIDE.findByCcoduniorgstd", query = "SELECT i FROM IotdtcRecepcionPIDE i WHERE i.ccoduniorgstd = :ccoduniorgstd"),
+		@NamedQuery(name = "IotdtcRecepcionPIDE.findByDfecregstd", query = "SELECT i FROM IotdtcRecepcionPIDE i WHERE i.dfecregstd = :dfecregstd"),
+		@NamedQuery(name = "IotdtcRecepcionPIDE.findByVusuregstd", query = "SELECT i FROM IotdtcRecepcionPIDE i WHERE i.vusuregstd = :vusuregstd"),
+		@NamedQuery(name = "IotdtcRecepcionPIDE.findByVcuo", query = "SELECT i FROM IotdtcRecepcionPIDE i WHERE i.vcuo = :vcuo"),
+		@NamedQuery(name = "IotdtcRecepcionPIDE.findByVcuoref", query = "SELECT i FROM IotdtcRecepcionPIDE i WHERE i.vcuoref = :vcuoref"),
+		@NamedQuery(name = "IotdtcRecepcionPIDE.findByVobs", query = "SELECT i FROM IotdtcRecepcionPIDE i WHERE i.vobs = :vobs"),
+		@NamedQuery(name = "IotdtcRecepcionPIDE.findByCflgest", query = "SELECT i FROM IotdtcRecepcionPIDE i WHERE i.cflgest = :cflgest"),
+		@NamedQuery(name = "IotdtcRecepcionPIDE.findByVusumod", query = "SELECT i FROM IotdtcRecepcionPIDE i WHERE i.vusumod = :vusumod"),
+		@NamedQuery(name = "IotdtcRecepcionPIDE.findByDfecmod", query = "SELECT i FROM IotdtcRecepcionPIDE i WHERE i.dfecmod = :dfecmod"),
+		@NamedQuery(name = "IotdtcRecepcionPIDE.findByCflgestobs", query = "SELECT i FROM IotdtcRecepcionPIDE i WHERE i.cflgestobs = :cflgestobs"),
+		@NamedQuery(name = "IotdtcRecepcionPIDE.findByCflgenvcar", query = "SELECT i FROM IotdtcRecepcionPIDE i WHERE i.cflgenvcar = :cflgenvcar"),
+		@NamedQuery(name = "IotdtcRecepcionPIDE.findByDfecreg", query = "SELECT i FROM IotdtcRecepcionPIDE i WHERE i.dfecreg = :dfecreg") })
+public class IotdtcRecepcionPIDE implements Serializable {
 	private static final long serialVersionUID = 1L;
-	// @Max(value=?) @Min(value=?)//if you know range of your decimal fields
-	// consider using these annotations to enforce field validation
 	@Id
 	@Basic(optional = false)
 	@Column(name = "SIDRECEXT")
@@ -121,7 +115,7 @@ public class IotdtcRecepcionSchemaIdsgd implements Serializable {
 	private Date dfecreg;
 
 	@OneToMany(mappedBy = "sidrecext")
-	private List<IotdtmDocExterno> iotdtmDocExternoList;
+	private List<IotdtmDocExternoPIDE> iotdtmDocExternoList;
 
 	public Character getCflganu() {
 		return cflganu;
@@ -131,14 +125,14 @@ public class IotdtcRecepcionSchemaIdsgd implements Serializable {
 		this.cflganu = cflganu;
 	}
 
-	public IotdtcRecepcionSchemaIdsgd() {
+	public IotdtcRecepcionPIDE() {
 	}
 
-	public IotdtcRecepcionSchemaIdsgd(Integer sidrecext) {
+	public IotdtcRecepcionPIDE(Integer sidrecext) {
 		this.sidrecext = sidrecext;
 	}
 
-	public IotdtcRecepcionSchemaIdsgd(Integer sidrecext, String vrucentrem, String vuniorgrem, Character ctipdociderem,
+	public IotdtcRecepcionPIDE(Integer sidrecext, String vrucentrem, String vuniorgrem, Character ctipdociderem,
 			String vnumdociderem, String vcuo, Character cflgest, Date dfecreg) {
 		this.sidrecext = sidrecext;
 		this.vrucentrem = vrucentrem;
@@ -327,11 +321,11 @@ public class IotdtcRecepcionSchemaIdsgd implements Serializable {
 	}
 
 	@XmlTransient
-	public List<IotdtmDocExterno> getIotdtmDocExternoList() {
+	public List<IotdtmDocExternoPIDE> getIotdtmDocExternoList() {
 		return iotdtmDocExternoList;
 	}
 
-	public void setIotdtmDocExternoList(List<IotdtmDocExterno> iotdtmDocExternoList) {
+	public void setIotdtmDocExternoList(List<IotdtmDocExternoPIDE> iotdtmDocExternoList) {
 		this.iotdtmDocExternoList = iotdtmDocExternoList;
 	}
 
@@ -345,10 +339,10 @@ public class IotdtcRecepcionSchemaIdsgd implements Serializable {
 	@Override
 	public boolean equals(Object object) {
 		// TODO: Warning - this method won't work in the case the id fields are not set
-		if (!(object instanceof IotdtcRecepcionSchemaIdsgd)) {
+		if (!(object instanceof IotdtcRecepcionPIDE)) {
 			return false;
 		}
-		IotdtcRecepcionSchemaIdsgd other = (IotdtcRecepcionSchemaIdsgd) object;
+		IotdtcRecepcionPIDE other = (IotdtcRecepcionPIDE) object;
 		if ((this.sidrecext == null && other.sidrecext != null)
 				|| (this.sidrecext != null && !this.sidrecext.equals(other.sidrecext))) {
 			return false;
@@ -358,7 +352,7 @@ public class IotdtcRecepcionSchemaIdsgd implements Serializable {
 
 	@Override
 	public String toString() {
-		return "com.btg.ositran.siged.domain.IotdtcRecepcion[ sidrecext=" + sidrecext + " ]";
+		return "IotdtcRecepcionPIDE[ sidrecext=" + sidrecext + " ]";
 	}
 
 }
