@@ -186,5 +186,5 @@ public class FirmaArchivo  implements Serializable{
 
         public void setFechaModificacion(Date fechaModificacion) {
             this.fechaModificacion = fechaModificacion;
-        }      
+        }        
 }
