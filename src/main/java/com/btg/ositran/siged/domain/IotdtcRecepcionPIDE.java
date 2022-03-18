@@ -6,6 +6,7 @@
 package com.btg.ositran.siged.domain;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
@@ -88,18 +89,14 @@ public class IotdtcRecepcionPIDE implements Serializable {
 	private String vcuoref;
 	@Column(name = "VOBS")
 	private String vobs;
-
 	@Column(name = "VDESANXSTD")
 	private String vdesanxstd;
-
 	@Basic(optional = false)
 	@Column(name = "CFLGEST")
 	private Character cflgest;
-
 	@Basic(optional = false)
 	@Column(name = "CFLGANU")
 	private Character cflganu;
-
 	@Column(name = "VUSUMOD")
 	private String vusumod;
 	@Column(name = "DFECMOD")
@@ -113,7 +110,6 @@ public class IotdtcRecepcionPIDE implements Serializable {
 	@Column(name = "DFECREG")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dfecreg;
-
 	@OneToMany(mappedBy = "sidrecext")
 	private List<IotdtmDocExternoPIDE> iotdtmDocExternoList;
 
@@ -338,7 +334,6 @@ public class IotdtcRecepcionPIDE implements Serializable {
 
 	@Override
 	public boolean equals(Object object) {
-		// TODO: Warning - this method won't work in the case the id fields are not set
 		if (!(object instanceof IotdtcRecepcionPIDE)) {
 			return false;
 		}
@@ -352,7 +347,14 @@ public class IotdtcRecepcionPIDE implements Serializable {
 
 	@Override
 	public String toString() {
-		return "IotdtcRecepcionPIDE[ sidrecext=" + sidrecext + " ]";
+		return "IotdtcRecepcionPIDE [sidrecext=" + sidrecext + ", vrucentrem=" + vrucentrem + ", vuniorgrem="
+			+ vuniorgrem + ", ctipdociderem=" + ctipdociderem + ", vnumdociderem=" + vnumdociderem + ", vnumregstd="
+			+ vnumregstd + ", vanioregstd=" + vanioregstd + ", vuniorgstd=" + vuniorgstd + ", ccoduniorgstd="
+			+ ccoduniorgstd + ", dfecregstd=" + dfecregstd + ", vusuregstd=" + vusuregstd + ", bcarstd="
+			+ Arrays.toString(bcarstd) + ", vcuo=" + vcuo + ", vcuoref=" + vcuoref + ", vobs=" + vobs
+			+ ", vdesanxstd=" + vdesanxstd + ", cflgest=" + cflgest + ", cflganu=" + cflganu + ", vusumod="
+			+ vusumod + ", dfecmod=" + dfecmod + ", cflgestobs=" + cflgestobs + ", cflgenvcar=" + cflgenvcar
+			+ ", dfecreg=" + dfecreg + ", iotdtmDocExternoList=" + iotdtmDocExternoList + "]";
 	}
 
 }

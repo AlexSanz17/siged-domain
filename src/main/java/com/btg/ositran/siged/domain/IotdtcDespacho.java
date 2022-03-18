@@ -1,11 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.btg.ositran.siged.domain;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -97,18 +93,8 @@ public class IotdtcDespacho implements Serializable {
     private byte[] bcarstdrec;
     @Column(name = "VOBS")
     private String vobs;
-    
     @Column(name = "VDESANXSTDREC")
     private String vdesanxstdrec;
-
-    public String getVdesanxstdrec() {
-        return vdesanxstdrec;
-    }
-
-    public void setVdesanxstdrec(String vdesanxstdrec) {
-        this.vdesanxstdrec = vdesanxstdrec;
-    }
-    
     @Column(name = "VCUOREF")
     private String vcuoref;
     @Basic(optional = false)
@@ -132,29 +118,19 @@ public class IotdtcDespacho implements Serializable {
     @Column(name = "DFECMOD")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dfecmod;
-    
     @OneToMany(mappedBy = "sidemiext")
     private List<IotdtmDocExterno> iotdtmDocExternoList;
-
     @Basic(optional = false)
     @Column(name = "IDDOCUMENTO")
     private Integer iddocumento;
 
-    public Integer getIddocumento() {
-        return iddocumento;
-    }
-
-    public void setIddocumento(Integer iddocumento) {
-        this.iddocumento = iddocumento;
-    }
-    
     public IotdtcDespacho() {
     }
 
     public IotdtcDespacho(Integer sidemiext) {
         this.sidemiext = sidemiext;
     }
-
+    
     public IotdtcDespacho(Integer sidemiext, Character ctipdociderem, String vnumdociderem, String vrucentrec, String vnomentrec, Character cflgest, Character cflgenv, String vusureg, Date dfecreg) {
         this.sidemiext = sidemiext;
         this.ctipdociderem = ctipdociderem;
@@ -166,7 +142,7 @@ public class IotdtcDespacho implements Serializable {
         this.vusureg = vusureg;
         this.dfecreg = dfecreg;
     }
-
+    
     public Integer getSidemiext() {
         return sidemiext;
     }
@@ -330,6 +306,22 @@ public class IotdtcDespacho implements Serializable {
     public Date getDfecenv() {
         return dfecenv;
     }
+    
+    public Integer getIddocumento() {
+        return iddocumento;
+    }
+
+    public void setIddocumento(Integer iddocumento) {
+        this.iddocumento = iddocumento;
+    }
+    
+    public String getVdesanxstdrec() {
+        return vdesanxstdrec;
+    }
+
+    public void setVdesanxstdrec(String vdesanxstdrec) {
+        this.vdesanxstdrec = vdesanxstdrec;
+    }
 
     public void setDfecenv(Date dfecenv) {
         this.dfecenv = dfecenv;
@@ -385,7 +377,6 @@ public class IotdtcDespacho implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof IotdtcDespacho)) {
             return false;
         }
@@ -397,8 +388,17 @@ public class IotdtcDespacho implements Serializable {
     }
 
     @Override
-    public String toString() {
-        return "com.btg.ositran.siged.domain.IotdtcDespacho[ sidemiext=" + sidemiext + " ]";
-    }
+	public String toString() {
+		return "IotdtcDespacho [sidemiext=" + sidemiext + ", vnumregstd=" + vnumregstd + ", vanioregstd=" + vanioregstd
+			+ ", ctipdociderem=" + ctipdociderem + ", vnumdociderem=" + vnumdociderem + ", vcoduniorgrem="
+			+ vcoduniorgrem + ", vuniorgrem=" + vuniorgrem + ", vcuo=" + vcuo + ", vrucentrec=" + vrucentrec
+			+ ", vnomentrec=" + vnomentrec + ", vnumregstdrec=" + vnumregstdrec + ", vanioregstdrec="
+			+ vanioregstdrec + ", dfecregstdrec=" + dfecregstdrec + ", vusuregstdrec=" + vusuregstdrec
+			+ ", vuniorgstdrec=" + vuniorgstdrec + ", bcarstdrec=" + Arrays.toString(bcarstdrec) + ", vobs=" + vobs
+			+ ", vdesanxstdrec=" + vdesanxstdrec + ", vcuoref=" + vcuoref + ", cflgest=" + cflgest + ", cflgenv="
+			+ cflgenv + ", dfecenv=" + dfecenv + ", vusureg=" + vusureg + ", dfecreg=" + dfecreg + ", vusumod="
+			+ vusumod + ", dfecmod=" + dfecmod + ", iotdtmDocExternoList=" + iotdtmDocExternoList + ", iddocumento="
+			+ iddocumento + "]";
+	}
     
 }

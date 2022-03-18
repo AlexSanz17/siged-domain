@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.btg.ositran.siged.domain;
 
 import java.io.Serializable;
@@ -43,10 +38,6 @@ public class IotdtdAnexo implements Serializable {
     @Column(name = "DFECREG")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dfecreg;
-    
-    @Column(name = "SIDDOCEXT", insertable=false, updatable=false)
-    private Integer ssiddocext;
-    
     @JoinColumn(name = "SIDDOCEXT", referencedColumnName = "SIDDOCEXT")
     @ManyToOne(optional = false)
     private IotdtmDocExterno siddocext;
@@ -87,14 +78,6 @@ public class IotdtdAnexo implements Serializable {
     public void setDfecreg(Date dfecreg) {
         this.dfecreg = dfecreg;
     }
-
-    public Integer getSsiddocext() {
-		return ssiddocext;
-	}
-
-	public void setSsiddocext(Integer ssiddocext) {
-		this.ssiddocext = ssiddocext;
-	}
 	
     public IotdtmDocExterno getSiddocext() {
         return siddocext;
@@ -113,7 +96,6 @@ public class IotdtdAnexo implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof IotdtdAnexo)) {
             return false;
         }
@@ -125,8 +107,9 @@ public class IotdtdAnexo implements Serializable {
     }
 
     @Override
-    public String toString() {
-        return "com.btg.ositran.siged.domain.IotdtdAnexo[ siddocanx=" + siddocanx + " ]";
-    }
+	public String toString() {
+		return "IotdtdAnexo [siddocanx=" + siddocanx + ", vnomdoc=" + vnomdoc + ", dfecreg=" + dfecreg + ", siddocext="
+			+ siddocext + "]";
+	}
     
 }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.btg.ositran.siged.domain;
 
 import java.io.Serializable;
@@ -91,10 +86,8 @@ public class IotdtcRecepcion implements Serializable {
     private String vcuoref;
     @Column(name = "VOBS")
     private String vobs;
-    
     @Column(name = "VDESANXSTD")
     private String vdesanxstd;
-
     @Basic(optional = false)
     @Column(name = "CFLGEST")
     private Character cflgest;
@@ -111,10 +104,8 @@ public class IotdtcRecepcion implements Serializable {
     @Column(name = "DFECREG")
     @Temporal(TemporalType.TIMESTAMP) 
     private Date dfecreg;
-    
     @OneToMany(mappedBy = "sidrecext")
     private List<IotdtmDocExterno> iotdtmDocExternoList;
-    
     @Column(name = "IDDOCUMENTO")
     private Integer iddocumento;
 
@@ -338,7 +329,6 @@ public class IotdtcRecepcion implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof IotdtcRecepcion)) {
             return false;
         }

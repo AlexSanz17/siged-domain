@@ -1,11 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.btg.ositran.siged.domain;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Date;
 
 import javax.persistence.Basic;
@@ -28,6 +24,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "IotdtdDocPrincipalPIDE.findAll", query = "SELECT i FROM IotdtdDocPrincipalPIDE i"),
+    @NamedQuery(name = "IotdtdDocPrincipalPIDE.findAllRecepcion", query = "SELECT i FROM IotdtdDocPrincipalPIDE i, IotdtmDocExternoPIDE j, IotdtcRecepcionPIDE k where i.siddocext.siddocext = j.siddocext and j.sidrecext.sidrecext = k.sidrecext"),
     @NamedQuery(name = "IotdtdDocPrincipalPIDE.findBySiddocpri", query = "SELECT i FROM IotdtdDocPrincipalPIDE i WHERE i.siddocpri = :siddocpri"),
     @NamedQuery(name = "IotdtdDocPrincipalPIDE.findByVnomdoc", query = "SELECT i FROM IotdtdDocPrincipalPIDE i WHERE i.vnomdoc = :vnomdoc"),
     @NamedQuery(name = "IotdtdDocPrincipalPIDE.findByCcodest", query = "SELECT i FROM IotdtdDocPrincipalPIDE i WHERE i.ccodest = :ccodest"),
@@ -52,10 +49,6 @@ public class IotdtdDocPrincipalPIDE implements Serializable {
     @Column(name = "DFECREG")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dfecreg;
-    
-    @Column(name = "SIDDOCEXT", insertable=false, updatable=false)
-    private Integer ssiddocext;
-    
     @JoinColumn(name = "SIDDOCEXT", referencedColumnName = "SIDDOCEXT")
     @ManyToOne(optional = false)
     private IotdtmDocExternoPIDE siddocext;
@@ -114,14 +107,6 @@ public class IotdtdDocPrincipalPIDE implements Serializable {
     public void setDfecreg(Date dfecreg) {
         this.dfecreg = dfecreg;
     }
-
-    public Integer getSsiddocext() {
-		return ssiddocext;
-	}
-
-	public void setSsiddocext(Integer ssiddocext) {
-		this.ssiddocext = ssiddocext;
-	}
 	
     public IotdtmDocExternoPIDE getSiddocext() {
         return siddocext;
@@ -140,7 +125,6 @@ public class IotdtdDocPrincipalPIDE implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof IotdtdDocPrincipalPIDE)) {
             return false;
         }
@@ -153,7 +137,8 @@ public class IotdtdDocPrincipalPIDE implements Serializable {
 
     @Override
 	public String toString() {
-		return "IotdtdDocPrincipalPIDE [siddocpri=" + siddocpri + "]";
+		return "IotdtdDocPrincipalPIDE [siddocpri=" + siddocpri + ", vnomdoc=" + vnomdoc + ", bpdfdoc="
+			+ Arrays.toString(bpdfdoc) + ", ccodest=" + ccodest + ", dfecreg=" + dfecreg + "]";
 	}
     
 }

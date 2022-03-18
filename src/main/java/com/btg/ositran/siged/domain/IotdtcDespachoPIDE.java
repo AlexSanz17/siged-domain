@@ -1,18 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.btg.ositran.siged.domain;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
@@ -21,6 +16,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -47,7 +43,6 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "IotdtcDespachoPIDE.findByVobs", query = "SELECT i FROM IotdtcDespachoPIDE i WHERE i.vobs = :vobs"),
     @NamedQuery(name = "IotdtcDespachoPIDE.findByVcuoref", query = "SELECT i FROM IotdtcDespachoPIDE i WHERE i.vcuoref = :vcuoref"),
     @NamedQuery(name = "IotdtcDespachoPIDE.findByCflgest", query = "SELECT i FROM IotdtcDespachoPIDE i WHERE i.cflgest = :cflgest"),
-//    @NamedQuery(name = "IotdtcDespachoPIDE.findByCflgenv", query = "SELECT i FROM IotdtcDespachoPIDE i WHERE i.cflgenv = :cflgenv"),
     @NamedQuery(name = "IotdtcDespachoPIDE.findByDfecenv", query = "SELECT i FROM IotdtcDespachoPIDE i WHERE i.dfecenv = :dfecenv"),
     @NamedQuery(name = "IotdtcDespachoPIDE.findByVusureg", query = "SELECT i FROM IotdtcDespachoPIDE i WHERE i.vusureg = :vusureg"),
     @NamedQuery(name = "IotdtcDespachoPIDE.findByDfecreg", query = "SELECT i FROM IotdtcDespachoPIDE i WHERE i.dfecreg = :dfecreg"),
@@ -97,18 +92,8 @@ public class IotdtcDespachoPIDE implements Serializable {
     private byte[] bcarstdrec;
     @Column(name = "VOBS")
     private String vobs;
-    
     @Column(name = "VDESANXSTDREC")
     private String vdesanxstdrec;
-
-    public String getVdesanxstdrec() {
-        return vdesanxstdrec;
-    }
-
-    public void setVdesanxstdrec(String vdesanxstdrec) {
-        this.vdesanxstdrec = vdesanxstdrec;
-    }
-    
     @Column(name = "VCUOREF")
     private String vcuoref;
     @Basic(optional = false)
@@ -132,21 +117,11 @@ public class IotdtcDespachoPIDE implements Serializable {
     @Column(name = "DFECMOD")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dfecmod;
-    
     @OneToMany(mappedBy = "sidemiext")
     private List<IotdtmDocExternoPIDE> iotdtmDocExternoList;
-
 //    @Basic(optional = false)
 //    @Column(name = "IDDOCUMENTO")
 //    private Integer iddocumento;
-
-//    public Integer getIddocumento() {
-//        return iddocumento;
-//    }
-//
-//    public void setIddocumento(Integer iddocumento) {
-//        this.iddocumento = iddocumento;
-//    }
     
     public IotdtcDespachoPIDE() {
     }
@@ -162,7 +137,6 @@ public class IotdtcDespachoPIDE implements Serializable {
         this.vrucentrec = vrucentrec;
         this.vnomentrec = vnomentrec;
         this.cflgest = cflgest;
-//        this.cflgenv = cflgenv;
         this.vusureg = vusureg;
         this.dfecreg = dfecreg;
     }
@@ -375,7 +349,23 @@ public class IotdtcDespachoPIDE implements Serializable {
     public void setIotdtmDocExternoList(List<IotdtmDocExternoPIDE> iotdtmDocExternoList) {
         this.iotdtmDocExternoList = iotdtmDocExternoList;
     }
+    
+    public String getVdesanxstdrec() {
+        return vdesanxstdrec;
+    }
 
+    public void setVdesanxstdrec(String vdesanxstdrec) {
+        this.vdesanxstdrec = vdesanxstdrec;
+    }
+
+//	public Integer getIddocumento() {
+//		return iddocumento;
+//	}
+//	
+//	public void setIddocumento(Integer iddocumento) {
+//		this.iddocumento = iddocumento;
+//	}
+    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -385,7 +375,6 @@ public class IotdtcDespachoPIDE implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof IotdtcDespachoPIDE)) {
             return false;
         }
@@ -397,8 +386,16 @@ public class IotdtcDespachoPIDE implements Serializable {
     }
 
     @Override
-    public String toString() {
-        return "IotdtcDespachoPIDE[ sidemiext=" + sidemiext + " ]";
-    }
+	public String toString() {
+		return "IotdtcDespachoPIDE [sidemiext=" + sidemiext + ", vnumregstd=" + vnumregstd + ", vanioregstd="
+			+ vanioregstd + ", ctipdociderem=" + ctipdociderem + ", vnumdociderem=" + vnumdociderem
+			+ ", vcoduniorgrem=" + vcoduniorgrem + ", vuniorgrem=" + vuniorgrem + ", vcuo=" + vcuo + ", vrucentrec="
+			+ vrucentrec + ", vnomentrec=" + vnomentrec + ", vnumregstdrec=" + vnumregstdrec + ", vanioregstdrec="
+			+ vanioregstdrec + ", dfecregstdrec=" + dfecregstdrec + ", vusuregstdrec=" + vusuregstdrec
+			+ ", vuniorgstdrec=" + vuniorgstdrec + ", bcarstdrec=" + Arrays.toString(bcarstdrec) + ", vobs=" + vobs
+			+ ", vdesanxstdrec=" + vdesanxstdrec + ", vcuoref=" + vcuoref + ", cflgest=" + cflgest + ", dfecenv="
+			+ dfecenv + ", vusureg=" + vusureg + ", dfecreg=" + dfecreg + ", vusumod=" + vusumod + ", dfecmod="
+			+ dfecmod + ", iotdtmDocExternoList=" + iotdtmDocExternoList + "]";
+	}
     
 }

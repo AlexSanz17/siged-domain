@@ -1,11 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.btg.ositran.siged.domain;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Date;
 
 import javax.persistence.Basic;
@@ -52,10 +48,6 @@ public class IotdtdDocPrincipal implements Serializable {
     @Column(name = "DFECREG")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dfecreg;
-    
-    @Column(name = "SIDDOCEXT", insertable=false, updatable=false)
-    private Integer ssiddocext;
-
 	@JoinColumn(name = "SIDDOCEXT", referencedColumnName = "SIDDOCEXT")
     @ManyToOne(optional = false)
     private IotdtmDocExterno siddocext;
@@ -114,14 +106,6 @@ public class IotdtdDocPrincipal implements Serializable {
     public void setDfecreg(Date dfecreg) {
         this.dfecreg = dfecreg;
     }
-
-    public Integer getSsiddocext() {
-		return ssiddocext;
-	}
-
-	public void setSsiddocext(Integer ssiddocext) {
-		this.ssiddocext = ssiddocext;
-	}
 	
     public IotdtmDocExterno getSiddocext() {
         return siddocext;
@@ -140,7 +124,6 @@ public class IotdtdDocPrincipal implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof IotdtdDocPrincipal)) {
             return false;
         }
@@ -152,8 +135,10 @@ public class IotdtdDocPrincipal implements Serializable {
     }
 
     @Override
-    public String toString() {
-        return "com.btg.ositran.siged.domain.IotdtdDocPrincipal[ siddocpri=" + siddocpri + " ]";
-    }
+	public String toString() {
+		return "IotdtdDocPrincipal [siddocpri=" + siddocpri + ", vnomdoc=" + vnomdoc + ", bpdfdoc="
+			+ Arrays.toString(bpdfdoc) + ", ccodest=" + ccodest + ", dfecreg=" + dfecreg + ", siddocext="
+			+ siddocext + "]";
+	}
     
 }

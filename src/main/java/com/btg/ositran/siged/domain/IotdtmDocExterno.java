@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.btg.ositran.siged.domain;
 
 import java.io.Serializable;
@@ -84,17 +79,10 @@ public class IotdtmDocExterno implements Serializable {
     private BigInteger snumfol;
     @Column(name = "VURLDOCANX")
     private String vurldocanx;
-    
-    @Column(name = "SIDEMIEXT", insertable=false, updatable=false)
-    private Integer ssidemiext;
-    @Column(name = "SIDRECEXT", insertable=false, updatable=false)
-    private Integer ssidrecext;
-
 	@OneToMany(mappedBy = "siddocext",fetch=FetchType.LAZY)
     private List<IotdtdDocPrincipal> iotdtdDocPrincipalList;
     @OneToMany(mappedBy = "siddocext" ,fetch=FetchType.LAZY)
     private List<IotdtdAnexo> iotdtdAnexoList;
-      
     @JoinColumn(name = "SIDEMIEXT", referencedColumnName = "SIDEMIEXT")
     @ManyToOne
     private IotdtcDespacho sidemiext;
@@ -225,22 +213,6 @@ public class IotdtmDocExterno implements Serializable {
     public void setVurldocanx(String vurldocanx) {
         this.vurldocanx = vurldocanx;
     }
-
-    public Integer getSsidemiext() {
-		return ssidemiext;
-	}
-
-	public void setSsidemiext(Integer ssidemiext) {
-		this.ssidemiext = ssidemiext;
-	}
-
-	public Integer getSsidrecext() {
-		return ssidrecext;
-	}
-
-	public void setSsidrecext(Integer ssidrecext) {
-		this.ssidrecext = ssidrecext;
-	}
 	
     public List<IotdtdDocPrincipal> getIotdtdDocPrincipalList() {
         return iotdtdDocPrincipalList;
@@ -283,7 +255,6 @@ public class IotdtmDocExterno implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof IotdtmDocExterno)) {
             return false;
         }

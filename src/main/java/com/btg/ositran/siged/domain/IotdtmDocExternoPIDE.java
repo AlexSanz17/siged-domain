@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.btg.ositran.siged.domain;
 
 import java.io.Serializable;
@@ -31,6 +26,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "IotdtmDocExternoPIDE.findAll", query = "SELECT i FROM IotdtmDocExternoPIDE i"),
+    @NamedQuery(name = "IotdtmDocExternoPIDE.findAllRecepcion", query = "SELECT i FROM IotdtmDocExternoPIDE i, IotdtcRecepcionPIDE j where i.sidrecext.sidrecext = j.sidrecext"),
     @NamedQuery(name = "IotdtmDocExternoPIDE.findBySiddocext", query = "SELECT i FROM IotdtmDocExternoPIDE i WHERE i.siddocext = :siddocext"),
     @NamedQuery(name = "IotdtmDocExternoPIDE.findByVnomentemi", query = "SELECT i FROM IotdtmDocExternoPIDE i WHERE i.vnomentemi = :vnomentemi"),
     @NamedQuery(name = "IotdtmDocExternoPIDE.findByCcodtipdoc", query = "SELECT i FROM IotdtmDocExternoPIDE i WHERE i.ccodtipdoc = :ccodtipdoc"),
@@ -84,17 +80,10 @@ public class IotdtmDocExternoPIDE implements Serializable {
     private BigInteger snumfol;
     @Column(name = "VURLDOCANX")
     private String vurldocanx;
-    
-    @Column(name = "SIDEMIEXT", insertable=false, updatable=false)
-    private Integer ssidemiext;
-    @Column(name = "SIDRECEXT", insertable=false, updatable=false)
-    private Integer ssidrecext;
-    
     @OneToMany(mappedBy = "siddocext",fetch=FetchType.LAZY)
     private List<IotdtdDocPrincipalPIDE> iotdtdDocPrincipalList;
     @OneToMany(mappedBy = "siddocext" ,fetch=FetchType.LAZY)
     private List<IotdtdAnexoPIDE> iotdtdAnexoList;
-      
     @JoinColumn(name = "SIDEMIEXT", referencedColumnName = "SIDEMIEXT")
     @ManyToOne
     private IotdtcDespachoPIDE sidemiext;
@@ -225,22 +214,6 @@ public class IotdtmDocExternoPIDE implements Serializable {
     public void setVurldocanx(String vurldocanx) {
         this.vurldocanx = vurldocanx;
     }
-
-    public Integer getSsidemiext() {
-		return ssidemiext;
-	}
-
-	public void setSsidemiext(Integer ssidemiext) {
-		this.ssidemiext = ssidemiext;
-	}
-
-	public Integer getSsidrecext() {
-		return ssidrecext;
-	}
-
-	public void setSsidrecext(Integer ssidrecext) {
-		this.ssidrecext = ssidrecext;
-	}
 	
     public List<IotdtdDocPrincipalPIDE> getIotdtdDocPrincipalList() {
         return iotdtdDocPrincipalList;
@@ -283,7 +256,6 @@ public class IotdtmDocExternoPIDE implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof IotdtmDocExternoPIDE)) {
             return false;
         }
@@ -296,7 +268,10 @@ public class IotdtmDocExternoPIDE implements Serializable {
 
     @Override
 	public String toString() {
-		return "IotdtmDocExternoPIDE [siddocext=" + siddocext + "]";
+		return "IotdtmDocExternoPIDE [siddocext=" + siddocext + ", vnomentemi=" + vnomentemi + ", ccodtipdoc="
+			+ ccodtipdoc + ", vnumdoc=" + vnumdoc + ", dfecdoc=" + dfecdoc + ", vuniorgdst=" + vuniorgdst
+			+ ", vnomdst=" + vnomdst + ", vnomcardst=" + vnomcardst + ", vasu=" + vasu + ", cindtup=" + cindtup
+			+ ", snumanx=" + snumanx + ", snumfol=" + snumfol + ", vurldocanx=" + vurldocanx + "]";
 	}
     
 }
