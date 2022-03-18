@@ -105,6 +105,9 @@ public class Archivo implements Serializable{
 
 	@Column(name="principal")
 	private Character principal;
+	
+	@Column(name="flagFirma")
+	private Integer flagFirma;
 
 	@JoinColumn(name="documento",referencedColumnName="iddocumento")
 	@ManyToOne(optional=false)
@@ -384,4 +387,14 @@ public class Archivo implements Serializable{
         public void setTamano(Integer tamano) {
             this.tamano = tamano;
         }
+
+		public Integer getFlagFirma() {
+			return flagFirma;
+		}
+
+		public void setFlagFirma(Integer flagFirma) {
+			this.flagFirma = flagFirma;
+		}
+        
+        
 }
