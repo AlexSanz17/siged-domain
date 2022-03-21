@@ -36,18 +36,18 @@ import java.io.Serializable;
 	@NamedQuery(name="Expediente.findByFechacreacion",query="SELECT e FROM Expediente e WHERE e.fechacreacion = :fechacreacion"),
 	@NamedQuery(name="Expediente.findByEstado",query="SELECT e FROM Expediente e WHERE e.estado = :estado"),
 	//@NamedQuery(name="Expediente.findByCriteria",query="SELECT e FROM Expediente e WHERE LOWER(e.cliente.numeroIdentificacion) LIKE :nroidentificacion AND (LOWER(e.cliente.razonSocial) LIKE :razonsocial OR LOWER(e.cliente.nombres) LIKE :razonsocial OR LOWER(e.cliente.apellidoPaterno) LIKE :razonsocial) AND LOWER(e.nroexpediente) LIKE :nroexpediente AND LOWER(e.asunto) LIKE :asunto AND e.proceso.idproceso=:proceso AND e.fechacreacion=:fecha AND e.estado='A' ORDER BY nroexpediente"),
-        @NamedQuery(name="Expediente.findByCriteria",query="SELECT e FROM Expediente e WHERE LOWER(e.cliente.numeroIdentificacion) LIKE :nroidentificacion AND (LOWER(e.cliente.razonSocial) LIKE :razonsocial OR LOWER(e.cliente.nombres) LIKE :razonsocial OR LOWER(e.cliente.apellidoPaterno) LIKE :razonsocial) AND LOWER(e.nroexpediente) LIKE :nroexpediente AND LOWER(e.asunto) LIKE :asunto AND e.fechacreacion=:fecha AND e.estado='A' ORDER BY nroexpediente"),
-        @NamedQuery(name="Expediente.getMaxIdExpediente",query="SELECT MAX(e.id) FROM Expediente e"),
+    @NamedQuery(name="Expediente.findByCriteria",query="SELECT e FROM Expediente e WHERE LOWER(e.cliente.numeroIdentificacion) LIKE :nroidentificacion AND (LOWER(e.cliente.razonSocial) LIKE :razonsocial OR LOWER(e.cliente.nombres) LIKE :razonsocial OR LOWER(e.cliente.apellidoPaterno) LIKE :razonsocial) AND LOWER(e.nroexpediente) LIKE :nroexpediente AND LOWER(e.asunto) LIKE :asunto AND e.fechacreacion=:fecha AND e.estado='A' ORDER BY nroexpediente"),
+    @NamedQuery(name="Expediente.getMaxIdExpediente",query="SELECT MAX(e.id) FROM Expediente e"),
 	@NamedQuery(name="Expediente.findByNroDocument",query="SELECT e FROM Expediente e WHERE e.id = :ni"),
 	@NamedQuery(name="Expediente.findByNrointerno",query="SELECT e FROM Expediente e WHERE e.nrointerno = :nrointerno"),
 	@NamedQuery(name="Expediente.findByIdcliente",query="SELECT e FROM Expediente e WHERE e.cliente.idCliente = :idcliente AND e.estado = :estado"),
 	//@NamedQuery(name="Expediente.filtrarExpediente",query="SELECT e FROM Expediente e WHERE LOWER(e.nroexpediente) LIKE :nroexpediente AND LOWER(e.proceso.nombre) LIKE :proceso AND LOWER(e.cliente.numeroIdentificacion) LIKE :nroidentificacion AND (LOWER(e.cliente.razonSocial) LIKE :cliente OR LOWER(e.cliente.nombres) LIKE :cliente OR LOWER(e.cliente.apellidoPaterno) LIKE :cliente) AND e.estado='A' ORDER BY nroexpediente"),
 	//@NamedQuery(name="Expediente.filtrarExpedienteFlujo",query="SELECT e FROM Expediente e WHERE LOWER(e.nroexpediente) LIKE :nroexpediente AND LOWER(e.proceso.nombre) LIKE :proceso AND LOWER(e.cliente.numeroIdentificacion) LIKE :nroidentificacion AND (LOWER(e.cliente.razonSocial) LIKE :cliente OR LOWER(e.cliente.nombres) LIKE :cliente OR LOWER(e.cliente.apellidoPaterno) LIKE :cliente) AND LOWER(e.concesionario.ruc) LIKE :ruc AND LOWER(e.concesionario.razonSocial) LIKE :concesionario AND e.estado='A' ORDER BY nroexpediente"),
 	
-        @NamedQuery(name="Expediente.filtrarExpediente",query="SELECT e FROM Expediente e WHERE LOWER(e.nroexpediente) LIKE :nroexpediente  AND LOWER(e.cliente.numeroIdentificacion) LIKE :nroidentificacion AND (LOWER(e.cliente.razonSocial) LIKE :cliente OR LOWER(e.cliente.nombres) LIKE :cliente OR LOWER(e.cliente.apellidoPaterno) LIKE :cliente) AND e.estado='A' ORDER BY nroexpediente"),
+    @NamedQuery(name="Expediente.filtrarExpediente",query="SELECT e FROM Expediente e WHERE LOWER(e.nroexpediente) LIKE :nroexpediente  AND LOWER(e.cliente.numeroIdentificacion) LIKE :nroidentificacion AND (LOWER(e.cliente.razonSocial) LIKE :cliente OR LOWER(e.cliente.nombres) LIKE :cliente OR LOWER(e.cliente.apellidoPaterno) LIKE :cliente) AND e.estado='A' ORDER BY nroexpediente"),
 	@NamedQuery(name="Expediente.filtrarExpedienteFlujo",query="SELECT e FROM Expediente e WHERE LOWER(e.nroexpediente) LIKE :nroexpediente  AND LOWER(e.cliente.numeroIdentificacion) LIKE :nroidentificacion AND (LOWER(e.cliente.razonSocial) LIKE :cliente OR LOWER(e.cliente.nombres) LIKE :cliente OR LOWER(e.cliente.apellidoPaterno) LIKE :cliente) AND LOWER(e.concesionario.ruc) LIKE :ruc AND LOWER(e.concesionario.razonSocial) LIKE :concesionario AND e.estado='A' ORDER BY nroexpediente"),
         
-        @NamedQuery(name="Expediente.findByNumeroexpedienteEstado",query="SELECT e FROM Expediente e WHERE LOWER(e.nroexpediente) = :numeroexpediente AND e.estado = :estado")
+    @NamedQuery(name="Expediente.findByNumeroexpedienteEstado",query="SELECT e FROM Expediente e WHERE LOWER(e.nroexpediente) = :numeroexpediente AND e.estado = :estado")
 })
 public class Expediente implements Entidad,Auditable,Serializable{
 
@@ -89,7 +89,7 @@ public class Expediente implements Entidad,Auditable,Serializable{
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fechacreacion;
         
-        @Basic(optional=true)
+    @Basic(optional=true)
 	@Column(name="fechamodificacion")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fechamodificacion;
@@ -126,34 +126,10 @@ public class Expediente implements Entidad,Auditable,Serializable{
 	@Column(name="clienteubigeoalternativo")
 	private Integer clienteubigeoalternativo;
 
-        @Column(name="usuariocreacion")
+    @Column(name="usuariocreacion")
 	private Integer usuariocreacion;
-
-        public Date getFechamodificacion() {
-            return fechamodificacion;
-        }
-
-        public void setFechamodificacion(Date fechamodificacion) {
-            this.fechamodificacion = fechamodificacion;
-        }
-
-        public Integer getUsuariocreacion() {
-            return usuariocreacion;
-        }
-
-        public void setUsuariocreacion(Integer usuariocreacion) {
-            this.usuariocreacion = usuariocreacion;
-        }
-
-        public Integer getUsuariomodificacion() {
-            return usuariomodificacion;
-        }
-
-        public void setUsuariomodificacion(Integer usuariomodificacion) {
-            this.usuariomodificacion = usuariomodificacion;
-        }
         
-        @Column(name="usuariomodificacion")
+    @Column(name="usuariomodificacion")
 	private Integer usuariomodificacion;
         
 	@Column(name="clientecorreo")
@@ -217,13 +193,12 @@ public class Expediente implements Entidad,Auditable,Serializable{
 	@ManyToOne
 	private Etapa idetapa;
 
-        /*
-        @Basic(optional=true)
+    /*@Basic(optional=true)
 	@JoinColumn(name="proceso",referencedColumnName="idproceso")
 	@ManyToOne(optional=false)
 	private Proceso proceso;*/
         
-        @Basic(optional=true)
+    @Basic(optional=true)
 	@JoinColumn(name="serie",referencedColumnName="idserie")
 	@ManyToOne(optional=false)
 	private Serie serie;
@@ -242,15 +217,8 @@ public class Expediente implements Entidad,Auditable,Serializable{
 	@Column(name="idunidad")
 	private Integer idunidad;
 
-
-
-	public Integer getIdunidad() {
-		return idunidad;
-	}
-
-	public void setIdunidad(Integer idunidad) {
-		this.idunidad = idunidad;
-	}
+	@Column(name="nombreExpediente")
+	private String nombreExpediente;
 
 	/*
 	 * Transients
@@ -273,9 +241,6 @@ public class Expediente implements Entidad,Auditable,Serializable{
 	 * @Transient private String sClienteTipoIdentificacion;
 	 */
 
-	/*
-	 * Constructors
-	 */
 	public Expediente(){
 	}
 
@@ -322,8 +287,6 @@ public class Expediente implements Entidad,Auditable,Serializable{
 		this.fechacreacion = fechacreacion;
 	}
 
-
-
 	/*
 	 * public Expediente(Integer iIdExpediente, String sNroExpediente, Date
 	 * dFechaCreacion, String sRazonSocial1, String sNombres1, String
@@ -340,9 +303,6 @@ public class Expediente implements Entidad,Auditable,Serializable{
 	 * this.sClienteTipoIdentificacion = sClienteTipoIdentificacion; }
 	 */
 
-	/*
-	 * Getters & Setters
-	 */
 	public Integer getIdexpediente(){
 		return id;
 	}
@@ -373,7 +333,7 @@ public class Expediente implements Entidad,Auditable,Serializable{
 
 	public String getAsuntoHTML(){
 		if(asunto != null){
-                      return asunto.replace("\n", "").replace("\r", "").replace("\"", "");
+          return asunto.replace("\n", "").replace("\r", "").replace("\"", "");
 		}
 		return "";
 	}
@@ -821,11 +781,51 @@ public class Expediente implements Entidad,Auditable,Serializable{
 		this.idGrupoProceso = idGrupoProceso;
 	}
         
-        public Serie getSerie() {
-            return serie;
-        }
+    public Serie getSerie() {
+        return serie;
+    }
 
-        public void setSerie(Serie serie) {
-            this.serie = serie;
-        }
+    public void setSerie(Serie serie) {
+        this.serie = serie;
+    }
+    
+    public Date getFechamodificacion() {
+        return fechamodificacion;
+    }
+
+    public void setFechamodificacion(Date fechamodificacion) {
+        this.fechamodificacion = fechamodificacion;
+    }
+
+    public Integer getUsuariocreacion() {
+        return usuariocreacion;
+    }
+
+    public void setUsuariocreacion(Integer usuariocreacion) {
+        this.usuariocreacion = usuariocreacion;
+    }
+
+    public Integer getUsuariomodificacion() {
+        return usuariomodificacion;
+    }
+
+    public void setUsuariomodificacion(Integer usuariomodificacion) {
+        this.usuariomodificacion = usuariomodificacion;
+    }
+    
+	public Integer getIdunidad() {
+		return idunidad;
+	}
+
+	public void setIdunidad(Integer idunidad) {
+		this.idunidad = idunidad;
+	}
+	
+	public String getNombreExpediente() {
+		return nombreExpediente;
+	}
+
+	public void setNombreExpediente(String nombreExpediente) {
+		this.nombreExpediente = nombreExpediente;
+	}
 }
