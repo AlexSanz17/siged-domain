@@ -603,6 +603,4 @@ public class FilaBandejaUF {
         public void setLlave(String llave) {
             this.llave = llave;
         }
-        
-        
 }

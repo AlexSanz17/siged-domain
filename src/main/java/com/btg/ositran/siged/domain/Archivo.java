@@ -3,6 +3,7 @@ package com.btg.ositran.siged.domain;
 import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.Date;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,7 +15,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -23,20 +23,26 @@ import javax.persistence.TemporalType;
 @Table(name="archivo")
 @NamedQueries({@NamedQuery(name="Archivo.findByExpediente",query="SELECT a FROM Archivo a JOIN FETCH a.documento d JOIN FETCH d.expediente e WHERE e.id = :idexpediente AND a.estadoDigitalizacion <> 'I'"),
 	@NamedQuery(name="Archivo.findByEstadodigitalizacion",query="SELECT a FROM Archivo a WHERE a.estadoDigitalizacion = :estadoDigitalizacion"),
-	@NamedQuery(name="Archivo.findByIdDocumento",         query="SELECT a FROM Archivo a WHERE a.documento.idDocumento = :iddoc AND estadoDigitalizacion <> 'I' AND a.estado = :estado order by a.principal desc "),@NamedQuery(name="Archivo.findByArchivoPrincipalIdDocumento",query="SELECT a FROM Archivo a WHERE a.documento.idDocumento = :iddoc AND estadoDigitalizacion <> 'I' AND a.estado = :estado AND a.principal = :principal"),@NamedQuery(name="Archivo.findByCriteria",query="SELECT a FROM Archivo a join fetch a.documento WHERE a.documento.idDocumento = :iddoc AND a.nombre = :nombre"),@NamedQuery(name="Archivo.findByCriteria2",query="SELECT a FROM Archivo a WHERE a.documento.idDocumento = :iddoc AND a.nombre like :nombre"),@NamedQuery(name="Archivo.checkEstadoDigitalizacion",query="SELECT a FROM Archivo a WHERE a.documento.idDocumento = :iddoc AND (estadoDigitalizacion = 'Y' OR estadoDigitalizacion = 'A')"),
-	@NamedQuery(name="Archivo.findByIdDocumentoOrderDesc",query="SELECT a FROM Archivo a WHERE a.documento.expediente.id = :idexpediente AND a.documento.idDocumento >= :iddocumento AND a.documento.estaEnFlujo = 'S' AND estadoDigitalizacion <> 'I' ORDER BY a.fechaCreacion DESC"),@NamedQuery(name="Archivo.findByIdDocumentoOrderDescQAS",query="SELECT a FROM Archivo a WHERE a.documento.expediente.id = :idexpediente AND a.documento.idDocumento = :iddocumento AND estadoDigitalizacion <> 'I' ORDER BY a.fechaCreacion DESC"),@NamedQuery(name="Archivo.updateEstado",query="UPDATE Archivo a SET a.estadoDigitalizacion = :estado WHERE a.idArchivo = :idarchivo"),
-        @NamedQuery(name="Archivo.buscarArchivosObjectId",query="SELECT a FROM Archivo a where objectId = :objectId and a.estado = 'A' and exists (select 1 from Documento d where d.idDocumento = a.documento.idDocumento and d.ID_CODIGO = :nroTramite)"),
-        @NamedQuery(name="Archivo.buscarArchivoExterno",query="SELECT a FROM Archivo a where a.objectId = :objectId and a.estado = 'A' and a.clave = :clave  and exists (select 1 from Documento d where d.idDocumento = a.documento.idDocumento and d.ID_CODIGO = :nroTramite)"),
-        @NamedQuery(name="Archivo.buscarArchivosPorRuta",query="SELECT count(a.idArchivo) FROM Archivo a WHERE LOWER(a.rutaAlfresco) =:ruta and a.estado = :estado and a.autor.idusuario not in (:autor)"),
-        @NamedQuery(name="Archivo.buscarArchivosPorRutaDocumento",query="SELECT a FROM Archivo a WHERE  a.documento.idDocumento = :idDocumento and a.estado = :estado and LOWER(SUBSTRING(NOMBRE, CHARINDEX(nombre,']') +1, LEN(NOMBRE))) = :nombre"), 
-        @NamedQuery(name="Archivo.buscarActivosPorAutorPorArea",query="SELECT a FROM Archivo a WHERE  a.documento.idDocumento = :idDocumento and a.autor.idusuario = :idUsuario AND a.estado = :estado  and a.unidadAutor = :idUnidad order by a.principal desc"),
-	@NamedQuery(name="Archivo.buscarActivosPorAutor",query="SELECT a FROM Archivo a WHERE a.autor.idusuario = :idUsuario AND a.estado = :estado AND a.documento.idDocumento = :idDocumento"),@NamedQuery(name="Archivo.updatePrincipal",query="UPDATE Archivo a SET a.principal = :principal WHERE a.idArchivo = :idarchivo"),@NamedQuery(name="Archivo.findByIdNombreEstado",query="SELECT a FROM Archivo a join fetch a.documento WHERE a.documento.idDocumento = :idDocumento AND UPPER(substring(a.nombre,charindex(a.nombre,']') + 1,len(a.nombre))) = :nombre AND a.estado =:estado")})
+	@NamedQuery(name="Archivo.findByIdDocumento", query="SELECT a FROM Archivo a WHERE a.documento.idDocumento = :iddoc AND estadoDigitalizacion <> 'I' AND a.estado = :estado order by a.principal desc "),
+	@NamedQuery(name="Archivo.buscarArchivoPrincipalPorDocumento", query="SELECT a FROM Archivo a WHERE a.documento.idDocumento = :idDocumento AND a.estadoDigitalizacion <> :estadoDigitalizacion AND a.estado = :estado AND a.principal = :principal"),
+	@NamedQuery(name="Archivo.findByCriteria",query="SELECT a FROM Archivo a join fetch a.documento WHERE a.documento.idDocumento = :iddoc AND a.nombre = :nombre"),
+	@NamedQuery(name="Archivo.findByCriteria2",query="SELECT a FROM Archivo a WHERE a.documento.idDocumento = :iddoc AND a.nombre like :nombre"),
+	@NamedQuery(name="Archivo.checkEstadoDigitalizacion",query="SELECT a FROM Archivo a WHERE a.documento.idDocumento = :iddoc AND (estadoDigitalizacion = 'Y' OR estadoDigitalizacion = 'A')"),
+	@NamedQuery(name="Archivo.findByIdDocumentoOrderDesc",query="SELECT a FROM Archivo a WHERE a.documento.expediente.id = :idexpediente AND a.documento.idDocumento >= :iddocumento AND a.documento.estaEnFlujo = 'S' AND estadoDigitalizacion <> 'I' ORDER BY a.fechaCreacion DESC"),
+	@NamedQuery(name="Archivo.findByIdDocumentoOrderDescQAS",query="SELECT a FROM Archivo a WHERE a.documento.expediente.id = :idexpediente AND a.documento.idDocumento = :iddocumento AND estadoDigitalizacion <> 'I' ORDER BY a.fechaCreacion DESC"),
+	@NamedQuery(name="Archivo.updateEstado",query="UPDATE Archivo a SET a.estadoDigitalizacion = :estado WHERE a.idArchivo = :idarchivo"),
+    @NamedQuery(name="Archivo.buscarArchivosObjectId",query="SELECT a FROM Archivo a where objectId = :objectId and a.estado = 'A' and exists (select 1 from Documento d where d.idDocumento = a.documento.idDocumento and d.ID_CODIGO = :nroTramite)"),
+    @NamedQuery(name="Archivo.buscarArchivoExterno",query="SELECT a FROM Archivo a where a.objectId = :objectId and a.estado = 'A' and a.clave = :clave  and exists (select 1 from Documento d where d.idDocumento = a.documento.idDocumento and d.ID_CODIGO = :nroTramite)"),
+    @NamedQuery(name="Archivo.buscarArchivosPorRuta",query="SELECT count(a.idArchivo) FROM Archivo a WHERE LOWER(a.rutaAlfresco) =:ruta and a.estado = :estado and a.autor.idusuario not in (:autor)"),
+    @NamedQuery(name="Archivo.buscarArchivosPorRutaDocumento",query="SELECT a FROM Archivo a WHERE  a.documento.idDocumento = :idDocumento and a.estado = :estado and LOWER(SUBSTRING(NOMBRE, CHARINDEX(nombre,']') +1, LEN(NOMBRE))) = :nombre"), 
+    @NamedQuery(name="Archivo.buscarActivosPorAutorPorArea",query="SELECT a FROM Archivo a WHERE  a.documento.idDocumento = :idDocumento and a.autor.idusuario = :idUsuario AND a.estado = :estado  and a.unidadAutor = :idUnidad order by a.principal desc"),
+	@NamedQuery(name="Archivo.buscarActivosPorAutor",query="SELECT a FROM Archivo a WHERE a.autor.idusuario = :idUsuario AND a.estado = :estado AND a.documento.idDocumento = :idDocumento"),
+	@NamedQuery(name="Archivo.updatePrincipal",query="UPDATE Archivo a SET a.principal = :principal WHERE a.idArchivo = :idarchivo"),
+	@NamedQuery(name="Archivo.findByIdNombreEstado",query="SELECT a FROM Archivo a join fetch a.documento WHERE a.documento.idDocumento = :idDocumento AND UPPER(substring(a.nombre,charindex(a.nombre,']') + 1,len(a.nombre))) = :nombre AND a.estado =:estado")})
 public class Archivo implements Serializable{
-	/* Constantes particulares */
 	public static final char ESTADO_REGISTRADO='N';
 	public static final char ESTADO_DISPONIBLE='Y';
 	public static final char ESTADO_IMPORTADO='A';
-	/***************************/
 
 	private static final long serialVersionUID=1L;
 
@@ -48,28 +54,17 @@ public class Archivo implements Serializable{
 	@Column(name="idarchivo")
 	private Integer idArchivo;
         
-        ///////////////////////////////////////////////
-        @JoinColumn(name="usuariomodificacion",referencedColumnName="idusuario", insertable=false, updatable=false)
-	@ManyToOne(optional=true,fetch=FetchType.LAZY)
-        private Usuario usuarioCarga;
+    @JoinColumn(name="usuariomodificacion",referencedColumnName="idusuario", insertable=false, updatable=false)
+    @ManyToOne(optional=true,fetch=FetchType.LAZY)
+    private Usuario usuarioCarga;
 
-        public Usuario getUsuarioCarga() {
-            return usuarioCarga;
-        }
-
-        public void setUsuarioCarga(Usuario usuarioCarga) {
-            this.usuarioCarga = usuarioCarga;
-        }
-
-        ///////////////////////////////////////////////
-    
 	@Basic(optional=false)
 	private String nombre;
         
-        @Basic(optional=true)
+    @Basic(optional=true)
 	private String clave;
         
-        @Basic(optional=true)
+    @Basic(optional=true)
 	private Integer tamano;
 
 	private String descripcion;
@@ -83,7 +78,7 @@ public class Archivo implements Serializable{
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fechaCreacion;
         
-        @Basic(optional=true)
+    @Basic(optional=true)
 	@Column(name="fechamodificacion")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fechaModificacion;
@@ -91,16 +86,16 @@ public class Archivo implements Serializable{
 	@Column(name="rutaarchivopdf")
 	private String rutaArchivoPdf;
         
-        @Column(name="usuariocreacion")
+    @Column(name="usuariocreacion")
 	private Integer usuariocreacion;
 
-        @Column(name="usuariomodificacion")
+    @Column(name="usuariomodificacion")
 	private Integer usuariomodificacion;
 
 	@Column(name="rutaalfresco")
 	private String rutaAlfresco;
  
-        @Column(name="unidadAutor")
+    @Column(name="unidadAutor")
 	private Integer unidadAutor;
 
 	@Column(name="principal")
@@ -109,68 +104,69 @@ public class Archivo implements Serializable{
 	@Column(name="flagFirma")
 	private Integer flagFirma;
 
-	@JoinColumn(name="documento",referencedColumnName="iddocumento")
+	@JoinColumn(name="documento", referencedColumnName="iddocumento")
 	@ManyToOne(optional=false)
 	private Documento documento;
 
 	@Basic(optional=false)
 	private Character estado;
 
-	/* Variables temporales */
-	private transient String nombreReal;
-	private transient String sURL;
-	private transient String nombreArchivo;
-        
-        private transient String tamanoFormateado;
-
-        public String getTamanoFormateado() {
-            
-            if (tamano == null) return "";
-            
-            DecimalFormat df = new DecimalFormat("#.00");
-            double valorsito = (double)tamano/1024;
-            
-            if (valorsito<1) return "1 KB";
-            
-            tamanoFormateado = String.valueOf(df.format(valorsito)) + " KB";
-            return tamanoFormateado;
-        }
-
-        public void setTamanoFormateado(String tamanoFormateado) {
-            this.tamanoFormateado = tamanoFormateado;
-        }
-
 	@JoinColumn(name="autor", referencedColumnName="idusuario")
 	@ManyToOne(optional=false)
 	private Usuario autor;
         
-        @Column(name="objectId")
+    @Column(name="objectId")
 	private String objectId;
+    
+	private transient String nombreReal;
+	private transient String sURL;
+	private transient String nombreArchivo;
+    private transient String tamanoFormateado;
 
-        public String getObjectId() {
-            return objectId;
-        }
+    public Usuario getUsuarioCarga() {
+        return usuarioCarga;
+    }
 
-        public void setObjectId(String objectId) {
-            this.objectId = objectId;
-        }
+    public void setUsuarioCarga(Usuario usuarioCarga) {
+        this.usuarioCarga = usuarioCarga;
+    }
+    
+    public String getTamanoFormateado() {
+        if (tamano == null) return "";
+        
+        DecimalFormat df = new DecimalFormat("#.00");
+        double valorsito = (double)tamano/1024;
+        
+        if (valorsito<1) return "1 KB";
+        
+        tamanoFormateado = String.valueOf(df.format(valorsito)) + " KB";
+        return tamanoFormateado;
+    }
 
+    public void setTamanoFormateado(String tamanoFormateado) {
+        this.tamanoFormateado = tamanoFormateado;
+    }
+    
+    public String getObjectId() {
+        return objectId;
+    }
+
+    public void setObjectId(String objectId) {
+        this.objectId = objectId;
+    }
 	
 	public String getNombreArchivo(){
-		// if(this.getRutaalfresco()!=null&&this.getRutaalfresco().split("/")!=null);
 		if(rutaAlfresco != null){
 			String[] split=rutaAlfresco.split("/");
 			nombreArchivo=split[split.length - 1];
 		}
 		return nombreArchivo;
 	}
-
 	
 	public void setNombreArchivo(String nombreArchivo){
 		this.nombreArchivo=nombreArchivo;
 	}
 
-	/***************************/
 	public Archivo(){
 	}
 
@@ -185,13 +181,13 @@ public class Archivo implements Serializable{
 		this.fechaCreacion=fechacreacion;
 	}
         
-        public String getClave() {
-            return clave;
-        }
+    public String getClave() {
+        return clave;
+    }
 
-        public void setClave(String clave) {
-            this.clave = clave;
-        }
+    public void setClave(String clave) {
+        this.clave = clave;
+    }
 
 	public Integer getIdArchivo(){
 		return idArchivo;
@@ -263,15 +259,14 @@ public class Archivo implements Serializable{
 		this.documento=documento;
 	}
         
-         public Integer getUsuariocreacion() {
-            return usuariocreacion;
-        }
+    public Integer getUsuariocreacion() {
+        return usuariocreacion;
+    }
 
-        public void setUsuariocreacion(Integer usuariocreacion) {
-            this.usuariocreacion = usuariocreacion;
-        }
+    public void setUsuariocreacion(Integer usuariocreacion) {
+        this.usuariocreacion = usuariocreacion;
+    }
 
-	
 	public String getNombreReal(){
 		int inicio=nombre.indexOf(']');
 		if(inicio > -1){
@@ -348,53 +343,51 @@ public class Archivo implements Serializable{
 		}
 	}
         
-        public Integer getUnidadAutor() {
-            return unidadAutor;
-        }
+    public Integer getUnidadAutor() {
+        return unidadAutor;
+    }
 
-        public void setUnidadAutor(Integer unidadAutor) {
-            this.unidadAutor = unidadAutor;
-        }
-        
-       /* public String getRuta() {
-            return ruta;
-        }
+    public void setUnidadAutor(Integer unidadAutor) {
+        this.unidadAutor = unidadAutor;
+    }
+    
+   /* public String getRuta() {
+        return ruta;
+    }
 
-        public void setRuta(String ruta) {
-            this.ruta = ruta;
-        }*/
-        
-         public Integer getUsuariomodificacion() {
-            return usuariomodificacion;
-        }
+    public void setRuta(String ruta) {
+        this.ruta = ruta;
+    }*/
+    
+     public Integer getUsuariomodificacion() {
+        return usuariomodificacion;
+    }
 
-        public void setUsuariomodificacion(Integer usuariomodificacion) {
-            this.usuariomodificacion = usuariomodificacion;
-        }
-        
-          public Date getFechaModificacion() {
-            return fechaModificacion;
-        }
+    public void setUsuariomodificacion(Integer usuariomodificacion) {
+        this.usuariomodificacion = usuariomodificacion;
+    }
+    
+      public Date getFechaModificacion() {
+        return fechaModificacion;
+    }
 
-        public void setFechaModificacion(Date fechaModificacion) {
-            this.fechaModificacion = fechaModificacion;
-        }
+    public void setFechaModificacion(Date fechaModificacion) {
+        this.fechaModificacion = fechaModificacion;
+    }
 
-         public Integer getTamano() {
-            return tamano;
-        }
+     public Integer getTamano() {
+        return tamano;
+    }
 
-        public void setTamano(Integer tamano) {
-            this.tamano = tamano;
-        }
+    public void setTamano(Integer tamano) {
+        this.tamano = tamano;
+    }
 
-		public Integer getFlagFirma() {
-			return flagFirma;
-		}
+	public Integer getFlagFirma() {
+		return flagFirma;
+	}
 
-		public void setFlagFirma(Integer flagFirma) {
-			this.flagFirma = flagFirma;
-		}
-        
-        
+	public void setFlagFirma(Integer flagFirma) {
+		this.flagFirma = flagFirma;
+	}
 }

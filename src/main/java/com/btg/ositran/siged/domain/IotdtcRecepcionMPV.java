@@ -41,7 +41,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 	@NamedQuery(name = "IotdtcRecepcionMPV.findByCflgenvcar", query = "SELECT i FROM IotdtcRecepcionMPV i WHERE i.cflgenvcar = :cflgenvcar"),
 	@NamedQuery(name = "IotdtcRecepcionMPV.findByDfecreg", query = "SELECT i FROM IotdtcRecepcionMPV i WHERE i.dfecreg = :dfecreg") })
 public class IotdtcRecepcionMPV implements Serializable {
-	
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -457,5 +456,4 @@ public class IotdtcRecepcionMPV implements Serializable {
 	public String toString() {
 		return "com.btg.ositran.siged.domain.IotdtcRecepcionMPV[ sidrecext=" + sidrecext + " ]";
 	}
-
 }
