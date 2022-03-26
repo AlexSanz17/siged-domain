@@ -1,6 +1,8 @@
 package com.btg.ositran.siged.domain;
 
 import java.io.Serializable;
+import java.util.Date;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -57,6 +59,10 @@ public class Documentoenviado implements Serializable{
         
         @Column(name="usuariocreacion")
 	private Integer usuariocreacion;
+        
+     @Column(name="fechacreacion")
+    	private Date fechaCreacion;
+	
 
 	public Documentoenviado(){
 	}
@@ -103,6 +109,14 @@ public class Documentoenviado implements Serializable{
 
 	public void setTipoEnvio(String tipoEnvio) {
 		this.tipoEnvio = tipoEnvio;
+	}
+	
+	public Date getFechaCreacion() {
+		return fechaCreacion;
+	}
+
+	public void setFechaCreacion(Date fechaCreacion) {
+		this.fechaCreacion = fechaCreacion;
 	}
 
 	/*
