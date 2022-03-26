@@ -33,16 +33,16 @@ public class FilaBandejaEnviados {
 	@Column(name = "idtipodocumento")
 	private Integer idTipoDocumento;
         
-        @Column(name = "llave")
+    @Column(name = "llave")
 	private String llave;
 
-        public String getLlave() {
-            return llave;
-        }
+    public String getLlave() {
+        return llave;
+    }
 
-        public void setLlave(String llave) {
-            this.llave = llave;
-        }
+    public void setLlave(String llave) {
+        this.llave = llave;
+    }
         
 	private String asunto;
 
@@ -62,10 +62,10 @@ public class FilaBandejaEnviados {
 	@Column(name="expediente")
 	private String nroExpediente;
         
-        @Column(name="unidadPropietario")
+    @Column(name="unidadPropietario")
 	private Integer unidadPropietario;
         
-        @Column(name="cargoPropietario")
+    @Column(name="cargoPropietario")
 	private Integer cargoPropietario;
 
 	@Column(name = "asuntoexpediente")
@@ -80,7 +80,6 @@ public class FilaBandejaEnviados {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fechaLimite;
         
-
 	private String accion;
 
 	public Integer getId() {
@@ -203,36 +202,35 @@ public class FilaBandejaEnviados {
 		this.idPropietario = idPropietario;
 	}
         
-         public Integer getUnidadPropietario() {
-            return unidadPropietario;
-        }
+     public Integer getUnidadPropietario() {
+        return unidadPropietario;
+    }
 
-        public void setUnidadPropietario(Integer unidadPropietario) {
-            this.unidadPropietario = unidadPropietario;
-        }
+    public void setUnidadPropietario(Integer unidadPropietario) {
+        this.unidadPropietario = unidadPropietario;
+    }
 
-        public Integer getCargoPropietario() {
-            return cargoPropietario;
-        }
+    public Integer getCargoPropietario() {
+        return cargoPropietario;
+    }
 
-        public void setCargoPropietario(Integer cargoPropietario) {
-            this.cargoPropietario = cargoPropietario;
-        }
-        
-         public String getEstado() {
-            return estado;
-        }
+    public void setCargoPropietario(Integer cargoPropietario) {
+        this.cargoPropietario = cargoPropietario;
+    }
+    
+     public String getEstado() {
+        return estado;
+    }
 
-        public void setEstado(String estado) {
-            this.estado = estado;
-        }
-        
-         public Integer getNroTramite() {
-            return nroTramite;
-        }
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+    
+     public Integer getNroTramite() {
+        return nroTramite;
+    }
 
-        public void setNroTramite(Integer nroTramite) {
-            this.nroTramite = nroTramite;
-        }
-
+    public void setNroTramite(Integer nroTramite) {
+        this.nroTramite = nroTramite;
+    }
 }

@@ -148,27 +148,27 @@ public class Documentoenviado implements Serializable{
 		return "org.ositran.pojos.Documentoenviado[iddocumentoenviado=" + iddocumentoenviado + "]";
 	}
         
-        public Integer getUnidadpropietario() {
-                return unidadpropietario;
-        }
+    public Integer getUnidadpropietario() {
+            return unidadpropietario;
+    }
 
-        public void setUnidadpropietario(Integer unidadpropietario) {
-                this.unidadpropietario = unidadpropietario;
-        }
+    public void setUnidadpropietario(Integer unidadpropietario) {
+            this.unidadpropietario = unidadpropietario;
+    }
 
-        public Integer getCargopropietario() {
-                return cargopropietario;
-        }
+    public Integer getCargopropietario() {
+            return cargopropietario;
+    }
 
-        public void setCargopropietario(Integer cargopropietario) {
-                this.cargopropietario = cargopropietario;
-        }
-            
-        public Integer getUsuariocreacion() {
-                return usuariocreacion;
-        }
+    public void setCargopropietario(Integer cargopropietario) {
+            this.cargopropietario = cargopropietario;
+    }
+        
+    public Integer getUsuariocreacion() {
+            return usuariocreacion;
+    }
 
-        public void setUsuariocreacion(Integer usuariocreacion) {
-                this.usuariocreacion = usuariocreacion;
-        }
+    public void setUsuariocreacion(Integer usuariocreacion) {
+            this.usuariocreacion = usuariocreacion;
+    }
 }
