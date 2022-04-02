@@ -45,9 +45,6 @@ public class FilaBandejaUF {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fechaaccion;
         
-        ////////////////////////////////////
-        
-        
         @Column(name="fechacreaciontraza")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fechacreaciontraza;
@@ -65,49 +62,46 @@ public class FilaBandejaUF {
         @Column(name = "despacho")
 	private String despacho;
 
-        public String getDespacho() {
-            return despacho;
-        }
+    public String getDespacho() {
+        return despacho;
+    }
 
-        public void setDespacho(String despacho) {
-            this.despacho = despacho;
-        }
+    public void setDespacho(String despacho) {
+        this.despacho = despacho;
+    }
+    
+    public String getPendiente() {
+        return pendiente;
+    }
+
+    public void setPendiente(String pendiente) {
+        this.pendiente = pendiente;
+    }
+    
+    public Date getFechacreaciontraza() {
+        return fechacreaciontraza;
+    }
+
+    public void setFechacreaciontraza(Date fechacreaciontraza) {
+        this.fechacreaciontraza = fechacreaciontraza;
+    }
+
+    public Date getFechalimitetraza() {
+        return fechalimitetraza;
+    }
+
+    public void setFechalimitetraza(Date fechalimitetraza) {
+        this.fechalimitetraza = fechalimitetraza;
+    }
+
+    public String getPrioridadtraza() {
+        return prioridadtraza;
+    }
+
+    public void setPrioridadtraza(String prioridadtraza) {
+        this.prioridadtraza = prioridadtraza;
+    }
         
-        public String getPendiente() {
-            return pendiente;
-        }
-
-        public void setPendiente(String pendiente) {
-            this.pendiente = pendiente;
-        }
-        
-        public Date getFechacreaciontraza() {
-            return fechacreaciontraza;
-        }
-
-        public void setFechacreaciontraza(Date fechacreaciontraza) {
-            this.fechacreaciontraza = fechacreaciontraza;
-        }
-
-        public Date getFechalimitetraza() {
-            return fechalimitetraza;
-        }
-
-        public void setFechalimitetraza(Date fechalimitetraza) {
-            this.fechalimitetraza = fechalimitetraza;
-        }
-
-        public String getPrioridadtraza() {
-            return prioridadtraza;
-        }
-
-        public void setPrioridadtraza(String prioridadtraza) {
-            this.prioridadtraza = prioridadtraza;
-        }
-        
-        
-        ///////////////////////////////////
-
 	private String documento;
 
 	private String concesionario;
@@ -199,62 +193,62 @@ public class FilaBandejaUF {
         @Column(name = "unidadautor")
 	private Integer unidadautor;
         
-        @Column(name = "flagmultiple")
-        private String flagmultiple;
-        
-        @Column(name = "flagatendido")
-        private String flagatendido;
-        
-        @Column(name = "estadorecepcionvirtual")
-        private String estadorecepcionvirtual;
+    @Column(name = "flagmultiple")
+    private String flagmultiple;
+    
+    @Column(name = "flagatendido")
+    private String flagatendido;
+    
+    @Column(name = "estadorecepcionvirtual")
+    private String estadorecepcionvirtual;
 
-        public String getEstadorecepcionvirtual() {
-            return estadorecepcionvirtual;
-        }
+    public String getEstadorecepcionvirtual() {
+        return estadorecepcionvirtual;
+    }
 
-        public void setEstadorecepcionvirtual(String estadorecepcionvirtual) {
-            this.estadorecepcionvirtual = estadorecepcionvirtual;
-        }
-        
-        public String getExterno() {
-            return externo;
-        }
+    public void setEstadorecepcionvirtual(String estadorecepcionvirtual) {
+        this.estadorecepcionvirtual = estadorecepcionvirtual;
+    }
+    
+    public String getExterno() {
+        return externo;
+    }
 
-        public void setExterno(String externo) {
-            this.externo = externo;
-        }
-        
-        public String getVirtual() {
-            return virtual;
-        }
+    public void setExterno(String externo) {
+        this.externo = externo;
+    }
+    
+    public String getVirtual() {
+        return virtual;
+    }
 
-        public void setVirtual(String virtual) {
-            this.virtual = virtual;
-        }
+    public void setVirtual(String virtual) {
+        this.virtual = virtual;
+    }
 
-        public String getFlagatendido() {
-            return flagatendido;
-        }
+    public String getFlagatendido() {
+        return flagatendido;
+    }
 
-        public void setFlagatendido(String flagatendido) {
-            this.flagatendido = flagatendido;
-        }
+    public void setFlagatendido(String flagatendido) {
+        this.flagatendido = flagatendido;
+    }
 
-        public String getFlagmultiple() {
-            return flagmultiple;
-        }
+    public String getFlagmultiple() {
+        return flagmultiple;
+    }
 
-        public void setFlagmultiple(String flagmultiple) {
-            this.flagmultiple = flagmultiple;
-        }
+    public void setFlagmultiple(String flagmultiple) {
+        this.flagmultiple = flagmultiple;
+    }
 
-        public Integer getUnidadremitente() {
-            return unidadremitente;
-        }
+    public Integer getUnidadremitente() {
+        return unidadremitente;
+    }
 
-        public void setUnidadremitente(Integer unidadremitente) {
-            this.unidadremitente = unidadremitente;
-        }
+    public void setUnidadremitente(Integer unidadremitente) {
+        this.unidadremitente = unidadremitente;
+    }
         
        
 
@@ -524,83 +518,83 @@ public class FilaBandejaUF {
 		this.idtipodocumento = idtipodocumento;
 	}
     
-        public Integer getUnidadpropietario() {
-           return unidadpropietario;
-       }
+    public Integer getUnidadpropietario() {
+       return unidadpropietario;
+   }
 
-       public void setUnidadpropietario(Integer unidadpropietario) {
-           this.unidadpropietario = unidadpropietario;
-       }
+   public void setUnidadpropietario(Integer unidadpropietario) {
+       this.unidadpropietario = unidadpropietario;
+   }
 
-       public Integer getCargopropietario() {
-           return cargopropietario;
-       }
+   public Integer getCargopropietario() {
+       return cargopropietario;
+   }
 
-       public void setCargopropietario(Integer cargopropietario) {
-           this.cargopropietario = cargopropietario;
-       }
-      
-        public Integer getIdcliente() {
-           return idcliente;
-        }
+   public void setCargopropietario(Integer cargopropietario) {
+       this.cargopropietario = cargopropietario;
+   }
+  
+    public Integer getIdcliente() {
+       return idcliente;
+    }
 
-        public void setIdcliente(Integer idcliente) {
-           this.idcliente = idcliente;
-        }
-        
-         public Integer getNroTramite() {
-            return nroTramite;
-        }
+    public void setIdcliente(Integer idcliente) {
+       this.idcliente = idcliente;
+    }
+    
+     public Integer getNroTramite() {
+        return nroTramite;
+    }
 
-        public void setNroTramite(Integer nroTramite) {
-            this.nroTramite = nroTramite;
-        }
-        
-        public String getFirmado() {
-           return firmado;
-       }
+    public void setNroTramite(Integer nroTramite) {
+        this.nroTramite = nroTramite;
+    }
+    
+    public String getFirmado() {
+       return firmado;
+   }
 
-       public void setFirmado(String firmado) {
-           this.firmado = firmado;
-       }
-       
-        public Integer getUnidadautor() {
-            return unidadautor;
-        }
+   public void setFirmado(String firmado) {
+       this.firmado = firmado;
+   }
+   
+    public Integer getUnidadautor() {
+        return unidadautor;
+    }
 
-        public void setUnidadautor(Integer unidadautor) {
-            this.unidadautor = unidadautor;
-        }
-        
-        public String getDesunidadremitente() {
-            return desunidadremitente;
-        }
+    public void setUnidadautor(Integer unidadautor) {
+        this.unidadautor = unidadautor;
+    }
+    
+    public String getDesunidadremitente() {
+        return desunidadremitente;
+    }
 
-        public void setDesunidadremitente(String desunidadremitente) {
-            this.desunidadremitente = desunidadremitente;
-        }
+    public void setDesunidadremitente(String desunidadremitente) {
+        this.desunidadremitente = desunidadremitente;
+    }
 
-        public String getIniciales() {
-            return iniciales;
-        }
+    public String getIniciales() {
+        return iniciales;
+    }
 
-        public void setIniciales(String iniciales) {
-            this.iniciales = iniciales;
-        }
-        
-        public String getDesunidadautor() {
-            return desunidadautor;
-        }
+    public void setIniciales(String iniciales) {
+        this.iniciales = iniciales;
+    }
+    
+    public String getDesunidadautor() {
+        return desunidadautor;
+    }
 
-        public void setDesunidadautor(String desunidadautor) {
-            this.desunidadautor = desunidadautor;
-        }
-        
-         public String getLlave() {
-            return llave;
-        }
+    public void setDesunidadautor(String desunidadautor) {
+        this.desunidadautor = desunidadautor;
+    }
+    
+     public String getLlave() {
+        return llave;
+    }
 
-        public void setLlave(String llave) {
-            this.llave = llave;
-        }
+    public void setLlave(String llave) {
+        this.llave = llave;
+    }
 }

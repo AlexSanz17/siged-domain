@@ -30,8 +30,7 @@ import javax.persistence.Transient;
 		@NamedQuery(name="Usuario.findByParticipacionProceso",query="SELECT NEW Usuario (u.idusuario, u.nombres, u.apellidos, u.usuario, u.unidad) FROM Usuario u WHERE :proceso MEMBER OF u.procesosParticipante AND u.estado='A' order by UPPER(nombres)"),
 		@NamedQuery(name="Usuario.findByIdJefe",query="SELECT u FROM Usuario u WHERE u.jefe.idusuario = :idjefe AND u.estado='A' order by nombres,apellidos"),@NamedQuery(name="Usuario.findByUnidad",query="SELECT u FROM Usuario u WHERE u.unidad.idunidad = :idunidad AND u.jefe IS NULL"),
         @NamedQuery(name="Usuario.findByUsuarioEstado",query="SELECT u FROM Usuario u WHERE LOWER(u.usuario) = :usuario AND u.estado = :estado")})
-public class Usuario implements Serializable,Auditable{
-
+public class Usuario implements Serializable,Auditable {
 	private static final long serialVersionUID=4300445690240196344L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -543,62 +542,59 @@ public class Usuario implements Serializable,Auditable{
 		this.flagviewtrazabilidad = flagviewtrazabilidad;
 	}
         
-        public List<Usuarioxunidadxfuncion> getListUsuarioxunidadxfuncion() {
-            return listUsuarioxunidadxfuncion;
-        }
+    public List<Usuarioxunidadxfuncion> getListUsuarioxunidadxfuncion() {
+        return listUsuarioxunidadxfuncion;
+    }
 
-        public void setListUsuarioxunidadxfuncion(List<Usuarioxunidadxfuncion> listUsuarioxunidadxfuncion) {
-            this.listUsuarioxunidadxfuncion = listUsuarioxunidadxfuncion;
-        }
-        
-        public Integer getIdfuncion() {
-           return idfuncion;
-        }
+    public void setListUsuarioxunidadxfuncion(List<Usuarioxunidadxfuncion> listUsuarioxunidadxfuncion) {
+        this.listUsuarioxunidadxfuncion = listUsuarioxunidadxfuncion;
+    }
+    
+    public Integer getIdfuncion() {
+       return idfuncion;
+    }
 
-        public void setIdfuncion(Integer idfuncion) {
-            this.idfuncion = idfuncion;
-        }
-        
-        public Integer getIdFuncionPerfil() {
-            return idFuncionPerfil;
-        }
+    public void setIdfuncion(Integer idfuncion) {
+        this.idfuncion = idfuncion;
+    }
+    
+    public Integer getIdFuncionPerfil() {
+        return idFuncionPerfil;
+    }
 
-        public void setIdFuncionPerfil(Integer idFuncionPerfil) {
-            this.idFuncionPerfil = idFuncionPerfil;
-        }
-        
-         public Integer getIdUsuarioPerfil() {
-          return idUsuarioPerfil;
-        }
+    public void setIdFuncionPerfil(Integer idFuncionPerfil) {
+        this.idFuncionPerfil = idFuncionPerfil;
+    }
+    
+     public Integer getIdUsuarioPerfil() {
+      return idUsuarioPerfil;
+    }
 
-        public void setIdUsuarioPerfil(Integer idUsuarioPerfil) {
-            this.idUsuarioPerfil = idUsuarioPerfil;
-        }
-        
-         public Integer getIdUnidadPerfil() {
-        return idUnidadPerfil;
-        }
+    public void setIdUsuarioPerfil(Integer idUsuarioPerfil) {
+        this.idUsuarioPerfil = idUsuarioPerfil;
+    }
+    
+     public Integer getIdUnidadPerfil() {
+    return idUnidadPerfil;
+    }
 
-        public void setIdUnidadPerfil(Integer idUnidadPerfil) {
-            this.idUnidadPerfil = idUnidadPerfil;
-        }
-        
-         public String getProveido() {
-            return proveido;
-        }
+    public void setIdUnidadPerfil(Integer idUnidadPerfil) {
+        this.idUnidadPerfil = idUnidadPerfil;
+    }
+    
+     public String getProveido() {
+        return proveido;
+    }
 
-        public void setProveido(String proveido) {
-            this.proveido = proveido;
-        }
+    public void setProveido(String proveido) {
+        this.proveido = proveido;
+    }
 
-		public String getCaptcha() {
-			return captcha;
-		}
+	public String getCaptcha() {
+		return captcha;
+	}
 
-		public void setCaptcha(String captcha) {
-			this.captcha = captcha;
-		}
-        
-        
-
+	public void setCaptcha(String captcha) {
+		this.captcha = captcha;
+	}
 }
