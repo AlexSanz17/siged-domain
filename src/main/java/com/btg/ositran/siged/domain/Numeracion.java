@@ -19,7 +19,11 @@ import javax.persistence.Transient;
 @NamedQueries({@NamedQuery(name="Numeracion.findAll",query="SELECT n FROM Numeracion n"),
 // @NamedQuery(name = "Numeracion.findByIdnumeracion", query =
 // "SELECT n FROM Numeracion n WHERE n.idNumeracion.idunidad = :idunidad and n.idNumeracion.idtipodocumento = :idtipodocumento"),
-		@NamedQuery(name="Numeracion.findByIdnumeracion",query="SELECT n FROM Numeracion n WHERE n.idNumeracion.idunidad = :idunidad and n.idNumeracion.idtipodocumento = :idtipodocumento"),@NamedQuery(name="Numeracion.findByIdunidad",query="SELECT n FROM Numeracion n WHERE n.idNumeracion.idunidad = :idunidad"),@NamedQuery(name="Numeracion.findByIdtipodocumento",query="SELECT n FROM Numeracion n WHERE n.idNumeracion.idtipodocumento = :idtipodocumento"),@NamedQuery(name="Numeracion.findByNumeroactual",query="SELECT n FROM Numeracion n WHERE n.numeroactual = :numeroactual"),@NamedQuery(name="Numeracion.findByFormato",query="SELECT n FROM Numeracion n WHERE n.formato = :formato")})
+		@NamedQuery(name="Numeracion.findByIdnumeracion",query="SELECT n FROM Numeracion n WHERE n.idNumeracion.idunidad = :idunidad and n.idNumeracion.idtipodocumento = :idtipodocumento"),
+		@NamedQuery(name="Numeracion.findByIdunidad",query="SELECT n FROM Numeracion n WHERE n.idNumeracion.idunidad = :idunidad"),
+		@NamedQuery(name="Numeracion.findByIdtipodocumento",query="SELECT n FROM Numeracion n WHERE n.idNumeracion.idtipodocumento = :idtipodocumento"),
+		@NamedQuery(name="Numeracion.findByNumeroactual",query="SELECT n FROM Numeracion n WHERE n.numeroactual = :numeroactual"),
+		@NamedQuery(name="Numeracion.findByFormato",query="SELECT n FROM Numeracion n WHERE n.formato = :formato")})
 public class Numeracion implements Serializable{
 
 	private static final long serialVersionUID=1L;
