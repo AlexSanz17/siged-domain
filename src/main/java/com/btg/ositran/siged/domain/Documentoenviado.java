@@ -158,8 +158,11 @@ public class Documentoenviado implements Serializable{
 	}
 
 	@Override
-	public String toString(){
-		return "org.ositran.pojos.Documentoenviado[iddocumentoenviado=" + iddocumentoenviado + "]";
+	public String toString() {
+		return "Documentoenviado [iddocumentoenviado=" + iddocumentoenviado + ", estado=" + estado + ", usuario="
+				+ usuario + ", idTrazabilidadEnvio=" + idTrazabilidadEnvio + ", tipoEnvio=" + tipoEnvio
+				+ ", unidadpropietario=" + unidadpropietario + ", cargopropietario=" + cargopropietario
+				+ ", usuariocreacion=" + usuariocreacion + ", fechaCreacion=" + fechaCreacion + "]";
 	}
         
     public Integer getUnidadpropietario() {
