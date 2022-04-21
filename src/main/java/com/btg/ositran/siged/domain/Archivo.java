@@ -103,6 +103,11 @@ public class Archivo implements Serializable{
 	
 	@Column(name="flagFirma")
 	private Integer flagFirma;
+	
+	@Column(name="codProcesoFirma")
+	private Integer codProcesoFirma;
+
+	
 
 	@JoinColumn(name="documento", referencedColumnName="iddocumento")
 	@ManyToOne(optional=false)
@@ -291,6 +296,13 @@ public class Archivo implements Serializable{
 	
 	public void setSURL(String sURL){
 		this.sURL=sURL;
+	}
+	public Integer getCodProcesoFirma() {
+		return codProcesoFirma;
+	}
+
+	public void setCodProcesoFirma(Integer codProcesoFirma) {
+		this.codProcesoFirma = codProcesoFirma;
 	}
 
 	@Override
