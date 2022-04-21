@@ -267,12 +267,6 @@ public class IotdtmDocExterno implements Serializable {
 
     @Override
 	public String toString() {
-		return "IotdtmDocExterno [siddocext=" + siddocext + ", vnomentemi=" + vnomentemi + ", ccodtipdoc=" + ccodtipdoc
-			+ ", vnumdoc=" + vnumdoc + ", dfecdoc=" + dfecdoc + ", vuniorgdst=" + vuniorgdst + ", vnomdst="
-			+ vnomdst + ", vnomcardst=" + vnomcardst + ", vasu=" + vasu + ", cindtup=" + cindtup + ", snumanx="
-			+ snumanx + ", snumfol=" + snumfol + ", vurldocanx=" + vurldocanx + ", iotdtdDocPrincipalList="
-			+ iotdtdDocPrincipalList + ", iotdtdAnexoList=" + iotdtdAnexoList + ", sidemiext=" + sidemiext
-			+ ", sidrecext=" + sidrecext + "]";
+		return "IotdtmDocExterno [siddocext=" + siddocext + "]";
 	}
-    
 }

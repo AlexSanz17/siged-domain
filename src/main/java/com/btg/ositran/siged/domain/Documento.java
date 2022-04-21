@@ -45,8 +45,8 @@ import javax.persistence.ManyToOne;
     @NamedQuery(name="Documento.getDocumentosPorLegajo",query="SELECT d FROM Documento d, LegajoDocumento l WHERE d.estado not in ('I') and l.idLegajo=:idLegajo AND l.estado = 'A' AND d.documentoreferencia is NULL AND l.idDocumento = d.idDocumento order by l.fechaCreacion desc"),
 	@NamedQuery(name="Documento.getDocumentosNoConfidencialesPorExpediente",query="SELECT d FROM Documento d WHERE d.expediente.id=:idExpediente AND d.confidencial != 'S' AND d.documentoreferencia is NULL ORDER BY d.fechaCreacion DESC"),
 	@NamedQuery(name="Documento.getDocumentoMasReciente",query="SELECT d FROM Documento d WHERE d.estado='A' AND d.expediente.id = :idExpediente AND d.idDocumento <> :idDocumento AND d.fechaCreacion >= (SELECT MAX(d1.fechaCreacion) FROM Documento d1 WHERE d1.estado='A' AND d1.expediente.id = :idExpediente AND d1.idDocumento <> :idDocumento)")})
-public class Documento implements Serializable{
-    @Id //JC82
+public class Documento implements Serializable {
+    @Id
 	//@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="DOCUMENTO_SEQ")
 	//@SequenceGenerator(name="DOCUMENTO_SEQ",sequenceName="DOCUMENTO_SEQ",initialValue=1,allocationSize=1)
 	@Basic(optional=false)
@@ -92,7 +92,6 @@ public class Documento implements Serializable{
 	@Column(name="recepcionado")
 	private String recepcionado;
 	
-	
 	@Basic(optional=true)
 	@Column(name="desRemitente")
 	private String desRemitente; 
@@ -112,7 +111,6 @@ public class Documento implements Serializable{
 	@Basic(optional=false)
 	@Column(name="cargopropietario")
 	private Integer cargopropietario;
-
    
 	@Basic(optional=true)
 	@Column(name="documentoasociado")
@@ -136,39 +134,39 @@ public class Documento implements Serializable{
 	@Column(name="ID_EXTERNO")
 	private Integer ID_EXTERNO;
         
-        @Basic(optional=true)
+    @Basic(optional=true)
 	@Column(name="ID_CODIGO")
 	private Integer ID_CODIGO;
 
-        @Column(name="delexpediente")
+    @Column(name="delexpediente")
 	private String delExpediente;
 
 	@Column(name="nrodocumento")
 	private String numeroDocumento;
 
-        @Basic(optional=true)
+    @Basic(optional=true)
 	@Column(name="nrofolios")
 	private int numeroFolios;
         
-        @Basic(optional=true)
-	@Column(name="nrofoliospide")
+    @Basic(optional=true)
+    @Column(name="nrofoliospide")
 	private Integer numeroFoliosPIDE;
 
-        @Basic(optional=true)
+    @Basic(optional=true)
 	@Column(name="nrofoliosoriginales")
 	private Integer numeroFoliosOriginales;
      
-        @Basic(optional=true)
+    @Basic(optional=true)
 	@Column(name="nrofolioscopias")
 	private Integer numeroFoliosCopias;
         
-        @Basic(optional=true)
+    @Basic(optional=true)
 	@Column(name="imagenesdigitalizadas")
 	private Integer imagenesDigitalizadas;
         
-        @Basic(optional=true)
-        @Column (name="aniofiscal")
-        private Integer anioFiscal;
+    @Basic(optional=true)
+    @Column (name="aniofiscal")
+    private Integer anioFiscal;
 
 	@Column(name="nrocaja")
 	private String numeroCaja;
@@ -191,27 +189,27 @@ public class Documento implements Serializable{
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fechaDocumento;
         
-        @Column(name="fechareunion")
+    @Column(name="fechareunion")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fechaReunion;
 
-        @Column(name="fechamodificacion")
+    @Column(name="fechamodificacion")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fechaModificacion;
 
-        @Column(name="lugar")
+    @Column(name="lugar")
 	private String lugar;
 
-        @Column(name="objetivo")
+    @Column(name="objetivo")
 	private String objetivo;
         
-        @Column(name="codinfraestructura")
+    @Column(name="codinfraestructura")
 	private Integer codInfraestructura;
         
-        @Column(name="codmateria")
+    @Column(name="codmateria")
 	private Integer codMateria;
         
-        @Column(name="nroVirtual")
+    @Column(name="nroVirtual")
 	private Integer nroVirtual;
 
 	@Basic(optional=false)
@@ -219,9 +217,9 @@ public class Documento implements Serializable{
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fechaAccion;
         
-        @Basic(optional=true)
-        @Column(name="flagsideco")
-        private String flagsideco;
+    @Basic(optional=true)
+    @Column(name="flagsideco")
+    private String flagsideco;
 
     @Column(name="plazo")
 	private Integer plazo;
@@ -284,170 +282,25 @@ public class Documento implements Serializable{
 	@ManyToOne
 	private Tipodocumento tipoDocumento;
         
-        @JoinColumn(name="ID_CLIENTE",referencedColumnName="idCliente", insertable=false, updatable=false)
+    @JoinColumn(name="ID_CLIENTE",referencedColumnName="idCliente", insertable=false, updatable=false)
 	@ManyToOne(optional=true,fetch=FetchType.LAZY)
 	private Cliente cliente;
         
-        @JoinColumn(name="codTipoInstitucion",referencedColumnName="cod_tipoinstitucion", insertable=false, updatable=false)
+    @JoinColumn(name="codTipoInstitucion",referencedColumnName="cod_tipoinstitucion", insertable=false, updatable=false)
 	@ManyToOne(optional=true,fetch=FetchType.LAZY)
 	private TipoInstitucion tipoInstitucion;
 
-        @JoinColumn(name="codRemitente",referencedColumnName="idDetalleCliente", insertable=false, updatable=false)
+    @JoinColumn(name="codRemitente",referencedColumnName="idDetalleCliente", insertable=false, updatable=false)
 	@ManyToOne(optional=true,fetch=FetchType.LAZY)
 	private DetalleCliente detalleRemitente;
         
-        @JoinColumn(name="codCargoRemitente",referencedColumnName="idCargoAdministrado", insertable=false, updatable=false)
+    @JoinColumn(name="codCargoRemitente",referencedColumnName="idCargoAdministrado", insertable=false, updatable=false)
 	@ManyToOne(optional=true,fetch=FetchType.LAZY)
 	private CargoAdministrado cargoRemitente;
 
 	private transient String DOCUMENTO_ORIGEN;
-        private transient String VER_DOCUMENTO;
-        private transient String vcuo;
-
-        public String getVcuo() {
-            return vcuo;
-        }
-
-        public void setVcuo(String vcuo) {
-            this.vcuo = vcuo;
-        }
-
-        public String getVER_DOCUMENTO() {
-            return VER_DOCUMENTO;
-        }
-
-        public void setVER_DOCUMENTO(String VER_DOCUMENTO) {
-            this.VER_DOCUMENTO = VER_DOCUMENTO;
-        }
-        
-        public Integer getIdConcesionario() {
-            return idConcesionario;
-        }
-
-        public void setIdConcesionario(Integer idConcesionario) {
-            this.idConcesionario = idConcesionario;
-        }
-
-        public Integer getBandeja() {
-            return bandeja;
-        }
-
-        public void setBandeja(Integer bandeja) {
-            this.bandeja = bandeja;
-        }
-        
-        public String getFlagatendido() {
-            return flagatendido;
-        }
-
-        public void setFlagatendido(String flagatendido) {
-            this.flagatendido = flagatendido;
-        }
-
-        public String getFlaginicioflujo() {
-            return flaginicioflujo;
-        }
-
-        public void setFlaginicioflujo(String flaginicioflujo) {
-            this.flaginicioflujo = flaginicioflujo;
-        }
-
-        public Integer getUnidadautor() {
-            return unidadautor;
-        }
-
-        public void setUnidadautor(Integer unidadautor) {
-            this.unidadautor = unidadautor;
-        }
-        
-        public String getFlagsideco() {
-            return flagsideco;
-        }
-
-        public void setFlagsideco(String flagsideco) {
-            this.flagsideco = flagsideco;
-        }
-       
-	public String getDOCUMENTO_ORIGEN() {
-		return DOCUMENTO_ORIGEN;
-	}
-
-	public void setDOCUMENTO_ORIGEN(String dOCUMENTO_ORIGEN) {
-		DOCUMENTO_ORIGEN = dOCUMENTO_ORIGEN;
-	}
-
-	public Integer getID_EXTERNO() {
-	    return ID_EXTERNO;
-	}
-
-	public void setID_EXTERNO(Integer iD_EXTERNO) {
-	    ID_EXTERNO = iD_EXTERNO;
-	}
-
-	
-	public Integer getID_CODIGO() {
-	    return ID_CODIGO;
-	}
-        
-        public Integer getOrigen() {
-           return origen;
-        }
-
-        public void setOrigen(Integer origen) {
-            this.origen = origen;
-        }
-
-	public void setID_CODIGO(Integer iD_CODIGO) {
-	    ID_CODIGO = iD_CODIGO;
-	}
-
-	public Integer getID_CLIENTE() {
-		return ID_CLIENTE;
-	}
-
-	public void setID_CLIENTE(Integer iD_CLIENTE) {
-		ID_CLIENTE = iD_CLIENTE;
-	}
-    
-    public Integer getDocumentoasociado() {
-		return documentoasociado;
-	}
-
-	public void setDocumentoasociado(Integer documentoasociado) {
-		this.documentoasociado = documentoasociado;
-	}
-	
-        public CargoAdministrado getCargoRemitente() {
-            return cargoRemitente;
-        }
-
-        public void setCargoRemitente(CargoAdministrado cargoRemitente) {
-            this.cargoRemitente = cargoRemitente;
-        }
-
-        public DetalleCliente getDetalleRemitente() {
-            return detalleRemitente;
-        }
-
-        public void setDetalleRemitente(DetalleCliente detalleRemitente) {
-            this.detalleRemitente = detalleRemitente;
-        }
-        
-        public TipoInstitucion getTipoInstitucion() {
-            return tipoInstitucion;
-        }
-
-        public void setTipoInstitucion(TipoInstitucion tipoInstitucion) {
-            this.tipoInstitucion = tipoInstitucion;
-        }
-
-        public Cliente getCliente() {
-            return cliente;
-        }
-
-        public void setCliente(Cliente cliente) {
-            this.cliente = cliente;
-        }
+    private transient String VER_DOCUMENTO;
+    private transient String vcuo;
 
 	@JoinColumn(name="propietario",referencedColumnName="idusuario")
 	@ManyToOne(optional=true)
@@ -475,38 +328,14 @@ public class Documento implements Serializable{
 	@ManyToOne(optional=false)
 	private Usuario autor;
         
-        @Column(name="codTipoInstitucion")
-        private Integer codTipoInstitucion;
+    @Column(name="codTipoInstitucion")
+    private Integer codTipoInstitucion;
 
-        public Integer getCodTipoInstitucion() {
-            return codTipoInstitucion;
-        }
+    @Column(name="codRemitente")
+    private Integer codRemitente;
 
-        public void setCodTipoInstitucion(Integer codTipoInstitucion) {
-            this.codTipoInstitucion = codTipoInstitucion;
-        }
-
-        public Integer getCodRemitente() {
-            return codRemitente;
-        }
-
-        public void setCodRemitente(Integer codRemitente) {
-            this.codRemitente = codRemitente;
-        }
-
-        public Integer getCodCargoRemitente() {
-            return codCargoRemitente;
-        }
-
-        public void setCodCargoRemitente(Integer codCargoRemitente) {
-            this.codCargoRemitente = codCargoRemitente;
-        }
-        
-        @Column(name="codRemitente")
-        private Integer codRemitente;
-
-        @Column(name="codCargoRemitente")
-        private Integer codCargoRemitente;
+    @Column(name="codCargoRemitente")
+    private Integer codCargoRemitente;
         
 	@Column(name="documentoreferencia")
 	private Integer documentoreferencia;
@@ -521,7 +350,6 @@ public class Documento implements Serializable{
 	@Column(name="nombrepclecturadocumento")
 	private String nombrePCLecturaDocumento;
 
-
 	private Integer prioridad;
 
 	private String referenciados;
@@ -531,14 +359,6 @@ public class Documento implements Serializable{
 	private transient String etapa;
 
 	private transient String color;
-
-	public String getColor() {
-		return color;
-	}
-
-	public void setColor(String color) {
-		this.color = color;
-	}
 
 	private transient String indAlerta;
 	
@@ -586,23 +406,7 @@ public class Documento implements Serializable{
         
     private transient String nroReferencias;
 
-    public String getNroReferencias() {
-        return nroReferencias;
-    }
-
-    public void setNroReferencias(String nroReferencias) {
-        this.nroReferencias = nroReferencias;
-    }
-
-	public String getAcciones() {
-		return acciones;
-	}
-        
-        public void setAcciones(String acciones) {
-		this.acciones = acciones;
-	}
-
-	public Documento(){
+    public Documento(){
 		this.estadoAlarma='V';
 	}
 
@@ -642,7 +446,6 @@ public class Documento implements Serializable{
 		this.idDocumento=iddocumento;
 		this.historico=historico;
 		this.leido=leido;
-
 		this.asunto=asunto;
 		this.fechaCreacion=fechacreacion;
 		this.fechaAccion=fechaaccion;
@@ -764,10 +567,11 @@ public class Documento implements Serializable{
 		this.numeroMesaPartes=numeroMesaPartes;
 	}
         
-        public String getAsuntoHTML(){
-		if(asunto != null){
-                      return asunto.replace("\n", "").replace("\r", "").replace("\"", "");
+    public String getAsuntoHTML(){
+		if (asunto != null){
+          	return asunto.replace("\n", "").replace("\r", "").replace("\"", "");
 		}
+		
 		return "";
 	}
 
@@ -826,13 +630,13 @@ public class Documento implements Serializable{
 		this.fechaAccion=fechaAccion;
 	}
         
-        public Integer getAnioFiscal() {
-            return anioFiscal;
-        }
-        
-        public void setAnioFiscal(Integer anioFiscal){
-            this.anioFiscal = anioFiscal;
-        }
+    public Integer getAnioFiscal() {
+        return anioFiscal;
+    }
+    
+    public void setAnioFiscal(Integer anioFiscal){
+        this.anioFiscal = anioFiscal;
+    }
 
 	public Integer getPlazo(){
 		return plazo;
@@ -1467,6 +1271,199 @@ public class Documento implements Serializable{
         this.nroVirtual = nroVirtual;
     }
     
+    public String getVcuo() {
+        return vcuo;
+    }
+
+    public void setVcuo(String vcuo) {
+        this.vcuo = vcuo;
+    }
+
+    public String getVER_DOCUMENTO() {
+        return VER_DOCUMENTO;
+    }
+
+    public void setVER_DOCUMENTO(String VER_DOCUMENTO) {
+        this.VER_DOCUMENTO = VER_DOCUMENTO;
+    }
+    
+    public Integer getIdConcesionario() {
+        return idConcesionario;
+    }
+
+    public void setIdConcesionario(Integer idConcesionario) {
+        this.idConcesionario = idConcesionario;
+    }
+
+    public Integer getBandeja() {
+        return bandeja;
+    }
+
+    public void setBandeja(Integer bandeja) {
+        this.bandeja = bandeja;
+    }
+    
+    public String getFlagatendido() {
+        return flagatendido;
+    }
+
+    public void setFlagatendido(String flagatendido) {
+        this.flagatendido = flagatendido;
+    }
+
+    public String getFlaginicioflujo() {
+        return flaginicioflujo;
+    }
+
+    public void setFlaginicioflujo(String flaginicioflujo) {
+        this.flaginicioflujo = flaginicioflujo;
+    }
+
+    public Integer getUnidadautor() {
+        return unidadautor;
+    }
+
+    public void setUnidadautor(Integer unidadautor) {
+        this.unidadautor = unidadautor;
+    }
+    
+    public String getFlagsideco() {
+        return flagsideco;
+    }
+
+    public void setFlagsideco(String flagsideco) {
+        this.flagsideco = flagsideco;
+    }
+       
+	public String getDOCUMENTO_ORIGEN() {
+		return DOCUMENTO_ORIGEN;
+	}
+
+	public void setDOCUMENTO_ORIGEN(String dOCUMENTO_ORIGEN) {
+		DOCUMENTO_ORIGEN = dOCUMENTO_ORIGEN;
+	}
+
+	public Integer getID_EXTERNO() {
+	    return ID_EXTERNO;
+	}
+
+	public void setID_EXTERNO(Integer iD_EXTERNO) {
+	    ID_EXTERNO = iD_EXTERNO;
+	}
+
+	
+	public Integer getID_CODIGO() {
+	    return ID_CODIGO;
+	}
+        
+    public Integer getOrigen() {
+       return origen;
+    }
+
+    public void setOrigen(Integer origen) {
+        this.origen = origen;
+    }
+
+	public void setID_CODIGO(Integer iD_CODIGO) {
+	    ID_CODIGO = iD_CODIGO;
+	}
+
+	public Integer getID_CLIENTE() {
+		return ID_CLIENTE;
+	}
+
+	public void setID_CLIENTE(Integer iD_CLIENTE) {
+		ID_CLIENTE = iD_CLIENTE;
+	}
+    
+    public Integer getDocumentoasociado() {
+		return documentoasociado;
+	}
+
+	public void setDocumentoasociado(Integer documentoasociado) {
+		this.documentoasociado = documentoasociado;
+	}
+	
+    public CargoAdministrado getCargoRemitente() {
+        return cargoRemitente;
+    }
+
+    public void setCargoRemitente(CargoAdministrado cargoRemitente) {
+        this.cargoRemitente = cargoRemitente;
+    }
+
+    public DetalleCliente getDetalleRemitente() {
+        return detalleRemitente;
+    }
+
+    public void setDetalleRemitente(DetalleCliente detalleRemitente) {
+        this.detalleRemitente = detalleRemitente;
+    }
+    
+    public TipoInstitucion getTipoInstitucion() {
+        return tipoInstitucion;
+    }
+
+    public void setTipoInstitucion(TipoInstitucion tipoInstitucion) {
+        this.tipoInstitucion = tipoInstitucion;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+    
+    public Integer getCodTipoInstitucion() {
+        return codTipoInstitucion;
+    }
+
+    public void setCodTipoInstitucion(Integer codTipoInstitucion) {
+        this.codTipoInstitucion = codTipoInstitucion;
+    }
+
+    public Integer getCodRemitente() {
+        return codRemitente;
+    }
+
+    public void setCodRemitente(Integer codRemitente) {
+        this.codRemitente = codRemitente;
+    }
+
+    public Integer getCodCargoRemitente() {
+        return codCargoRemitente;
+    }
+
+    public void setCodCargoRemitente(Integer codCargoRemitente) {
+        this.codCargoRemitente = codCargoRemitente;
+    }
+    
+    public String getColor() {
+		return color;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
+	}
+
+	public String getNroReferencias() {
+        return nroReferencias;
+    }
+
+    public void setNroReferencias(String nroReferencias) {
+        this.nroReferencias = nroReferencias;
+    }
+
+	public String getAcciones() {
+		return acciones;
+	}
+        
+    public void setAcciones(String acciones) {
+		this.acciones = acciones;
+	}
+    
     public Integer getNumeroFoliosPIDE() {
         return numeroFoliosPIDE;
     }
@@ -1496,38 +1493,6 @@ public class Documento implements Serializable{
 
     @Override
 	public String toString() {
-		return "Documento [idDocumento=" + idDocumento + ", principal=" + principal + ", unidadpropietario="
-			+ unidadpropietario + ", idConcesionario=" + idConcesionario + ", unidadenumera=" + unidadenumera
-			+ ", unidadautor=" + unidadautor + ", bandeja=" + bandeja + ", flaginicioflujo=" + flaginicioflujo
-			+ ", desCargoRemitente=" + desCargoRemitente + ", desUnidadRemitente=" + desUnidadRemitente
-			+ ", recepcionado=" + recepcionado + ", desRemitente=" + desRemitente + ", proyecto=" + proyecto
-			+ ", origen=" + origen + ", flagatendido=" + flagatendido + ", cargopropietario=" + cargopropietario
-			+ ", documentoasociado=" + documentoasociado + ", ID_CLIENTE=" + ID_CLIENTE + ", usuariocreacion="
-			+ usuariocreacion + ", usuarioModificacion=" + usuarioModificacion + ", flagMultiple=" + flagMultiple
-			+ ", ID_EXTERNO=" + ID_EXTERNO + ", ID_CODIGO=" + ID_CODIGO + ", delExpediente=" + delExpediente
-			+ ", numeroDocumento=" + numeroDocumento + ", numeroFolios=" + numeroFolios + ", numeroFoliosPIDE="
-			+ numeroFoliosPIDE + ", numeroFoliosOriginales=" + numeroFoliosOriginales + ", numeroFoliosCopias="
-			+ numeroFoliosCopias + ", imagenesDigitalizadas=" + imagenesDigitalizadas + ", anioFiscal=" + anioFiscal
-			+ ", numeroCaja=" + numeroCaja + ", numeroMesaPartes=" + numeroMesaPartes + ", asunto=" + asunto
-			+ ", ultimoAsunto=" + ultimoAsunto + ", contenido=" + contenido + ", observacion=" + observacion
-			+ ", fechaDocumento=" + fechaDocumento + ", fechaReunion=" + fechaReunion + ", fechaModificacion="
-			+ fechaModificacion + ", lugar=" + lugar + ", objetivo=" + objetivo + ", codInfraestructura="
-			+ codInfraestructura + ", codMateria=" + codMateria + ", nroVirtual=" + nroVirtual + ", fechaAccion="
-			+ fechaAccion + ", flagsideco=" + flagsideco + ", plazo=" + plazo + ", fechaLimiteAtencion="
-			+ fechaLimiteAtencion + ", fechaCreacion=" + fechaCreacion + ", fechaCreacionMonth="
-			+ fechaCreacionMonth + ", fechaCreacionYear=" + fechaCreacionYear + ", estado=" + estado
-			+ ", estaEnFlujo=" + estaEnFlujo + ", observacionRechazo=" + observacionRechazo
-			+ ", observacionDigitalizador=" + observacionDigitalizador + ", estadoAlarma=" + estadoAlarma
-			+ ", creaExpediente=" + creaExpediente + ", estadoplazo=" + estadoplazo + ", fechaCargo=" + fechaCargo
-			+ ", firmado=" + firmado + ", enumerado=" + enumerado + ", accion=" + accion + ", expediente="
-			+ expediente + ", tipoDocumento=" + tipoDocumento + ", cliente=" + cliente + ", tipoInstitucion="
-			+ tipoInstitucion + ", detalleRemitente=" + detalleRemitente + ", cargoRemitente=" + cargoRemitente
-			+ ", propietario=" + propietario + ", firmante=" + firmante + ", enumerador=" + enumerador
-			+ ", documentoStor=" + documentoStor + ", archivos=" + archivos + ", leido=" + leido + ", remitente="
-			+ remitente + ", autor=" + autor + ", codTipoInstitucion=" + codTipoInstitucion + ", codRemitente="
-			+ codRemitente + ", codCargoRemitente=" + codCargoRemitente + ", documentoreferencia="
-			+ documentoreferencia + ", despachado=" + despachado + ", fechaLecturaDocumento="
-			+ fechaLecturaDocumento + ", nombrePCLecturaDocumento=" + nombrePCLecturaDocumento + ", prioridad="
-			+ prioridad + ", referenciados=" + referenciados + ", confidencial=" + confidencial + "]";
+		return "Documento [idDocumento=" + idDocumento + "]";
 	}
 }
