@@ -8,6 +8,8 @@ import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
@@ -22,6 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
 @Table(name = "IOTDTC_DESPACHO")
+
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "IotdtcDespacho.findAll", query = "SELECT i FROM IotdtcDespacho i"),
@@ -52,8 +55,10 @@ import javax.xml.bind.annotation.XmlTransient;
 public class IotdtcDespacho implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
+   
     @Basic(optional = false)
     @Column(name = "SIDEMIEXT")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer sidemiext;
     @Column(name = "VNUMREGSTD")
     private String vnumregstd;
