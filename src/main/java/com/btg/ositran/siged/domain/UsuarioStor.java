@@ -118,7 +118,9 @@ public class UsuarioStor extends Usuario implements Serializable{
 	}
 
 	@Override
-	public String toString(){
-		return "org.ositran.pojos.UsuarioStor[idusuario=" + getIdusuario() + "]";
+	public String toString() {
+		return "UsuarioStor [responsable=" + responsable + ", nroapelaciones=" + nroapelaciones + ", nroquejas="
+				+ nroquejas + ", nrocautelares=" + nrocautelares + ", usuariointalio=" + usuariointalio + ", sala="
+				+ sala + "]";
 	}
 }

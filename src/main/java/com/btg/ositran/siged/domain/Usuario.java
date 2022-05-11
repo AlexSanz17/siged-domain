@@ -466,10 +466,9 @@ public class Usuario implements Serializable,Auditable {
 	}
 
 	@Override
-	public String toString(){
-		// return "Usuario [apellidos=" + apellidos + ", nombres=" + nombres +
-		// ", usuario=" + usuario + "]";
-		return "Usuario [id=" + idusuario + "]";
+	public String toString() {
+		return "Usuario [idusuario=" + idusuario + ", tipoDocumento=" + tipoDocumento + ", nroDocumento=" + nroDocumento
+				+ ", idUnidadPerfil=" + idUnidadPerfil + ", unidad=" + unidad + "]";
 	}
 
 	/*

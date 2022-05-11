@@ -559,8 +559,18 @@ public class Cliente implements Serializable,Auditable{
 	}
 
 	@Override
-	public String toString(){
-		return "[" + this.razonSocial + "]";
+	public String toString() {
+		return "Cliente [idCliente=" + idCliente + ", numeroIdentificacion=" + numeroIdentificacion + ", razonSocial="
+				+ razonSocial + ", representanteLegal=" + representanteLegal + ", direccionPrincipal="
+				+ direccionPrincipal + ", direccionAlternativa=" + direccionAlternativa + ", concesion=" + concesion
+				+ ", flagPide=" + flagPide + ", idUnidad=" + idUnidad + ", codCargoCliente=" + codCargoCliente
+				+ ", tipoinstitucion=" + tipoinstitucion + ", codtipoinstitucion=" + codtipoinstitucion
+				+ ", usuarioCreacion=" + usuarioCreacion + ", usuarioModificacion=" + usuarioModificacion
+				+ ", telefono=" + telefono + ", correo=" + correo + ", nombres=" + nombres + ", apellidoPaterno="
+				+ apellidoPaterno + ", apellidoMaterno=" + apellidoMaterno + ", estado=" + estado + ", fechaCreacion="
+				+ fechaCreacion + ", fechaModificacion=" + fechaModificacion + ", ubigeoAlternativo="
+				+ ubigeoAlternativo + ", ubigeoPrincipal=" + ubigeoPrincipal + ", tipoIdentificacion="
+				+ tipoIdentificacion + ", sTipoIdentificacion=" + sTipoIdentificacion + "]";
 	}
 
 	// Auditoria

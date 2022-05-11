@@ -6,6 +6,8 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -30,6 +32,7 @@ public class IotdtdAnexo implements Serializable {
     @Id
     @Basic(optional = false)
     @Column(name = "SIDDOCANX")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer siddocanx;
     @Basic(optional = false)
     @Column(name = "VNOMDOC")
