@@ -31,8 +31,7 @@ import javax.persistence.Table;
         @NamedQuery(name="Unidad.findByGrupoUnidad",query="SELECT u FROM Unidad u where u.unidadgrupo = :idunidad"),
 	@NamedQuery(name="Unidad.findByDescripcion",query="SELECT u FROM Unidad u WHERE u.descripcion = :descripcion")})
 @NamedNativeQuery(name="Unidad.findAllUnidadSAS",query="SELECT * FROM UnidadSAS u",resultClass=Unidad.class)
-public class Unidad implements Serializable,Auditable{
-
+public class Unidad implements Serializable, Auditable {
 	private static final long serialVersionUID=1L;
 	@Id
 	//@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="UNIDAD_SEQ")
@@ -319,6 +318,4 @@ public class Unidad implements Serializable,Auditable{
 	public void setInicioRecepcion(String inicioRecepcion) {
 		this.inicioRecepcion = inicioRecepcion;
 	}
-
-   
 }

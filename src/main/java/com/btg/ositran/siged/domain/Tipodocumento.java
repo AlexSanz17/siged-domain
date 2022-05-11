@@ -16,12 +16,21 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="tipodocumento")
-@NamedQueries({@NamedQuery(name="Tipodocumento.findAll",query="SELECT t FROM Tipodocumento t"),@NamedQuery(name="Tipodocumento.findAllActive",query="SELECT t FROM Tipodocumento t WHERE t.estado = 'A' ORDER BY t.nombre"),@NamedQuery(name="Tipodocumento.findAllWithoutStor",query="SELECT t FROM Tipodocumento t ORDER BY t.nombre"),@NamedQuery(name="Tipodocumento.findAllWithPlantilla",query="SELECT t FROM Tipodocumento t where (select count(p) from Plantilla p where p.tipo = t.idtipodocumento AND p.estado = 'A')>0"),@NamedQuery(name="Tipodocumento.findAllWithoutPlantilla",query="SELECT t FROM Tipodocumento t WHERE t.idtipodocumento NOT IN (SELECT p.tipo FROM Plantilla p)"),@NamedQuery(name="Tipodocumento.findByIdtipodocumento",query="SELECT t FROM Tipodocumento t WHERE t.idtipodocumento = :idtipodocumento"),@NamedQuery(name="Tipodocumento.findByNombre",query="SELECT t FROM Tipodocumento t WHERE LOWER(t.nombre) = :nombre"),
-			   @NamedQuery(name="Tipodocumento.findByNombreLike",query="SELECT t FROM Tipodocumento t WHERE LOWER(t.nombre) like :nombre"),@NamedQuery(name="Tipodocumento.findByDescripcion",query="SELECT t FROM Tipodocumento t WHERE t.descripcion = :descripcion"),@NamedQuery(name="Tipodocumento.findByTipoDocumentoPIDE",query="SELECT t FROM Tipodocumento t WHERE t.pide = :tipoPIDE"), @NamedQuery(name="Tipodocumento.findByAllTipoDocumentoPIDE",query="SELECT t FROM Tipodocumento t WHERE t.pide is not null and t.estadoPIDE is not null and t.estadoPIDE = 'A'"),
-			   @NamedQuery(name="Tipodocumento.findByEstado",query="SELECT t FROM Tipodocumento t WHERE t.estado = :estado"),@NamedQuery(name="Tipodocumento.findByCodigo",query="SELECT t FROM Tipodocumento t WHERE UPPER(t.codigo) = :codigo")
+@NamedQueries({@NamedQuery(name="Tipodocumento.findAll",query="SELECT t FROM Tipodocumento t"),
+	@NamedQuery(name="Tipodocumento.findAllActive",query="SELECT t FROM Tipodocumento t WHERE t.estado = 'A' ORDER BY t.nombre"),
+	@NamedQuery(name="Tipodocumento.findAllWithoutStor",query="SELECT t FROM Tipodocumento t ORDER BY t.nombre"),
+	@NamedQuery(name="Tipodocumento.findAllWithPlantilla",query="SELECT t FROM Tipodocumento t where (select count(p) from Plantilla p where p.tipo = t.idtipodocumento AND p.estado = 'A')>0"),
+	@NamedQuery(name="Tipodocumento.findAllWithoutPlantilla",query="SELECT t FROM Tipodocumento t WHERE t.idtipodocumento NOT IN (SELECT p.tipo FROM Plantilla p)"),
+	@NamedQuery(name="Tipodocumento.findByIdtipodocumento",query="SELECT t FROM Tipodocumento t WHERE t.idtipodocumento = :idtipodocumento"),
+	@NamedQuery(name="Tipodocumento.findByNombre",query="SELECT t FROM Tipodocumento t WHERE LOWER(t.nombre) = :nombre"),
+	@NamedQuery(name="Tipodocumento.findByNombreLike",query="SELECT t FROM Tipodocumento t WHERE LOWER(t.nombre) like :nombre"),
+	@NamedQuery(name="Tipodocumento.findByDescripcion",query="SELECT t FROM Tipodocumento t WHERE t.descripcion = :descripcion"),
+	@NamedQuery(name="Tipodocumento.findByTipoDocumentoPIDE",query="SELECT t FROM Tipodocumento t WHERE t.pide = :tipoPIDE"),
+	@NamedQuery(name="Tipodocumento.findByAllTipoDocumentoPIDE",query="SELECT t FROM Tipodocumento t WHERE t.pide is not null and t.estadoPIDE is not null and t.estadoPIDE = 'A'"),
+	@NamedQuery(name="Tipodocumento.findByEstado",query="SELECT t FROM Tipodocumento t WHERE t.estado = :estado"),
+	@NamedQuery(name="Tipodocumento.findByCodigo",query="SELECT t FROM Tipodocumento t WHERE UPPER(t.codigo) = :codigo")
             })
 public class Tipodocumento implements Serializable,Auditable{
-
 	private static final long serialVersionUID=1L;
 	@Id
 	//@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="TIPODOCUMENTO_SEQ")
@@ -34,17 +43,17 @@ public class Tipodocumento implements Serializable,Auditable{
 	@Column(name="nombre")
 	private String nombre;
         
-        @Column(name="pide")
+    @Column(name="pide")
 	private String pide;
 
-        @Column(name="externo")
-        private String externo;
+    @Column(name="externo")
+    private String externo;
 
-        @Column(name="estadoPIDE")
-        private String estadoPIDE;
-     
-        @Column(name="externoQR")
-        private String externoQR;
+    @Column(name="estadoPIDE")
+    private String estadoPIDE;
+ 
+    @Column(name="externoQR")
+    private String externoQR;
 
 	@Column(name="descripcion")
 	private String descripcion;
@@ -56,32 +65,32 @@ public class Tipodocumento implements Serializable,Auditable{
 	@Column(name="estado")
 	private char estado;
         
-        @Column(name="sicor")
-        private String sicor;
+    @Column(name="sicor")
+    private String sicor;
 
-        public String getSicor() {
-            return sicor;
-        }
+    public String getSicor() {
+        return sicor;
+    }
 
-        public void setSicor(String sicor) {
-            this.sicor = sicor;
-        }
-        
-         public String getExternoQR() {
-            return externoQR;
-        }
+    public void setSicor(String sicor) {
+        this.sicor = sicor;
+    }
+    
+     public String getExternoQR() {
+        return externoQR;
+    }
 
-        public void setExternoQR(String externoQR) {
-            this.externoQR = externoQR;
-        }
+    public void setExternoQR(String externoQR) {
+        this.externoQR = externoQR;
+    }
 
-        public String getPide() {
-            return pide;
-        }
+    public String getPide() {
+        return pide;
+    }
 
-        public void setPide(String pide) {
-            this.pide = pide;
-        }
+    public void setPide(String pide) {
+        this.pide = pide;
+    }
    
 
 	/*
@@ -105,21 +114,21 @@ public class Tipodocumento implements Serializable,Auditable{
 		this.estado=estado;
 	}
         
-         public String getExterno() {
-           return externo;
-        }
+     public String getExterno() {
+       return externo;
+    }
 
-        public void setExterno(String externo) {
-            this.externo = externo;
-        }
-        
-         public String getEstadoPIDE() {
-            return estadoPIDE;
-        }
+    public void setExterno(String externo) {
+        this.externo = externo;
+    }
+    
+     public String getEstadoPIDE() {
+        return estadoPIDE;
+    }
 
-        public void setEstadoPIDE(String estadoPIDE) {
-            this.estadoPIDE = estadoPIDE;
-        }
+    public void setEstadoPIDE(String estadoPIDE) {
+        this.estadoPIDE = estadoPIDE;
+    }
    
 	/*
 	 * Getters & Setters
