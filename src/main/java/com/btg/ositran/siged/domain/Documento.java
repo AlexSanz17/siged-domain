@@ -1493,6 +1493,7 @@ public class Documento implements Serializable {
 
     @Override
 	public String toString() {
-		return "Documento [idDocumento=" + idDocumento + "]";
+		return "Documento [idDocumento=" + idDocumento + ", numeroDocumento=" + numeroDocumento
+				+ ", documentoreferencia=" + documentoreferencia + "]";
 	}
 }
