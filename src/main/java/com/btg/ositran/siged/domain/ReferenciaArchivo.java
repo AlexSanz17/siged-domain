@@ -29,6 +29,7 @@ import javax.persistence.TemporalType;
  */
 public class ReferenciaArchivo implements java.io.Serializable{
     
+
 	@Id
 	//@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="REFERENCIAARCHIVO_SEQ")
 	//@SequenceGenerator(name="REFERENCIAARCHIVO_SEQ",sequenceName="REFERENCIAARCHIVO_SEQ",initialValue=1,allocationSize=1)
@@ -169,4 +170,14 @@ public class ReferenciaArchivo implements java.io.Serializable{
         public void setFechaCreacion(Date fechaCreacion) {
             this.fechaCreacion = fechaCreacion;
         }
+        
+    	@Override
+    	public String toString() {
+    		return "ReferenciaArchivo [idRefArc=" + idRefArc + ", documento=" + documento + ", documentoReferencia="
+    				+ documentoReferencia + ", idDocumentoReferencia=" + idDocumentoReferencia + ", usuarioCreacion="
+    				+ usuarioCreacion + ", usuarioModificacion=" + usuarioModificacion + ", idDocumento=" + idDocumento
+    				+ ", idArchivo=" + idArchivo + ", estado=" + estado + ", fechaCreacion=" + fechaCreacion
+    				+ ", fechaModificacion=" + fechaModificacion + "]";
+    	}
+
 }

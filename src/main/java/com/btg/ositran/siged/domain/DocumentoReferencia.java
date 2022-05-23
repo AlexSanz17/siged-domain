@@ -158,7 +158,9 @@ public class DocumentoReferencia implements java.io.Serializable{
             return fechaCreacion;
         }
 
-        public void setFechaCreacion(Date fechaCreacion) {
+        
+
+		public void setFechaCreacion(Date fechaCreacion) {
             this.fechaCreacion = fechaCreacion;
         }
         
@@ -169,4 +171,13 @@ public class DocumentoReferencia implements java.io.Serializable{
         public void setVerDocumento(String verDocumento) {
             this.verDocumento = verDocumento;
         }
+        @Override
+		public String toString() {
+			return "DocumentoReferencia [idRef=" + idRef + ", documento=" + documento + ", documentoReferencia="
+					+ documentoReferencia + ", idDocumentoReferencia=" + idDocumentoReferencia + ", usuarioCreacion="
+					+ usuarioCreacion + ", verDocumento=" + verDocumento + ", usuarioModificacion="
+					+ usuarioModificacion + ", idDocumento=" + idDocumento + ", estado=" + estado + ", respondido="
+					+ respondido + ", fechaCreacion=" + fechaCreacion + ", fechaModificacion=" + fechaModificacion
+					+ "]";
+		}
 }
