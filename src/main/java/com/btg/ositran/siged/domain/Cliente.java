@@ -158,6 +158,17 @@ public class Cliente implements Serializable,Auditable{
 	private String apellidoPaterno;
 	@Column(name="apellidomaterno")
 	private String apellidoMaterno;
+	
+	@Column(name="cDniRepresentante")
+	private String cDniRepresentante;
+	public String getcDniRepresentante() {
+		return cDniRepresentante;
+	}
+
+	public void setcDniRepresentante(String cDniRepresentante) {
+		this.cDniRepresentante = cDniRepresentante;
+	}
+	
 	private Character estado;
 	@Column(name="fechacreacion")
 	@Temporal(TemporalType.TIMESTAMP)

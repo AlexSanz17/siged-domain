@@ -44,7 +44,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "IotdtcRecepcion.findByDfecmod", query = "SELECT i FROM IotdtcRecepcion i WHERE i.dfecmod = :dfecmod"),
     @NamedQuery(name = "IotdtcRecepcion.findByCflgestobs", query = "SELECT i FROM IotdtcRecepcion i WHERE i.cflgestobs = :cflgestobs"),
     @NamedQuery(name = "IotdtcRecepcion.findByCflgenvcar", query = "SELECT i FROM IotdtcRecepcion i WHERE i.cflgenvcar = :cflgenvcar"),
-    @NamedQuery(name = "IotdtcRecepcion.findByDfecreg", query = "SELECT i FROM IotdtcRecepcion i WHERE i.dfecreg = :dfecreg")})
+    @NamedQuery(name = "IotdtcRecepcion.findByDfecreg", query = "SELECT i FROM IotdtcRecepcion i WHERE i.dfecreg = :dfecreg"),
+    @NamedQuery(name = "IotdtcRecepcion.findByIdDoc", query = "SELECT i FROM IotdtcRecepcion i WHERE i.iddocumento = :iddocumento")
+})
 public class IotdtcRecepcion implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
