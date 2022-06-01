@@ -26,6 +26,7 @@ import javax.persistence.ManyToOne;
 @Table(name="documento")
 @NamedQueries({@NamedQuery(name="Documento.findAll",query="SELECT d FROM Documento d"),
 	@NamedQuery(name="Documento.findByIddocumento",query="SELECT d FROM Documento d WHERE d.idDocumento = :iddocumento"),
+	@NamedQuery(name="Documento.findByID_CODIGO",query="SELECT d FROM Documento d WHERE d.ID_CODIGO = :ID_CODIGO"),
 	@NamedQuery(name="Documento.findByFechacreacion",query="SELECT d FROM Documento d WHERE d.fechaCreacion = :fechacreacion"),
 	@NamedQuery(name="Documento.consultafechafestiva",query="SELECT d FROM Documento d WHERE d.principal = 'S' AND d.plazo > 0 AND (d.fechaAccion<=:fechanolaborable AND d.fechaLimiteAtencion >=:fechanolaborable)"),
 	@NamedQuery(name="Documento.consultaDocumentoReferencia",query="SELECT d FROM Documento d WHERE d.documentoreferencia = :iddocumento and d.estado not in ('I','N') "),
