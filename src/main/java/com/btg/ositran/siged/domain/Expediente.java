@@ -43,19 +43,14 @@ import java.io.Serializable;
 	@NamedQuery(name="Expediente.findByIdcliente",query="SELECT e FROM Expediente e WHERE e.cliente.idCliente = :idcliente AND e.estado = :estado"),
 	//@NamedQuery(name="Expediente.filtrarExpediente",query="SELECT e FROM Expediente e WHERE LOWER(e.nroexpediente) LIKE :nroexpediente AND LOWER(e.proceso.nombre) LIKE :proceso AND LOWER(e.cliente.numeroIdentificacion) LIKE :nroidentificacion AND (LOWER(e.cliente.razonSocial) LIKE :cliente OR LOWER(e.cliente.nombres) LIKE :cliente OR LOWER(e.cliente.apellidoPaterno) LIKE :cliente) AND e.estado='A' ORDER BY nroexpediente"),
 	//@NamedQuery(name="Expediente.filtrarExpedienteFlujo",query="SELECT e FROM Expediente e WHERE LOWER(e.nroexpediente) LIKE :nroexpediente AND LOWER(e.proceso.nombre) LIKE :proceso AND LOWER(e.cliente.numeroIdentificacion) LIKE :nroidentificacion AND (LOWER(e.cliente.razonSocial) LIKE :cliente OR LOWER(e.cliente.nombres) LIKE :cliente OR LOWER(e.cliente.apellidoPaterno) LIKE :cliente) AND LOWER(e.concesionario.ruc) LIKE :ruc AND LOWER(e.concesionario.razonSocial) LIKE :concesionario AND e.estado='A' ORDER BY nroexpediente"),
-	
     @NamedQuery(name="Expediente.filtrarExpediente",query="SELECT e FROM Expediente e WHERE LOWER(e.nroexpediente) LIKE :nroexpediente  AND LOWER(e.cliente.numeroIdentificacion) LIKE :nroidentificacion AND (LOWER(e.cliente.razonSocial) LIKE :cliente OR LOWER(e.cliente.nombres) LIKE :cliente OR LOWER(e.cliente.apellidoPaterno) LIKE :cliente) AND e.estado='A' ORDER BY nroexpediente"),
 	@NamedQuery(name="Expediente.filtrarExpedienteFlujo",query="SELECT e FROM Expediente e WHERE LOWER(e.nroexpediente) LIKE :nroexpediente  AND LOWER(e.cliente.numeroIdentificacion) LIKE :nroidentificacion AND (LOWER(e.cliente.razonSocial) LIKE :cliente OR LOWER(e.cliente.nombres) LIKE :cliente OR LOWER(e.cliente.apellidoPaterno) LIKE :cliente) AND LOWER(e.concesionario.ruc) LIKE :ruc AND LOWER(e.concesionario.razonSocial) LIKE :concesionario AND e.estado='A' ORDER BY nroexpediente"),
-        
     @NamedQuery(name="Expediente.findByNumeroexpedienteEstado",query="SELECT e FROM Expediente e WHERE LOWER(e.nroexpediente) = :numeroexpediente AND e.estado = :estado")
 })
 public class Expediente implements Entidad,Auditable,Serializable{
-
 	private static final long serialVersionUID=1L;
 
 	@Id
-	//@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="EXPEDIENTE_SEQ")
-	//@SequenceGenerator(name="EXPEDIENTE_SEQ",sequenceName="EXPEDIENTE_SEQ",initialValue=1,allocationSize=1)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional=false)
 	@Column(name="idexpediente")
