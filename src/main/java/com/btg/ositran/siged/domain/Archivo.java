@@ -40,17 +40,14 @@ import javax.persistence.TemporalType;
 	@NamedQuery(name="Archivo.updatePrincipal",query="UPDATE Archivo a SET a.principal = :principal WHERE a.idArchivo = :idarchivo"),
 	@NamedQuery(name="Archivo.findByIdNombreEstado",query="SELECT a FROM Archivo a join fetch a.documento WHERE a.documento.idDocumento = :idDocumento AND UPPER(substring(a.nombre,charindex(a.nombre,']') + 1,len(a.nombre))) = :nombre AND a.estado =:estado")})
 public class Archivo implements Serializable{
-	public static final char ESTADO_REGISTRADO='N';
-	public static final char ESTADO_DISPONIBLE='Y';
-	public static final char ESTADO_IMPORTADO='A';
+	public static final char ESTADO_REGISTRADO = 'N';
+	public static final char ESTADO_DISPONIBLE = 'Y';
+	public static final char ESTADO_IMPORTADO = 'A';
 
-	private static final long serialVersionUID=1L;
+	private static final long serialVersionUID = 1L;
 
 	@Id
-	//@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="ARCHIVO_SEQ")
-	//@SequenceGenerator(name="ARCHIVO_SEQ",sequenceName="ARCHIVO_SEQ",initialValue=1,allocationSize=1)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Basic(optional=false)
 	@Column(name="idarchivo")
 	private Integer idArchivo;
         
@@ -58,15 +55,16 @@ public class Archivo implements Serializable{
     @ManyToOne(optional=true,fetch=FetchType.LAZY)
     private Usuario usuarioCarga;
 
-	@Basic(optional=false)
+    @Column(name="nombre")
 	private String nombre;
         
-    @Basic(optional=true)
+    @Column(name="clave")
 	private String clave;
         
-    @Basic(optional=true)
+    @Column(name="tamano")
 	private Integer tamano;
 
+    @Column(name="descripcion")
 	private String descripcion;
 
 	@Basic(optional=false)
@@ -107,8 +105,6 @@ public class Archivo implements Serializable{
 	@Column(name="codProcesoFirma")
 	private Integer codProcesoFirma;
 
-	
-
 	@JoinColumn(name="documento", referencedColumnName="iddocumento")
 	@ManyToOne(optional=false)
 	private Documento documento;
@@ -137,14 +133,19 @@ public class Archivo implements Serializable{
     }
     
     public String getTamanoFormateado() {
-        if (tamano == null) return "";
+        if (tamano == null) {
+        	return "";
+        }
         
         DecimalFormat df = new DecimalFormat("#.00");
         double valorsito = (double)tamano/1024;
         
-        if (valorsito<1) return "1 KB";
+        if (valorsito < 1) {
+        	return "1 KB";
+        }
         
         tamanoFormateado = String.valueOf(df.format(valorsito)) + " KB";
+        
         return tamanoFormateado;
     }
 

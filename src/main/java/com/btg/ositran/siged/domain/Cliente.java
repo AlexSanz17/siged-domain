@@ -26,23 +26,20 @@ import com.btg.ositran.siged.domain.utils.Constantes;
 @Entity
 @Table(name="cliente")
 @NamedQueries({@NamedQuery(name="Cliente.findById",query="SELECT c FROM Cliente c WHERE c.idCliente = :idcliente "),
-               @NamedQuery(name="Cliente.findClienteInstituciones",query="SELECT c FROM Cliente c WHERE c.estado = 'A' and c.tipoinstitucion.cod_tipoinstitucion= :codTipoInstitucion"),
-               @NamedQuery(name="Cliente.findAll",query="SELECT c FROM Cliente c WHERE c.estado = 'A'"),
-               @NamedQuery(name="Cliente.findAllRUCPIDE",query="SELECT c FROM Cliente c WHERE c.estado = 'A' and flagPide is not null and flagPide= '1'"),
-               @NamedQuery(name="Cliente.findAllConcesionariaActive",query="SELECT c FROM Cliente c WHERE c.estado = 'A' and c.concesion = :concesion "),
-               @NamedQuery(name="Cliente.findAllConcesionaria"   ,   query="SELECT c FROM Cliente c WHERE c.concesion = :concesion"),
-               @NamedQuery(name="Cliente.findByIdcliente",query="SELECT c FROM Cliente c WHERE c.idCliente = :idcliente AND c.estado = 'A'"),
-               @NamedQuery(name="Cliente.findByNroidentificacion",query="SELECT c FROM Cliente c WHERE UPPER(c.numeroIdentificacion) = :nroidentificacion AND c.estado = 'A'"),
-               @NamedQuery(name="Cliente.findByCriteria",query="SELECT c FROM Cliente c WHERE c.numeroIdentificacion = :nroidentificacion AND c.tipoIdentificacion.idtipoidentificacion = :idtipoidentificacion AND c.estado = 'A'"),
-               @NamedQuery(name="Cliente.findByTipoIdentificacion",query="SELECT c FROM Cliente c WHERE c.tipoIdentificacion.idtipoidentificacion = :idtipoidentificacion"),
-               @NamedQuery(name="Cliente.findByNumeroidentificacionEstado",query="SELECT c FROM Cliente c WHERE LOWER(c.numeroIdentificacion) = :numeroidentificacion AND c.estado = :estado"),
-	       @NamedQuery(name="Cliente.findLikeNroidentificacion",query="SELECT c FROM Cliente c WHERE c.numeroIdentificacion LIKE :nroidentificacion AND c.estado = 'A'")})
+   @NamedQuery(name="Cliente.findClienteInstituciones",query="SELECT c FROM Cliente c WHERE c.estado = 'A' and c.tipoinstitucion.cod_tipoinstitucion= :codTipoInstitucion"),
+   @NamedQuery(name="Cliente.findAll",query="SELECT c FROM Cliente c WHERE c.estado = 'A'"),
+   @NamedQuery(name="Cliente.findAllRUCPIDE",query="SELECT c FROM Cliente c WHERE c.estado = 'A' and flagPide is not null and flagPide= '1'"),
+   @NamedQuery(name="Cliente.findAllConcesionariaActive",query="SELECT c FROM Cliente c WHERE c.estado = 'A' and c.concesion = :concesion "),
+   @NamedQuery(name="Cliente.findAllConcesionaria"   ,   query="SELECT c FROM Cliente c WHERE c.concesion = :concesion"),
+   @NamedQuery(name="Cliente.findByIdcliente",query="SELECT c FROM Cliente c WHERE c.idCliente = :idcliente AND c.estado = 'A'"),
+   @NamedQuery(name="Cliente.findByNroidentificacion",query="SELECT c FROM Cliente c WHERE UPPER(c.numeroIdentificacion) = :nroidentificacion AND c.estado = 'A'"),
+   @NamedQuery(name="Cliente.findByCriteria",query="SELECT c FROM Cliente c WHERE c.numeroIdentificacion = :nroidentificacion AND c.tipoIdentificacion.idtipoidentificacion = :idtipoidentificacion AND c.estado = 'A'"),
+   @NamedQuery(name="Cliente.findByTipoIdentificacion",query="SELECT c FROM Cliente c WHERE c.tipoIdentificacion.idtipoidentificacion = :idtipoidentificacion"),
+   @NamedQuery(name="Cliente.findByNumeroidentificacionEstado",query="SELECT c FROM Cliente c WHERE LOWER(c.numeroIdentificacion) = :numeroidentificacion AND c.estado = :estado"),
+   @NamedQuery(name="Cliente.findLikeNroidentificacion",query="SELECT c FROM Cliente c WHERE c.numeroIdentificacion LIKE :nroidentificacion AND c.estado = 'A'")})
 public class Cliente implements Serializable,Auditable{
-
 	private static final long serialVersionUID=1L;
 	@Id
-	//@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="CLIENTE_SEQ")
-	//@SequenceGenerator(name="CLIENTE_SEQ",sequenceName="CLIENTE_SEQ",initialValue=1,allocationSize=1)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional=false)
 	@Column(name="idcliente")
@@ -59,97 +56,97 @@ public class Cliente implements Serializable,Auditable{
 	@Column(name="direccionalternativa")
 	private String direccionAlternativa;
         
-        @Basic(optional=true)
-        @Column(name="concesion")
-        private String concesion;
-     
-        @Basic(optional=true)
-        @Column(name="flagPide")
-        private String flagPide;
-        
-        @Basic(optional=true)
-        @Column(name="idUnidad")
-        private Integer idUnidad;
+    @Basic(optional=true)
+    @Column(name="concesion")
+    private String concesion;
+ 
+    @Basic(optional=true)
+    @Column(name="flagPide")
+    private String flagPide;
+    
+    @Basic(optional=true)
+    @Column(name="idUnidad")
+    private Integer idUnidad;
 
-        public Integer getIdUnidad() {
-            return idUnidad;
-        }
+    public Integer getIdUnidad() {
+        return idUnidad;
+    }
 
-        public void setIdUnidad(Integer idUnidad) {
-            this.idUnidad = idUnidad;
-        }
-        
+    public void setIdUnidad(Integer idUnidad) {
+        this.idUnidad = idUnidad;
+    }
+    
 
-        public String getConcesion() {
-            return concesion;
-        }
+    public String getConcesion() {
+        return concesion;
+    }
 
-        public void setConcesion(String concesion) {
-            this.concesion = concesion;
-        }
-        
-        @Column(name="codCargoCliente")
+    public void setConcesion(String concesion) {
+        this.concesion = concesion;
+    }
+    
+    @Column(name="codCargoCliente")
 	private Integer codCargoCliente;
 
-        public Integer getCodCargoCliente() {
-            return codCargoCliente;
-        }
+    public Integer getCodCargoCliente() {
+        return codCargoCliente;
+    }
 
-        public void setCodCargoCliente(Integer codCargoCliente) {
-            this.codCargoCliente = codCargoCliente;
-        }
-        
-        @JoinColumn(name="codtipoinstitucion",referencedColumnName="cod_tipoinstitucion", insertable=false, updatable=false)
+    public void setCodCargoCliente(Integer codCargoCliente) {
+        this.codCargoCliente = codCargoCliente;
+    }
+    
+    @JoinColumn(name="codtipoinstitucion",referencedColumnName="cod_tipoinstitucion", insertable=false, updatable=false)
 	@ManyToOne(optional=true,fetch=FetchType.LAZY)
 	private TipoInstitucion tipoinstitucion;
         
-        @Column(name="codtipoinstitucion")
-        private Integer codtipoinstitucion;
+    @Column(name="codtipoinstitucion")
+    private Integer codtipoinstitucion;
 
-        public Integer getCodtipoinstitucion() {
-            return codtipoinstitucion;
-        }
+    public Integer getCodtipoinstitucion() {
+        return codtipoinstitucion;
+    }
 
-        public void setCodtipoinstitucion(Integer codtipoinstitucion) {
-            this.codtipoinstitucion = codtipoinstitucion;
-        }
+    public void setCodtipoinstitucion(Integer codtipoinstitucion) {
+        this.codtipoinstitucion = codtipoinstitucion;
+    }
 
-        public TipoInstitucion getTipoinstitucion() {
-            return tipoinstitucion;
-        }
+    public TipoInstitucion getTipoinstitucion() {
+        return tipoinstitucion;
+    }
 
-        public void setTipoinstitucion(TipoInstitucion tipoinstitucion) {
-            this.tipoinstitucion = tipoinstitucion;
-        }
-        
-       // @Column(name="codTipoInstitucion")
-        //private Integer codTipoInstitucion;
-        
-       // @Column(name="codTipoRemitente")
-        //private String codTipoRemitente;
+    public void setTipoinstitucion(TipoInstitucion tipoinstitucion) {
+        this.tipoinstitucion = tipoinstitucion;
+    }
+    
+   // @Column(name="codTipoInstitucion")
+    //private Integer codTipoInstitucion;
+    
+   // @Column(name="codTipoRemitente")
+    //private String codTipoRemitente;
 
-        
-        @Column(name="usuarioCreacion")
-        private Integer usuarioCreacion;
+    
+    @Column(name="usuarioCreacion")
+    private Integer usuarioCreacion;
 
-        @Column(name="usuarioModificacion")
-        private Integer usuarioModificacion;
-     
-        public Integer getUsuarioCreacion() {
-            return usuarioCreacion;
-        }
+    @Column(name="usuarioModificacion")
+    private Integer usuarioModificacion;
+ 
+    public Integer getUsuarioCreacion() {
+        return usuarioCreacion;
+    }
 
-        public void setUsuarioCreacion(Integer usuarioCreacion) {
-            this.usuarioCreacion = usuarioCreacion;
-        }
+    public void setUsuarioCreacion(Integer usuarioCreacion) {
+        this.usuarioCreacion = usuarioCreacion;
+    }
 
-       /* public Integer getCodTipoInstitucion() {
-            return codTipoInstitucion;
-        }
+   /* public Integer getCodTipoInstitucion() {
+        return codTipoInstitucion;
+    }
 
-        public void setCodTipoInstitucion(Integer codTipoInstitucion) {
-            this.codTipoInstitucion = codTipoInstitucion;
-        }*/
+    public void setCodTipoInstitucion(Integer codTipoInstitucion) {
+        this.codTipoInstitucion = codTipoInstitucion;
+    }*/
         
 	private String telefono;
 	private String correo;
@@ -186,20 +183,17 @@ public class Cliente implements Serializable,Auditable{
 	@ManyToOne(fetch=FetchType.EAGER)
 	private Distrito ubigeoPrincipal;
 
-        public Distrito getUbigeoPrincipal() {
-            return ubigeoPrincipal;
-        }
+    public Distrito getUbigeoPrincipal() {
+        return ubigeoPrincipal;
+    }
 
-        public void setUbigeoPrincipal(Distrito ubigeoPrincipal) {
-            this.ubigeoPrincipal = ubigeoPrincipal;
-        }
+    public void setUbigeoPrincipal(Distrito ubigeoPrincipal) {
+        this.ubigeoPrincipal = ubigeoPrincipal;
+    }
      
 	@JoinColumn(name="tipoidentificacion",referencedColumnName="idtipoidentificacion")
 	@ManyToOne(optional=false,fetch=FetchType.EAGER)
 	private Tipoidentificacion tipoIdentificacion;
-        
-       
-
     
 	private transient String sNombre;
 	private transient Integer idDepartamentoUP;
@@ -286,21 +280,21 @@ public class Cliente implements Serializable,Auditable{
 
 	}
         
-         public Date getFechaModificacion() {
-            return fechaModificacion;
-        }
+    public Date getFechaModificacion() {
+        return fechaModificacion;
+    }
 
-        public void setFechaModificacion(Date fechaModificacion) {
-            this.fechaModificacion = fechaModificacion;
-        }
-        
-         public Integer getUsuarioModificacion() {
-            return usuarioModificacion;
-        }
+    public void setFechaModificacion(Date fechaModificacion) {
+        this.fechaModificacion = fechaModificacion;
+    }
+    
+     public Integer getUsuarioModificacion() {
+        return usuarioModificacion;
+    }
 
-        public void setUsuarioModificacion(Integer usuarioModificacion) {
-            this.usuarioModificacion = usuarioModificacion;
-        }
+    public void setUsuarioModificacion(Integer usuarioModificacion) {
+        this.usuarioModificacion = usuarioModificacion;
+    }
 
 	public Integer getIdCliente(){
 		return idCliente;
@@ -542,14 +536,15 @@ public class Cliente implements Serializable,Auditable{
 		this.sTipoIdentificacion=sTipoIdentificacion;
 	}
 
-        /*
-        public String getCodTipoRemitente() {
-           return codTipoRemitente;
-        }
+    /*
+    public String getCodTipoRemitente() {
+       return codTipoRemitente;
+    }
 
-        public void setCodTipoRemitente(String codTipoRemitente) {
-            this.codTipoRemitente = codTipoRemitente;
-        }*/
+    public void setCodTipoRemitente(String codTipoRemitente) {
+        this.codTipoRemitente = codTipoRemitente;
+    }*/
+	
 	@Override
 	public int hashCode(){
 		int hash=0;
@@ -567,21 +562,6 @@ public class Cliente implements Serializable,Auditable{
 			return false;
 		}
 		return true;
-	}
-
-	@Override
-	public String toString() {
-		return "Cliente [idCliente=" + idCliente + ", numeroIdentificacion=" + numeroIdentificacion + ", razonSocial="
-				+ razonSocial + ", representanteLegal=" + representanteLegal + ", direccionPrincipal="
-				+ direccionPrincipal + ", direccionAlternativa=" + direccionAlternativa + ", concesion=" + concesion
-				+ ", flagPide=" + flagPide + ", idUnidad=" + idUnidad + ", codCargoCliente=" + codCargoCliente
-				+ ", tipoinstitucion=" + tipoinstitucion + ", codtipoinstitucion=" + codtipoinstitucion
-				+ ", usuarioCreacion=" + usuarioCreacion + ", usuarioModificacion=" + usuarioModificacion
-				+ ", telefono=" + telefono + ", correo=" + correo + ", nombres=" + nombres + ", apellidoPaterno="
-				+ apellidoPaterno + ", apellidoMaterno=" + apellidoMaterno + ", estado=" + estado + ", fechaCreacion="
-				+ fechaCreacion + ", fechaModificacion=" + fechaModificacion + ", ubigeoAlternativo="
-				+ ubigeoAlternativo + ", ubigeoPrincipal=" + ubigeoPrincipal + ", tipoIdentificacion="
-				+ tipoIdentificacion + ", sTipoIdentificacion=" + sTipoIdentificacion + "]";
 	}
 
 	// Auditoria
@@ -602,20 +582,36 @@ public class Cliente implements Serializable,Auditable{
 	}
 
 	public String getNombreRazon(){
-           	if(tipoIdentificacion != null){
-           		if(Constantes.TIPO_IDENTIFICACION_RUC.equalsIgnoreCase(tipoIdentificacion.getNombre())){
-				return (razonSocial == null ? "" : razonSocial);
-			}
-           		return (nombres == null ? "" : nombres) + " " + (apellidoPaterno == null ? "" : apellidoPaterno) + " " + (apellidoMaterno == null ? "" : apellidoMaterno);
+       	if(tipoIdentificacion != null) {
+       		if(Constantes.TIPO_IDENTIFICACION_RUC.equalsIgnoreCase(tipoIdentificacion.getNombre())){
+       			return (razonSocial == null ? "" : razonSocial);
+       		}
+       		
+       		return (nombres == null ? "" : nombres) + " " + (apellidoPaterno == null ? "" : apellidoPaterno) + " " + (apellidoMaterno == null ? "" : apellidoMaterno);
 		}
 		return "";
 	}
         
-        public String getFlagPide() {
-            return flagPide;
-        }
+    public String getFlagPide() {
+        return flagPide;
+    }
 
-        public void setFlagPide(String flagPide) {
-            this.flagPide = flagPide;
-        }
+    public void setFlagPide(String flagPide) {
+        this.flagPide = flagPide;
+    }
+    
+	@Override
+	public String toString() {
+		return "Cliente [idCliente=" + idCliente + ", numeroIdentificacion=" + numeroIdentificacion + ", razonSocial="
+			+ razonSocial + ", representanteLegal=" + representanteLegal + ", direccionPrincipal="
+			+ direccionPrincipal + ", direccionAlternativa=" + direccionAlternativa + ", concesion=" + concesion
+			+ ", flagPide=" + flagPide + ", idUnidad=" + idUnidad + ", codCargoCliente=" + codCargoCliente
+			+ ", tipoinstitucion=" + tipoinstitucion + ", codtipoinstitucion=" + codtipoinstitucion
+			+ ", usuarioCreacion=" + usuarioCreacion + ", usuarioModificacion=" + usuarioModificacion
+			+ ", telefono=" + telefono + ", correo=" + correo + ", nombres=" + nombres + ", apellidoPaterno="
+			+ apellidoPaterno + ", apellidoMaterno=" + apellidoMaterno + ", estado=" + estado + ", fechaCreacion="
+			+ fechaCreacion + ", fechaModificacion=" + fechaModificacion + ", ubigeoAlternativo="
+			+ ubigeoAlternativo + ", ubigeoPrincipal=" + ubigeoPrincipal + ", tipoIdentificacion="
+			+ tipoIdentificacion + ", sTipoIdentificacion=" + sTipoIdentificacion + "]";
+	}
 }
