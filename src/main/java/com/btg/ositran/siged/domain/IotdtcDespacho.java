@@ -108,7 +108,9 @@ public class IotdtcDespacho implements Serializable {
     @Basic(optional = false)
     @Column(name = "CFLGENV")
     private Character cflgenv;
-    @Column(name = "DFECENV")
+    @Column(name = "CFLGMIGRADO")
+    private Character cflmigrado;
+	@Column(name = "DFECENV")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dfecenv;
     @Basic(optional = false)
@@ -147,7 +149,13 @@ public class IotdtcDespacho implements Serializable {
         this.vusureg = vusureg;
         this.dfecreg = dfecreg;
     }
-    
+    public Character getCflmigrado() {
+		return cflmigrado;
+	}
+
+	public void setCflmigrado(Character cflmigrado) {
+		this.cflmigrado = cflmigrado;
+	}
     public Integer getSidemiext() {
         return sidemiext;
     }
