@@ -130,6 +130,7 @@
 		<class>com.btg.ositran.siged.domain.IotdtcRecepcionMPV</class>
 		<class>com.btg.ositran.siged.domain.IotdtdAdjuntoMPV</class>
 		<class>com.btg.ositran.siged.domain.DocumentoRechazado</class>
+		<class>com.btg.ositran.siged.domain.DocumentoNotificacion</class>
 	</persistence-unit>
 	<persistence-unit name="pidePU">
 		<class>com.btg.ositran.siged.domain.IotdtcRecepcionPIDE</class>
