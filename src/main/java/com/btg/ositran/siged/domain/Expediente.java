@@ -328,7 +328,8 @@ public class Expediente implements Entidad,Auditable,Serializable{
 
 	public String getAsuntoHTML(){
 		if(asunto != null){
-          return asunto.replace("\n", "").replace("\r", "").replace("\"", "");
+//          return asunto.replace("\n", "").replace("\r", "").replace("\"", "");
+			return asunto.replaceAll("\"", "");
 		}
 		return "";
 	}

@@ -106,13 +106,24 @@ public class IotdtcRecepcionPIDE implements Serializable {
 	private Character cflgestobs;
 	@Column(name = "CFLGENVCAR")
 	private Character cflgenvcar;
+	
+	@Column(name = "FLGINSERT")
+	private Integer flginsert;
+	
 	@Basic(optional = false)
 	@Column(name = "DFECREG")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dfecreg;
 	@OneToMany(mappedBy = "sidrecext")
 	private List<IotdtmDocExternoPIDE> iotdtmDocExternoList;
+	
+	public Integer getFlginsert() {
+		return flginsert;
+	}
 
+	public void setFlginsert(Integer flginsert) {
+		this.flginsert = flginsert;
+	}
 	public Character getCflganu() {
 		return cflganu;
 	}

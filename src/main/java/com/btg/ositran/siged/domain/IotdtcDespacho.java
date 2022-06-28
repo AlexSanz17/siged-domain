@@ -106,10 +106,8 @@ public class IotdtcDespacho implements Serializable {
     @Column(name = "CFLGEST")
     private Character cflgest;
     @Basic(optional = false)
-    @Column(name = "CFLGENV")
+    @Column(name = "CFLGENV", nullable = false)
     private Character cflgenv;
-    @Column(name = "CFLGMIGRADO")
-    private Character cflmigrado;
 	@Column(name = "DFECENV")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dfecenv;
@@ -149,13 +147,7 @@ public class IotdtcDespacho implements Serializable {
         this.vusureg = vusureg;
         this.dfecreg = dfecreg;
     }
-    public Character getCflmigrado() {
-		return cflmigrado;
-	}
-
-	public void setCflmigrado(Character cflmigrado) {
-		this.cflmigrado = cflmigrado;
-	}
+  
     public Integer getSidemiext() {
         return sidemiext;
     }
@@ -407,7 +399,7 @@ public class IotdtcDespacho implements Serializable {
 			+ vcoduniorgrem + ", vuniorgrem=" + vuniorgrem + ", vcuo=" + vcuo + ", vrucentrec=" + vrucentrec
 			+ ", vnomentrec=" + vnomentrec + ", vnumregstdrec=" + vnumregstdrec + ", vanioregstdrec="
 			+ vanioregstdrec + ", dfecregstdrec=" + dfecregstdrec + ", vusuregstdrec=" + vusuregstdrec
-			+ ", vuniorgstdrec=" + vuniorgstdrec + ", bcarstdrec=" + Arrays.toString(bcarstdrec) + ", vobs=" + vobs
+			+ ", vuniorgstdrec=" + vuniorgstdrec +  ", vobs=" + vobs
 			+ ", vdesanxstdrec=" + vdesanxstdrec + ", vcuoref=" + vcuoref + ", cflgest=" + cflgest + ", cflgenv="
 			+ cflgenv + ", dfecenv=" + dfecenv + ", vusureg=" + vusureg + ", dfecreg=" + dfecreg + ", vusumod="
 			+ vusumod + ", dfecmod=" + dfecmod + ", iotdtmDocExternoList=" + iotdtmDocExternoList + ", iddocumento="

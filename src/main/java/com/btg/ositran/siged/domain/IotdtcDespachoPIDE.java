@@ -392,7 +392,7 @@ public class IotdtcDespachoPIDE implements Serializable {
 			+ ", vcoduniorgrem=" + vcoduniorgrem + ", vuniorgrem=" + vuniorgrem + ", vcuo=" + vcuo + ", vrucentrec="
 			+ vrucentrec + ", vnomentrec=" + vnomentrec + ", vnumregstdrec=" + vnumregstdrec + ", vanioregstdrec="
 			+ vanioregstdrec + ", dfecregstdrec=" + dfecregstdrec + ", vusuregstdrec=" + vusuregstdrec
-			+ ", vuniorgstdrec=" + vuniorgstdrec + ", bcarstdrec=" + Arrays.toString(bcarstdrec) + ", vobs=" + vobs
+			+ ", vuniorgstdrec=" + vuniorgstdrec + ", vobs=" + vobs
 			+ ", vdesanxstdrec=" + vdesanxstdrec + ", vcuoref=" + vcuoref + ", cflgest=" + cflgest + ", dfecenv="
 			+ dfecenv + ", vusureg=" + vusureg + ", dfecreg=" + dfecreg + ", vusumod=" + vusumod + ", dfecmod="
 			+ dfecmod + ", iotdtmDocExternoList=" + iotdtmDocExternoList + "]";

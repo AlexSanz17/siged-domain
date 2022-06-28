@@ -14,6 +14,15 @@ import javax.persistence.TemporalType;
 @Table(name = "trazabilidadunificada")
 public class FilaHojaRuta {
 
+	@Override
+	public String toString() {
+		return "FilaHojaRuta [pk=" + pk + ", fechaCreacion=" + fechaCreacion + ", remitente=" + remitente + ", filas="
+				+ filas + ", destinatario=" + destinatario + ", accion=" + accion + ", contenido=" + contenido
+				+ ", idremitente=" + idremitente + ", idunidadremitente=" + idunidadremitente + ", cantidadhoja="
+				+ cantidadhoja + ", documento=" + documento + ", proveido=" + proveido + ", nombrePC=" + nombrePC
+				+ ", estado=" + estado + ", numeroDocumento=" + numeroDocumento + "]";
+	}
+
 	@EmbeddedId
 	protected FilaHojaRutaPK pk;
 

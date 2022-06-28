@@ -140,7 +140,7 @@ public class IotdtdDocPrincipal implements Serializable {
     @Override
 	public String toString() {
 		return "IotdtdDocPrincipal [siddocpri=" + siddocpri + ", vnomdoc=" + vnomdoc + ", bpdfdoc="
-			+ Arrays.toString(bpdfdoc) + ", ccodest=" + ccodest + ", dfecreg=" + dfecreg + ", siddocext="
+			+ ", ccodest=" + ccodest + ", dfecreg=" + dfecreg + ", siddocext="
 			+ siddocext + "]";
 	}
     

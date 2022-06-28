@@ -26,6 +26,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "IotdtmDocExternoPIDE.findAll", query = "SELECT i FROM IotdtmDocExternoPIDE i"),
+    @NamedQuery(name = "IotdtmDocExternoPIDE.findBySidemiext", query = "SELECT i FROM IotdtmDocExternoPIDE i, IotdtcDespachoPIDE j where i.sidemiext.sidemiext = j.sidemiext and j.sidemiext = :sidemiext"),
     @NamedQuery(name = "IotdtmDocExternoPIDE.findAllRecepcion", query = "SELECT i FROM IotdtmDocExternoPIDE i, IotdtcRecepcionPIDE j where i.sidrecext.sidrecext = j.sidrecext"),
     @NamedQuery(name = "IotdtmDocExternoPIDE.findBySiddocext", query = "SELECT i FROM IotdtmDocExternoPIDE i WHERE i.siddocext = :siddocext"),
     @NamedQuery(name = "IotdtmDocExternoPIDE.findByVnomentemi", query = "SELECT i FROM IotdtmDocExternoPIDE i WHERE i.vnomentemi = :vnomentemi"),
@@ -267,7 +268,7 @@ public class IotdtmDocExternoPIDE implements Serializable {
     }
 
     @Override
-	public String toString() {
+    public String toString() {
 		return "IotdtmDocExternoPIDE [siddocext=" + siddocext + ", vnomentemi=" + vnomentemi + ", ccodtipdoc="
 			+ ccodtipdoc + ", vnumdoc=" + vnumdoc + ", dfecdoc=" + dfecdoc + ", vuniorgdst=" + vuniorgdst
 			+ ", vnomdst=" + vnomdst + ", vnomcardst=" + vnomcardst + ", vasu=" + vasu + ", cindtup=" + cindtup

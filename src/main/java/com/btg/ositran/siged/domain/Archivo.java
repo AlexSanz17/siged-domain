@@ -27,6 +27,8 @@ import javax.persistence.TemporalType;
 	@NamedQuery(name="Archivo.buscarArchivoPrincipalPorDocumento", query="SELECT a FROM Archivo a WHERE a.documento.idDocumento = :idDocumento AND a.estadoDigitalizacion <> :estadoDigitalizacion AND a.estado = :estado AND a.principal = :principal"),
 	@NamedQuery(name="Archivo.findByCriteria",query="SELECT a FROM Archivo a join fetch a.documento WHERE a.documento.idDocumento = :iddoc AND a.nombre = :nombre"),
 	@NamedQuery(name="Archivo.findByCriteria2",query="SELECT a FROM Archivo a WHERE a.documento.idDocumento = :iddoc AND a.nombre like :nombre"),
+	@NamedQuery(name="Archivo.buscarArchivoAnexoByIdDocumento",query="SELECT a FROM Archivo a WHERE a.documento.idDocumento = :iddocumento AND a.principal = 'N'"),
+	@NamedQuery(name="Archivo.buscarArchivoCargoByIdDocumento",query="SELECT a FROM Archivo a WHERE a.documento.idDocumento = :iddocumento AND a.principal = 'M'"),
 	@NamedQuery(name="Archivo.checkEstadoDigitalizacion",query="SELECT a FROM Archivo a WHERE a.documento.idDocumento = :iddoc AND (estadoDigitalizacion = 'Y' OR estadoDigitalizacion = 'A')"),
 	@NamedQuery(name="Archivo.findByIdDocumentoOrderDesc",query="SELECT a FROM Archivo a WHERE a.documento.expediente.id = :idexpediente AND a.documento.idDocumento >= :iddocumento AND a.documento.estaEnFlujo = 'S' AND estadoDigitalizacion <> 'I' ORDER BY a.fechaCreacion DESC"),
 	@NamedQuery(name="Archivo.findByIdDocumentoOrderDescQAS",query="SELECT a FROM Archivo a WHERE a.documento.expediente.id = :idexpediente AND a.documento.idDocumento = :iddocumento AND estadoDigitalizacion <> 'I' ORDER BY a.fechaCreacion DESC"),
@@ -39,6 +41,8 @@ import javax.persistence.TemporalType;
 	@NamedQuery(name="Archivo.buscarActivosPorAutor",query="SELECT a FROM Archivo a WHERE a.autor.idusuario = :idUsuario AND a.estado = :estado AND a.documento.idDocumento = :idDocumento"),
 	@NamedQuery(name="Archivo.updatePrincipal",query="UPDATE Archivo a SET a.principal = :principal WHERE a.idArchivo = :idarchivo"),
 	@NamedQuery(name="Archivo.findByIdNombreEstado",query="SELECT a FROM Archivo a join fetch a.documento WHERE a.documento.idDocumento = :idDocumento AND UPPER(substring(a.nombre,charindex(a.nombre,']') + 1,len(a.nombre))) = :nombre AND a.estado =:estado")})
+
+
 public class Archivo implements Serializable{
 	public static final char ESTADO_REGISTRADO = 'N';
 	public static final char ESTADO_DISPONIBLE = 'Y';

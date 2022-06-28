@@ -350,6 +350,8 @@ public class Documento implements Serializable {
 	private String nombrePCLecturaDocumento;
 
 	private Integer prioridad;
+	
+	private transient String flagPide; 
 
 	private String referenciados;
 
@@ -509,7 +511,13 @@ public class Documento implements Serializable {
 		this.tipoDocumento=tipoDocumento;
 		this.numeroDocumento=numeroDocumento;
 	}
+	public String getFlagPide() {
+		return flagPide;
+	}
 
+	public void setFlagPide(String flagPide) {
+		this.flagPide = flagPide;
+	}
 	public Integer getIdDocumento(){
 		return idDocumento;
 	}
