@@ -87,7 +87,12 @@ public class IotdtcDespachoPIDE implements Serializable {
     private String vusuregstdrec;
     @Column(name = "VUNIORGSTDREC")
     private String vuniorgstdrec;
-    @Lob
+    @Column(name = "FLGINSERT")
+    private Integer flginsert;
+    
+  
+
+	@Lob
     @Column(name = "BCARSTDREC")
     private byte[] bcarstdrec;
     @Column(name = "VOBS")
@@ -140,7 +145,13 @@ public class IotdtcDespachoPIDE implements Serializable {
         this.vusureg = vusureg;
         this.dfecreg = dfecreg;
     }
+    public Integer getFlginsert() {
+  		return flginsert;
+  	}
 
+  	public void setFlginsert(Integer flginsert) {
+  		this.flginsert = flginsert;
+  	}
     public Integer getSidemiext() {
         return sidemiext;
     }

@@ -36,6 +36,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "IotdtcDespacho.findByVcoduniorgrem", query = "SELECT i FROM IotdtcDespacho i WHERE i.vcoduniorgrem = :vcoduniorgrem"),
     @NamedQuery(name = "IotdtcDespacho.findByVuniorgrem", query = "SELECT i FROM IotdtcDespacho i WHERE i.vuniorgrem = :vuniorgrem"),
     @NamedQuery(name = "IotdtcDespacho.findByVcuo", query = "SELECT i FROM IotdtcDespacho i WHERE i.vcuo = :vcuo"),
+    @NamedQuery(name = "IotdtcDespacho.findByIdDocumento", query = "SELECT i FROM IotdtcDespacho i WHERE i.iddocumento = :iddocumento"),
     @NamedQuery(name = "IotdtcDespacho.findByVrucentrec", query = "SELECT i FROM IotdtcDespacho i WHERE i.vrucentrec = :vrucentrec"),
     @NamedQuery(name = "IotdtcDespacho.findByVnomentrec", query = "SELECT i FROM IotdtcDespacho i WHERE i.vnomentrec = :vnomentrec"),
     @NamedQuery(name = "IotdtcDespacho.findByVnumregstdrec", query = "SELECT i FROM IotdtcDespacho i WHERE i.vnumregstdrec = :vnumregstdrec"),
