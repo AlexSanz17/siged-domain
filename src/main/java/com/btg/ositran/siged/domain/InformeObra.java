@@ -14,7 +14,7 @@ import javax.persistence.Table;
 public class InformeObra {
 	@Id
 	@Column(name="idinformeobra")
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer idInformeObra;
 	
 	@Column(name="contrato")
@@ -152,8 +152,9 @@ public class InformeObra {
 	@Override
 	public String toString() {
 		return "InformeObra [idInformeObra=" + idInformeObra + ", contrato=" + contrato + ", razonSocial=" + razonSocial
-			+ ", ruc=" + ruc + ", tipoObra=" + tipoObra + ", fechaInicio=" + fechaInicio + ", fechatermino="
-			+ fechatermino + ", monto=" + monto + ", beneficiarios=" + beneficiarios + ", descripcion="
-			+ descripcion + ", fechaCreacion=" + fechaCreacion + ", fechaModificacion=" + fechaModificacion + "]";
-	} 
+				+ ", ruc=" + ruc + ", tipoObra=" + tipoObra + ", fechaInicio=" + fechaInicio + ", fechatermino="
+				+ fechatermino + ", monto=" + monto + ", beneficiarios=" + beneficiarios + ", descripcion="
+				+ descripcion + ", fechaCreacion=" + fechaCreacion + ", fechaModificacion=" + fechaModificacion + "]";
+	}
+    
 }

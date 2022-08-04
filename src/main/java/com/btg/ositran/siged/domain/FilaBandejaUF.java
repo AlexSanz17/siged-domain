@@ -20,7 +20,7 @@ public class FilaBandejaUF {
 	private Integer id;
     
 	@Column(name = "nroTramite")
-    private Integer nroTramite;
+    private String nroTramite;
 
     @Column(name = "origen")
     private Integer origen;
@@ -542,11 +542,11 @@ public class FilaBandejaUF {
        this.idcliente = idcliente;
     }
     
-     public Integer getNroTramite() {
+     public String getNroTramite() {
         return nroTramite;
     }
 
-    public void setNroTramite(Integer nroTramite) {
+    public void setNroTramite(String nroTramite) {
         this.nroTramite = nroTramite;
     }
     

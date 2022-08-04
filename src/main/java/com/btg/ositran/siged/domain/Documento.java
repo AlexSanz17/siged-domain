@@ -135,7 +135,7 @@ public class Documento implements Serializable {
         
     @Basic(optional=true)
 	@Column(name="ID_CODIGO")
-	private Integer ID_CODIGO;
+	private String ID_CODIGO;
 
     @Column(name="delexpediente")
 	private String delExpediente;
@@ -1359,7 +1359,7 @@ public class Documento implements Serializable {
 	}
 
 	
-	public Integer getID_CODIGO() {
+	public String getID_CODIGO() {
 	    return ID_CODIGO;
 	}
         
@@ -1371,7 +1371,7 @@ public class Documento implements Serializable {
         this.origen = origen;
     }
 
-	public void setID_CODIGO(Integer iD_CODIGO) {
+	public void setID_CODIGO(String iD_CODIGO) {
 	    ID_CODIGO = iD_CODIGO;
 	}
 
